@@ -50,7 +50,7 @@ function run_checks() {
   else
      mkdir -p $1
      cd $1
-     $NXF_CMD run $NXF_SCRIPT > checks.out 
+     $NXF_RUN > checks.out 
   fi
   
   ret=$?
