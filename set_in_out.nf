@@ -33,11 +33,12 @@
 params.in = "$baseDir/data/sample.fa"
 params.db = "$baseDir/blast-db/pdb/tiny"
 
+
 /* 
  * defines the path to the blast db  
  */ 
- 
-db = file(params.db)
+db_name = file(params.db).name
+db_path = file(params.db).parent
 
 /* 
  * creates a channel emitting pair of values, the first entry is the 
@@ -58,12 +59,13 @@ process blast {
 
     input:
     set id, file('seq.fa') from seq
-
+    file db_path 
+    
     output:
     set id, file('out.txt') into blast_result
 
     """
-    blastp -db $db -query seq.fa -outfmt 6 | head -n 10 > out.txt
+    blastp -db $db_path/$db_name -query seq.fa -outfmt 6 | head -n 10 > out.txt
     """
 }     
 

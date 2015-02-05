@@ -20,8 +20,12 @@
  *   along with Nextflow.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-NR = file("$baseDir/blast-db/pdb/tiny")
-proteins = file("$baseDir/data/sample.fa")
+params.query = "$baseDir/data/sample.fa"
+params.db = "$baseDir/blast-db/pdb/tiny"
+
+proteins = file(params.query)
+db_name = file(params.db).name
+db_path = file(params.db).parent
 
 /*
  * Executes a Blast search with using the `protein` file.
@@ -32,12 +36,13 @@ process blastJob {
 
   input:
   file 'query.fa' from proteins
+    file db_path
 
   output: 
   file 'out.txt' into blast_result
 
    """ 
-   blastp -query query.fa -db $NR -outfmt 6 > out.txt
+   blastp -query query.fa -db $db_path/$db_name -outfmt 6 > out.txt
    """
 
 }

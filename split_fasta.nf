@@ -1,5 +1,5 @@
 #!/usr/bin/env nextflow
-
+ 
 /*
  * Copyright (c) 2013-2014, Centre for Genomic Regulation (CRG).
  * Copyright (c) 2013-2014, Paolo Di Tommaso and the respective authors.
@@ -18,27 +18,33 @@
  *
  *   You should have received a copy of the GNU General Public License
  *   along with Nextflow.  If not, see <http://www.gnu.org/licenses/>.
+ */ 
+ 
+/* 
+ * Define the pipeline parameters
  */
-
 params.query = "$baseDir/data/sample.fa"
+params.chunkSize = 10
 params.db = "$baseDir/blast-db/pdb/tiny"
 
-proteins = file(params.query)
 db_name = file(params.db).name
 db_path = file(params.db).parent
+fasta = file(params.query)
+seq = Channel.from(fasta).splitFasta(by: params.chunkSize)
 
-/* 
- * Executes a Blast search with using the `protein` file
+/*
+ * Execute a BLAST job for each chunk for the provided sequences
  */
  
-process blastJob {
+process blast {
+    input:
+    file 'seq.fa' from seq
+    file db_path
 
-  input:
-  file 'query.fa' from proteins
-  file db_path
+    output:
+    file 'out' into blast_result
 
-  """ 
-  blastp -query query.fa -db $db_path/$db_name -outfmt 6
-  """
-
+    """
+    blastp -db $db_path/$db_name -query seq.fa -outfmt 6 > out
+    """
 }

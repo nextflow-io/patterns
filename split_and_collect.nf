@@ -29,7 +29,9 @@ params.chunkSize = 10
 params.db = "$baseDir/blast-db/pdb/tiny"
 params.out = 'blast_result.txt'
 
-db = file(params.db)
+db_name = file(params.db).name
+db_path = file(params.db).parent
+
 fasta = file(params.query)
 seq = Channel.from(fasta).splitFasta(by: params.chunkSize)
 
@@ -41,12 +43,13 @@ seq = Channel.from(fasta).splitFasta(by: params.chunkSize)
 process blast {
     input:
     file 'seq.fa' from seq
+    file db_path
 
     output:
     file 'out' into blast_result
 
     """
-    blastp -db $db -query seq.fa -outfmt 6 > out
+    blastp -db $db_path/$db_name -query seq.fa -outfmt 6 > out
     """
 }
 

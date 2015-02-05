@@ -18,69 +18,69 @@
  *
  *   You should have received a copy of the GNU General Public License
  *   along with Nextflow.  If not, see <http://www.gnu.org/licenses/>.
- */ 
- 
-/* 
- * 
- * 
- * Try to run this example by entering the following command line: 
- * 
- *   nextflow run --query data/prot_\*.fa
- * 
- * It will execute a blast search for each file that matches the 
- * the wildcard path matcher 
- * 
  */
- 
-/* 
- * Define the pipeline default parameters. 
- */  
-params.query = "$baseDir/data/sample.fa"
-params.chunkSize = 10
-params.db = "$baseDir/blast-db/pdb/tiny"
-params.out = 'blast_result.txt'
 
-/* 
- * the path where the BLAST DB is located 
- */
- 
+params.db = "$baseDir/blast-db/pdb/tiny"
+params.query = "$baseDir/data/sample.fa"
+params.chunk = 1 
+
 db_name = file(params.db).name
 db_path = file(params.db).parent
 
+chunks = Channel
+            .fromPath(params.query)
+            .splitFasta(by: params.chunk)
+
 /* 
- * A channel emitting fasta chunks
+ * Extends a BLAST query for each entry in the 'chunks' channel 
  */
-
-seq = Channel
-        .fromPath(params.query)
-        .splitFasta(by: params.chunkSize)
-
-
-/*
- * Execute a BLAST job for each chunk for the provided sequences
- */
-
 process blast {
     input:
-    file 'seq.fa' from seq
+    file 'query.fa' from chunks
     file db_path
 
     output:
-    file 'out' into blast_result
+    file 'top_hits'
 
     """
-    blastp -db $db_path/$db_name -query seq.fa -outfmt 6 > out
+    blastp -db $db_path/$db_name -query query.fa -outfmt 6 > blast_result
+    cat blast_result | head -n 10 | cut -f 2 > top_hits
     """
 }
 
-/* 
- * Collect all the outputs produced by the `blast` process
- * executions to a single file, whose name is defined by  
- * the `params.out` parameters
+/*
+ * Find out the top 10 matches returned by the BLAST query
+ */ 
+process extract {
+    input:
+    file top_hits
+    file db_path
+
+    output:
+    file 'sequences'
+
+    """
+    blastdbcmd -db $db_path/$db_name -entry_batch top_hits | head -n 10 > sequences
+    """
+}
+
+/*
+ * Collect all hits to a single file called  'all_seq'
+ */ 
+all_seq = sequences.collectFile(name:'all_seq')
+
+/*
+ * Aligns a T-Coffee MSA and print it 
  */
- 
-blast_result
-  .collectFile(name: params.out)
-  .subscribe {  
-     println "Result saved to file: $it"
-   }
+process align {
+    echo true
+    cache 'deep'
+
+    input:
+    file all_seq
+
+    """
+    t_coffee $all_seq 2>/dev/null | tee align_result
+    """
+}
+

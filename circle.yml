@@ -1,0 +1,17 @@
+machine:
+  java:
+    version: openjdk7
+  services:
+    - docker
+  
+general:
+  branches:
+    only:
+      - master
+          
+test:
+  override:
+    - curl -fsSL get.nextflow.io | bash
+    - docker pull nextflow/examples
+    - export WITH_DOCKER=yes; export NXF_CMD=$PWD/nextflow; cd checks/ && bash run.sh 
+    
