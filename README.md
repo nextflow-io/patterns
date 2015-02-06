@@ -8,6 +8,23 @@ This repository contains a collection of scripts introducing Nextflow basic feat
 * Unix-like operating system (Linux, Solaris, OS X, etc)
 * Java 7 or 8 
 
+The examples marked with `*` require also the following piece of software:  
+
+* [BLAST+](ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/) 
+* [T-Coffee](http://www.tcoffee.org/Packages/Stable/Latest/linux/) 
+
+Alternatively the tools required by these examples are shipped in a Docker container 
+available [at this link](https://registry.hub.docker.com/u/nextflow/examples/). 
+
+You can either choose to install them in your computer or pull the container with this 
+command: 
+
+    docker pull nextflow/examples
+    
+In the latter case the examples marked with a `*` character need to be run adding 
+the `-with-docker` command line option.
+    
+
 
 ## Get started
 
@@ -16,14 +33,14 @@ Install Nextflow by copying and pasting the following snippet in your shell term
     curl -fsSL get.nextflow.io | bash
 
 It will download the `nextflow` application launcher in your working directory. 
-You may want to complete the installation moving the `nextflow` executable into a 
-directory on your `$PATH`. 
+When done, you may want to complete the installation moving the `nextflow` executable 
+into a directory in your `$PATH` variable. 
 
 Clone this repository in folder of your choice with the following command: 
 
 	git clone https://github.com/nextflow-io/examples.git 
  
-Then, change in root directory of the repository just cloned.  
+Then, change in the root directory of the repository just cloned.  
 
 
 ## Content 
@@ -35,6 +52,7 @@ The classic Hello world! example. You can run it entering the following command:
     nextflow run helloworld.nf 
 
 
+
 #### 2. Basic file operations
 
 Shows basic file read and write operations. 
@@ -42,6 +60,7 @@ Shows basic file read and write operations.
 Run the example using entering the following command: 
 
 	nextflow run basic_read_write.nf
+
  
  
 #### 3. Environment variables
@@ -52,19 +71,24 @@ Run the example with this command:
 
 	nextflow run env_vars.nf
   
+  
  
 #### 4. Read FASTA files   
  
-Basic example showing how to read a multi FASTA file 10 sequences at time.
+Basic example showing how to read a multi FASTA file, splitting it 
+into chunks containing 10 sequences by using the `splitFasta` operator.
  
 Run the example with this command: 
 
 	nextflow run read_fasta.nf
 	
+
+Read more about [splitFasta](http://www.nextflow.io/docs/latest/operator.html#splitfasta) operator. 	
+	
  
 #### 5. Parse FASTA file into records
 
-This example shows how parse a multi fasta file into records and access sequence attributes
+This example shows how parse a multi fasta file into records and access each sequence properties
 by using the `splitFasta` operator.
 
 Run the example with this command: 
@@ -75,6 +99,7 @@ Run the example with this command:
 Read more about [splitFasta](http://www.nextflow.io/docs/latest/operator.html#splitfasta) operator. 	
 
 
+
 #### 6. Execute an external process (*)       
 
 This example executes a BLAST search given an input protein sequence file.
@@ -82,6 +107,7 @@ This example executes a BLAST search given an input protein sequence file.
 Run the example with this command:  
 
 	nextflow run process_input.nf	
+	
 	
 
 #### 7. Execute a process and capture output (*)
@@ -92,6 +118,7 @@ Run the example with this command:
 
 	nextflow run process_output.nf	
 	
+	
 Run the same example providing your own proteins query file adding the
 `--query` command line option. For example:
 
@@ -99,7 +126,7 @@ Run the same example providing your own proteins query file adding the
  	
 	
 
-#### 8. Parallel process execution (*)
+#### 8. Scatter input data (*)
 
 This example shows how splits a multi FASTA file in chunks and execute a BLAST query 
 for each of them in parallel.  
@@ -108,11 +135,14 @@ Run the example with this command:
 
 	nextflow run split_fasta.nf	
 
-By default the script split the multi FASTA file in chunks containing 10 sequences. 
+By default the script split the multi FASTA file in chunks containing 10 sequences, since the 
+query file is very small it will run BLAST just one time.
+ 
 Try to execute the same example specifying a lower number of sequences in each chunk.
 For example: 
 
-	nextflow run split_fasta.nf --chunkSize 5	
+	nextflow run split_fasta.nf --chunkSize 2	
+
 
 
 #### 9. Gather output files (*)
@@ -126,27 +156,31 @@ Run the example with this command:
 Read more about the [collectFile](http://www.nextflow.io/docs/latest/operator.html#collectfile) operator.	
 	
 
-#### 10. Parallel execution with multiple inputs
+#### 10. Process multiple input file in parallel (*)
 
-Shows how to process multiple input files
+This example shows how process multiple input file in a parallel manner. For each given 
+query FASTA file, it will execute a BLAST job.
 
 Run the example with this command: 
 
 	nextflow run multiple_inputs.nf 
 	
-By default the script executes a BLAST job against a single query file (`data/sample.fa`). 
+	
+By default the script process a single input file (`data/sample.fa`).
+ 
 
-Try to run this example by entering the following command line: 
+Try to run this example by specifying more than one input file as shown in the example below: 
 
 	nextflow run multiple_inputs.nf --query data/prot_\*.fa
 
-It will execute a blast search for each file that matches the 
+It will execute a BLAST search for each file that matches the 
 the wildcard path matcher. 
  
 
-#### 11. Tuple of values 
+#### 11. Tuple of values (*)
 
-Shows how handle tuple of values over the same channel  
+This example shows how process can receive as inout and produce as output 
+tuple of values, which is useful to keep together related meta data. 
 
 
 Run the example with this command:  
@@ -155,9 +189,10 @@ Run the example with this command:
 
 
 
-#### 12. Using operators
+#### 12. Transform channel content 
 
-An example showing the `map` operator
+Simple example showing how the items emitted by a channel can be transformed 
+by using the `map` operator.
 
 Run the example with this command:  
 
@@ -166,9 +201,11 @@ Run the example with this command:
 Read more about the [map](http://www.nextflow.io/docs/latest/operator.html#map) operator.
 
 
-#### 13. Filter operator
 
-Example showing the `filter` operator 
+#### 13. Filtering a channel 
+
+This example shows how a channel content can be filtered by an arbitrary user provided condition
+and how operators can be chained to create a more complex processing behaviour.  
 
 Run the example with this command: 
 
@@ -177,9 +214,10 @@ Run the example with this command:
 Read more about the [filter](http://www.nextflow.io/docs/latest/operator.html#filter) operator.
 
 
+
 #### 14. FlatMap operator 
 
-An example showing the `flatMap` operator 
+This example shows the usage of the`flatMap` operator. 
 
 
 Run the example with this command:  
@@ -188,9 +226,11 @@ Run the example with this command:
 	
 Read more about the [flatMap](http://www.nextflow.io/docs/latest/operator.html#flatmap) operator	
 
-#### 15. Phase operator
 
-An example showing the `phase` operator to synchronise two channels.
+
+#### 15. Join two channels
+
+An example showing the usage of the `phase` operator to synchronise two channels.
  
 Run the example with this command: 
 
@@ -198,6 +238,7 @@ Run the example with this command:
     
     
 Read more about the [phase](http://www.nextflow.io/docs/latest/operator.html#phase) operator.    
+
     
 ## Other examples 
 

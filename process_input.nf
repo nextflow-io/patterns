@@ -27,6 +27,7 @@ proteins = file(params.query)
 db_name = file(params.db).name
 db_path = file(params.db).parent
 
+
 /* 
  * Executes a Blast search with using the `protein` file
  */
