@@ -1,0 +1,13 @@
+$NXF_RUN | tee stdout
+[[ `grep INFO .nextflow.log | grep -c 'Submitted process'` == 4 ]] || false
+< stdout grep -c 'ciao' 
+< stdout grep -c 'hello' 
+< stdout grep -c 'bonjour' 
+< stdout grep -c 'hola'
+
+$NXF_RUN -resume | tee stdout
+[[ `grep INFO .nextflow.log | grep -c 'Cached process'` == 4 ]] || false
+< stdout grep -c 'ciao' 
+< stdout grep -c 'hello' 
+< stdout grep -c 'bonjour' 
+< stdout grep -c 'hola'

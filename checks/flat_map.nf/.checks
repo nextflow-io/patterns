@@ -1,0 +1,9 @@
+$NXF_RUN  | tee stdout
+
+< stdout grep -c "word 'Hello' contains 5 characters" 
+< stdout grep -c "word 'world' contains 5 characters" 
+< stdout grep -c "word 'it's' contains 4 characters" 
+< stdout grep -c "word 'a' contains 1 characters" 
+< stdout grep -c "word 'beautiful' contains 9 characters" 
+< stdout grep -c "word 'day' contains 3 characters" 
+

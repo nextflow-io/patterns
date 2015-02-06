@@ -1,0 +1,7 @@
+$NXF_RUN  | tee stdout
+
+< stdout grep -c "lang: es -> Hola mundo" 
+< stdout grep -c "lang: en -> Hello world" 
+< stdout grep -c "lang: sv -> Hallå värld" 
+
+

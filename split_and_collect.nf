@@ -54,7 +54,7 @@ process blast {
 }
 
 blast_result
-  .collectFile(name: params.out)
+  .collectFile(name: file(params.out))
   .subscribe {  
      println "Result saved to file: $it"
    }
