@@ -16,7 +16,7 @@ The examples marked with `*` require also the following pieces of software:
 The above tools are also shipped with a Docker container 
 available [at this link](https://registry.hub.docker.com/u/nextflow/examples/). 
 
-You can either choose to install them in your computer or pull the container with this 
+You can choose either to install them in your computer or pull the container with this 
 command: 
 
     docker pull nextflow/examples
@@ -47,7 +47,7 @@ Then, change in the root directory of the repository just cloned.
 
 #### 1. Hello world!  
 
-The classic Hello world! example. You can run it entering the following command: 
+The classic *Hello world!* example. You can run it entering the following command: 
 
     nextflow run helloworld.nf 
 
