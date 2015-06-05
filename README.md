@@ -244,7 +244,7 @@ Read more about the [phase](http://www.nextflow.io/docs/latest/operator.html#pha
 
 More comprehensive examples are avaible in the following repositories: 
 
-* [RNA-toy](https://github.com/nextflow-io/rnatoy) - A basic RNA-Seq pipeline
+* [RNASeq-toy](https://github.com/nextflow-io/rnatoy) - A basic RNA-Seq pipeline
 * [Piper-nf](https://github.com/cbcrg/piper-nf) - A RNA mapping pipeline 
 * [MTA-nf](https://github.com/cbcrg/mta-nf) - A method for best alignment of evaluation trees
 * [Ampa-nf](https://github.com/cbcrg/ampa-nf) - An automated prediction of protein antimicrobial regions
