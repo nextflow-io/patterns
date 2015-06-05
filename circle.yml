@@ -13,5 +13,5 @@ test:
   override:
     - curl -fsSL get.nextflow.io | bash
     - docker pull nextflow/examples
-    - export WITH_DOCKER=yes; export NXF_CMD=$PWD/nextflow; cd checks/ && bash run.sh 
+    - export WITH_DOCKER='-with-docker'; export NXF_CMD=$PWD/nextflow; cd checks/ && bash run.sh 
     
