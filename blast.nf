@@ -25,9 +25,9 @@
  * Defines the pipeline inputs parameters (giving a default value for each for them) 
  * Each of the following parameters can be specified as command line options
  */
-params.query = "$HOME/sample.fa"
-params.db = "$HOME/tools/blast-db/pdb/pdb"
-params.out = "./result.txt"
+params.query = "$baseDir/data/sample.fa"
+params.db = "$baseDir/blast-db/pdb/tiny"
+params.out = "result.txt"
 params.chunkSize = 100 
 
 db_name = file(params.db).name
