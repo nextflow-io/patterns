@@ -1,8 +1,8 @@
 #!/usr/bin/env nextflow
 
 /*
- * Copyright (c) 2013-2014, Centre for Genomic Regulation (CRG).
- * Copyright (c) 2013-2014, Paolo Di Tommaso and the respective authors.
+ * Copyright (c) 2013-2015, Centre for Genomic Regulation (CRG).
+ * Copyright (c) 2013-2015, Paolo Di Tommaso and the respective authors.
  *
  *   This file is part of 'Nextflow'.
  *
