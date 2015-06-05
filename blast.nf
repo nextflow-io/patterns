@@ -75,12 +75,14 @@ process extract {
     output:
     file 'sequences'
 
-    "blastdbcmd -db $db_path/$db_name -entry_batch top_hits | head -n 10 > sequences"
+    """
+    blastdbcmd -db $db_path/$db_name -entry_batch top_hits | head -n 10 > sequences
+    """
 }
 
 /* 
  * Collects all the sequences files into a single file 
- * and prints the resulting file name when complete 
+ * and prints the resulting file content when complete 
  */ 
 sequences
     .collectFile(name: params.out)
