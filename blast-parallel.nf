@@ -27,9 +27,10 @@ params.chunk = 1
 db_name = file(params.db).name
 db_path = file(params.db).parent
 
-chunks = Channel
-            .fromPath(params.query)
-            .splitFasta(by: params.chunk)
+ Channel
+        .fromPath(params.query)
+        .splitFasta(by: params.chunk)
+        .set { chunks }
 
 /* 
  * Extends a BLAST query for each entry in the 'chunks' channel 

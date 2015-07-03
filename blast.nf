@@ -39,9 +39,9 @@ db_path = file(params.db).parent
  * Finally assign the result channel to the variable 'fasta' 
  */
 Channel
-	.fromPath(params.query)
-	.splitFasta(by: params.chunkSize)
-	.set { fasta }
+    .fromPath(params.query)
+    .splitFasta(by: params.chunkSize)
+    .set { fasta }
 
 /* 
  * Executes a BLAST job for each chunk emitted by the 'fasta' channel 

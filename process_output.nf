@@ -36,7 +36,7 @@ process blastJob {
 
   input:
   file 'query.fa' from proteins
-    file db_path
+  file db_path
 
   output: 
   file 'out.txt' into blast_result

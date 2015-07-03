@@ -45,9 +45,10 @@ db_path = file(params.db).parent
  * fasta sequence ID, and the second the sequence string
  */
  
-seq = Channel
-         .fromPath(params.in)
-         .splitFasta( record: [id: true, seqString: true ])
+Channel
+     .fromPath(params.in)
+     .splitFasta( record: [id: true, seqString: true ])
+     .set { seq }
      
 /*
  * Executes a blast search for each sequence. The process outputs 

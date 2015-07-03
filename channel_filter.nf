@@ -36,8 +36,6 @@
 Channel
      .fromPath("$baseDir/data/Homo.prot.250.fa")
      .splitFasta( record: [id: true, seqString: true ])
-     .filter { record -> 
-         record.id =~ /^ENSP0.*/ 
-     }
+     .filter { record ->  record.id =~ /^ENSP0.*/ }
      .count()
      .subscribe { println it }
