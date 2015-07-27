@@ -242,15 +242,8 @@ Read more about the [phase](http://www.nextflow.io/docs/latest/operator.html#pha
     
 ## Other examples 
 
-More comprehensive examples are avaible in the following repositories: 
+For a catalog of pipelines using nextflow see [Awesome-nextflow](https://github.com/nextflow-io/awesome-nextflow) list.
 
-* [RNASeq-toy](https://github.com/nextflow-io/rnatoy) - A basic RNA-Seq pipeline
-* [Piper-nf](https://github.com/cbcrg/piper-nf) - A RNA mapping pipeline 
-* [MTA-nf](https://github.com/cbcrg/mta-nf) - A method for best alignment of evaluation trees
-* [Ampa-nf](https://github.com/cbcrg/ampa-nf) - An automated prediction of protein antimicrobial regions
-* [Grape-nf](https://github.com/cbcrg/grape-nf) - Yet another RNA-Seq pipeline
-* [Annot-nf](https://github.com/nextflow-io/annot-nf) - Eukaryotic genome annotation pipeline (credits Sascha Steinbiss)
-* [Mmdp-flow](https://github.com/nextflow-io/nmdp-flow) - Consensus assembly and variant calling workflow (credits Michael L Heuer)
     
  
  
