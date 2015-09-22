@@ -1,15 +1,8 @@
-FROM pditommaso/dkrbase:1.1
+FROM pditommaso/dkrbase:1.2
 
 MAINTAINER Paolo Di Tommaso <paolo.ditommaso@gmail.com>
 
-RUN apt-get install -q -y gnuplot python && apt-get clean 
-
-#
-# Required PERL moduls
-#
-RUN cpanm Math::CDF Math::Round && \
-  rm -rf /root/.cpanm/work/
-
+RUN apt-get update -y && apt-get install -q -y gnuplot python && apt-get clean 
 
 #
 # BLAST
@@ -29,14 +22,9 @@ RUN wget -q http://tcoffee.org/Packages/Stable/Version_11.00.8cbe486/linux/T-COF
   rm -rf /opt/tcoffee/plugins/linux/*  && \
   rm T-COFFEE_installer_Version_11.00.8cbe486_linux_x64.tar.gz 
 
-#
-# Add AMPA script to bin folder 
-#
-ADD bin/AMPA.pl /usr/local/bin/
-
 
 #
 # Configure the env
 #
-ENV PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/ncbi-blast-2.2.29+/bin:/opt/tcoffee/bin
+ENV PATH="$PATH:/opt/ncbi-blast-2.2.29+/bin:/opt/tcoffee/bin"
 
