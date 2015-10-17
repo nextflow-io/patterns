@@ -2,6 +2,7 @@
 
 This repository contains a collection of scripts introducing Nextflow basic features. 
 
+![CircleCI status](https://circleci.com/gh/nextflow-io/examples.png?style=shield)
 
 ## Dependencies 
 
