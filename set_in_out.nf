@@ -77,8 +77,8 @@ process blast {
  * entries can be expanded on the invocation of the `subscribe` operator.
  */
  
-blast_result.subscribe { id, result -> 
+blast_result.println { id, result -> 
     
-    println "Blast result for query >> $id\n${result.text}"
+    "Blast result for query >> $id\n${result.text}"
     
 }

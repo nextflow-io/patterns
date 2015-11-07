@@ -51,4 +51,4 @@ process printHello {
  * emitted value each time a value is available
  */ 
  
-result.subscribe { print it }
+result.println()

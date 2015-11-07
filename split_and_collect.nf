@@ -24,8 +24,8 @@
  * Define the pipeline parameters
  */
  
+params.chunkSize = 10 
 params.query = "$baseDir/data/sample.fa"
-params.chunkSize = 10
 params.db = "$baseDir/blast-db/pdb/tiny"
 params.out = 'blast_result.txt'
 
@@ -55,6 +55,4 @@ process blast {
 
 blast_result
   .collectFile(name: file(params.out))
-  .subscribe {  
-     println "Result saved to file: $it"
-   }
+  .println { "Result saved to file: $it" }

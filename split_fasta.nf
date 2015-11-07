@@ -23,8 +23,8 @@
 /* 
  * Define the pipeline parameters
  */
-params.query = "$baseDir/data/sample.fa"
 params.chunkSize = 10
+params.query = "$baseDir/data/sample.fa"
 params.db = "$baseDir/blast-db/pdb/tiny"
 
 db_name = file(params.db).name

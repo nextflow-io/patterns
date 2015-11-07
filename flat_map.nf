@@ -35,6 +35,5 @@ Channel
     .map { it.tokenize() }
     .flatMap()
     .map { [ it, it.size() ] }
-    .subscribe { word, size -> 
-                    println "word '$word' contains $size characters" 
-                }
+    .println { word, size -> "word '$word' contains $size characters" }
+    

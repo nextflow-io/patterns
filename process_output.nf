@@ -52,5 +52,5 @@ process blastJob {
  * emits the output produced by the above process, printing 
  * the blast result
  */
-blast_result.subscribe { println it.text }
+blast_result.println { it.text }
 

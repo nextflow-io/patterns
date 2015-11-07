@@ -36,6 +36,4 @@ bar = Channel.from( tuple('en', 'Hello'), tuple('es', 'Hola'), tuple('sv', 'Hall
 
 
 bar.phase(foo)
-   .subscribe { first, second -> 
-                  println "lang: ${first[0]} -> ${first[1]} ${second[1]}" 
-              }
+   .println { first, second -> "lang: ${first[0]} -> ${first[1]} ${second[1]}" }

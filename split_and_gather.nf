@@ -21,22 +21,49 @@
  */
 
 /* 
- * This example shows how concatenate operators
- * 
- * - `fromPath` creates a channel emitting the files matching 
- *   the path matcher specified with `params.in`
- * - `splitFasta` parse them as FASTA files a creates a record 
- *   for each sequence
- * - `filter` excludes all the ones whose ID does not match the `ENSP0` prefix 
- * - `count` return the number of sequences matching the filter 
- * - `subscribe` will print the count value      
+ * Define the pipeline parameters
  */
+ 
+params.chunkSize = 2 
+params.query = "$baseDir/data/sample.fa"
+params.db = "$baseDir/blast-db/pdb/tiny"
+params.out = 'blast_result.txt'
 
-params.in = "$baseDir/data/Homo.prot.250.fa"
+db_name = file(params.db).name
+db_path = file(params.db).parent
 
-Channel
-     .fromPath(params.in)
-     .splitFasta( record: [id: true, seqString: true ])
-     .filter { record ->  record.id =~ /^ENSP0.*/  }
-     .count()
-     .println()
+fasta = file(params.query)
+seq = Channel.from(fasta).splitFasta(by: params.chunkSize)
+
+
+/*
+ * Execute a BLAST job for each chunk for the provided sequences
+ */
+ 
+process blast {
+    input:
+    file 'seq.fa' from seq
+    file db_path
+
+    output:
+    file 'out' into blast_result
+
+    """
+    blastp -db $db_path/$db_name -query seq.fa -outfmt 6 > out
+    """
+}
+
+process gather {
+    publishDir 'results'
+
+    input: 
+    file 'hits_*' from blast_result.toList()
+    
+    output:
+    file 'result.txt'
+    
+    """
+    cat hits_* > result.txt
+    """ 
+}
+
