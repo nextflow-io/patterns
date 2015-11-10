@@ -20,50 +20,29 @@
  *   along with Nextflow.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* 
- * Define the pipeline parameters
- */
- 
-params.chunkSize = 2 
-params.query = "$baseDir/data/sample.fa"
-params.db = "$baseDir/blast-db/pdb/tiny"
-params.out = 'blast_result.txt'
-
-db_name = file(params.db).name
-db_path = file(params.db).parent
-
-fasta = file(params.query)
-seq = Channel.from(fasta).splitFasta(by: params.chunkSize)
+params.pairs = "$baseDir/data/ggal/*_{1,2}.fq"
 
 
-/*
- * Execute a BLAST job for each chunk for the provided sequences
- */
- 
-process blast {
+Channel
+    .fromPath( params.pairs )                                     
+    .ifEmpty { error "Cannot find any reads matching: ${params.pairs}" }  
+    .map {  path -> tuple(path.baseName[0..-3], path) }                   
+    .groupTuple(sort: true)
+    .map { id, files -> tuple(id, files[0], files[1])}
+    .set { read_pairs }
+    
+    
+process mapping {    
     input:
-    file 'seq.fa' from seq
-    file db_path
-
+    set pair_id, file(read1), file(read2) from read_pairs
+  
     output:
-    file 'out' into blast_result
-
+    set pair_id, "hits.bam" into bam
+  
     """
-    blastp -db $db_path/$db_name -query seq.fa -outfmt 6 > out
+    echo tophat2 genome.index ${read1} ${read2}
+    echo 'dummy' > hits.bam
     """
-}
+}    
 
-process gather {
-    publishDir 'results'
-
-    input: 
-    file 'hits_*' from blast_result.toList()
-    
-    output:
-    file 'result.txt'
-    
-    """
-    cat hits_* > result.txt
-    """ 
-}
-
+bam.println()
