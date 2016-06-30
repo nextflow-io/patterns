@@ -240,6 +240,23 @@ Run the example with this command:
     
 Read more about the [phase](http://www.nextflow.io/docs/latest/operator.html#phase) operator.    
 
+#### 16. Join two workflows
+
+Inside:
+
+   merge-workflows/
+
+This example shows how two workflows might be joined using a shell pipeline `|` operator of STDOUT/IN streams.
+Option `-q` is necessary because additional information produced by nextflow might disrupt CSV parser.
+
+Run the exmaple with this command:
+
+    nextflow -q run flow-a.nf | nextflow -q run flow-b.nf
+	
+Or using shell script:
+
+   run.sh
+
     
 ## Other examples 
 
