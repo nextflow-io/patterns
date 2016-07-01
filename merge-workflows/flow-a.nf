@@ -1,9 +1,15 @@
 #!/usr/bin/env nextflow
 
+// open communication channal
+params.communication = "$baseDir/comm-a.json"
+commFile=file(params.communication)
+
+
+// download some file ad collect some log data from curl
 process download {
 
 output:
-file 'pinus_rubisco.json' into dataFile
+file 'pinus_rubisco.json' into dataFile, testFile
 file 'log.txt' into logFile
 
 """
@@ -12,6 +18,7 @@ curl -L "http://www.uniprot.org/uniprot/?sort=score&desc=&compress=no&query=pinu
 
 }
 
+// download the other dataset
 process download_other {
 
 output:
@@ -25,7 +32,15 @@ curl -L "http://downloads.yeastgenome.org/curation/literature/biochemical_pathwa
 
 
 
-c = Channel.create()
+// another working way
+/* dataFile.merge(logFile,otherFile) {d, l, o -> [d,l,o]}
+.view {d, l, o -> "data,log,other\n$d,$l,$o\n" } */
 
-dataFile.merge(logFile,otherFile) {d, l, o -> [d,l,o]}
-.view {d, l, o -> "data,log,other\n$d,$l,$o\n" }
+
+// import JSON converter
+import groovy.json.JsonOutput
+
+// build a map data structure with paths to collected files and save it as json 
+dataFile.merge(logFile,otherFile) {d, l, o -> [data: d.toString() ,log: l.toString() ,other: o.toString()]}
+.flatMap { it -> JsonOutput.toJson(it) } // collect JSON string
+.subscribe { commFile.write(it)}         // which is saved in file

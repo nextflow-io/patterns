@@ -1,3 +1,4 @@
 #!/bin/bash
 
-nextflow -q run flow-a.nf | nextflow -q run flow-b.nf
+nextflow run flow-a.nf
+nextflow run flow-b.nf
