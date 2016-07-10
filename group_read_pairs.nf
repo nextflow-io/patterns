@@ -24,23 +24,20 @@ params.pairs = "$baseDir/data/ggal/*_{1,2}.fq"
 
 
 Channel
-    .fromPath( params.pairs )                                     
+    .fromFilePairs( params.pairs )                                     
     .ifEmpty { error "Cannot find any reads matching: ${params.pairs}" }  
-    .map {  path -> tuple(path.baseName[0..-3], path) }                   
-    .groupTuple(sort: true)
-    .map { id, files -> tuple(id, files[0], files[1])}
     .set { read_pairs }
     
     
 process mapping {    
     input:
-    set pair_id, file(read1), file(read2) from read_pairs
+    set pair_id, file(reads) from read_pairs
   
     output:
     set pair_id, "hits.bam" into bam
   
     """
-    echo tophat2 genome.index ${read1} ${read2}
+    echo tophat2 genome.index ${reads}
     echo 'dummy' > hits.bam
     """
 }    

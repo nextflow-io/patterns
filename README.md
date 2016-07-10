@@ -240,6 +240,17 @@ Run the example with this command:
     
 Read more about the [phase](http://www.nextflow.io/docs/latest/operator.html#phase) operator.    
 
+
+#### 16. Grouping files matching a common prefix (*)
+
+This example show how handle read-pairs by using the `fromPairFiles` method.
+
+Run the example by using the command: 
+
+    nextflow run group_read_pairs.nf  
+    
+Read more about the [fromPairFiles](http://www.nextflow.io/docs/latest/channel.html#fromfilepairs) method.
+    
     
 ## Other examples 
 
