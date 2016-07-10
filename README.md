@@ -240,6 +240,27 @@ Run the example with this command:
     
 Read more about the [phase](http://www.nextflow.io/docs/latest/operator.html#phase) operator.    
 
+#### 16. Join two workflows
+
+Inside:
+
+    merge-workflows/
+
+This example shows how two workflows might be joined using a JSON file `comm-a.json` for communication.
+Workflow `flow-a.nf`, after some work, produces the JSON file with paths to the data files. Workflow
+`flow-b.nf` restores paths to data resources from the JSON file and takes them to further processing. 
+For simplifying it just echos the paths.
+
+Run the example with this command:
+
+    nextflow -q run flow-a.nf 
+	nextflow -q run flow-b.nf
+	
+Or using shell script:
+
+   run.sh
+
+
     
 ## Other examples 
 
