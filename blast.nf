@@ -54,7 +54,7 @@ process blast {
     file db_path
 
     output:
-    file 'top_hits'
+    file top_hits
 
     """
     blastp -db $db_path/$db_name -query query.fa -outfmt 6 > blast_result
@@ -73,7 +73,7 @@ process extract {
     file db_path
 
     output:
-    file 'sequences'
+    file sequences
 
     """
     blastdbcmd -db $db_path/$db_name -entry_batch top_hits | head -n 10 > sequences
