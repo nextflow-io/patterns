@@ -22,6 +22,9 @@ RUN wget -q http://tcoffee.org/Packages/Stable/Version_11.00.8cbe486/linux/T-COF
   rm -rf /opt/tcoffee/plugins/linux/*  && \
   rm T-COFFEE_installer_Version_11.00.8cbe486_linux_x64.tar.gz 
 
+RUN apt-get update -y \
+  && apt-get install -q -y clustalo raxml && apt-get clean \ 
+  && ln -s /usr/bin/raxmlHPC /usr/bin/raxml
 
 #
 # Configure the env
