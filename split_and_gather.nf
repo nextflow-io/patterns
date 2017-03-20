@@ -60,7 +60,7 @@ process gather {
     publishDir 'results'
 
     input: 
-    file 'hits_*' from blast_result.toList()
+    file 'hits_*' from blast_result.collect()
     
     output:
     file 'result.txt'
