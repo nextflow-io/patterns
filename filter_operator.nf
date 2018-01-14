@@ -1,8 +1,6 @@
 #!/usr/bin/env nextflow
 
 /*
-vim: syntax=groovy
--*- mode: groovy;-*-
  *
  * Copyright (c) 2013-2017, Centre for Genomic Regulation (CRG).
  * Copyright (c) 2013-2017, Paolo Di Tommaso and the respective authors.
