@@ -2,8 +2,8 @@
 
 /*
  *
- * Copyright (c) 2013-2017, Centre for Genomic Regulation (CRG).
- * Copyright (c) 2013-2017, Paolo Di Tommaso and the respective authors.
+ * Copyright (c) 2013-2018, Centre for Genomic Regulation (CRG).
+ * Copyright (c) 2013-2018, Paolo Di Tommaso and the respective authors.
  *
  *   This file is part of 'Nextflow'.
  *
@@ -21,16 +21,16 @@
  *   along with Nextflow.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* 
+/*
  * This example shows how concatenate operators
- * 
- * - `fromPath` creates a channel emitting the files matching 
+ *
+ * - `fromPath` creates a channel emitting the files matching
  *   the path matcher specified with `params.in`
- * - `splitFasta` parse them as FASTA files a creates a record 
+ * - `splitFasta` parse them as FASTA files a creates a record
  *   for each sequence
- * - `filter` excludes all the ones whose ID does not match the `ENSP0` prefix 
- * - `count` return the number of sequences matching the filter 
- * - `subscribe` will print the count value      
+ * - `filter` excludes all the ones whose ID does not match the `ENSP0` prefix
+ * - `count` return the number of sequences matching the filter
+ * - `subscribe` will print the count value
  */
 
 
