@@ -57,7 +57,7 @@ seq = Channel.fromPath(params.query)
  */
 
 process blast {
-    tag { x.baseName }
+    tag "$x.baseName"
 
     input:
     file x from seq
