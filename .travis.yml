@@ -1,0 +1,17 @@
+sudo: required
+language: java
+jdk: openjdk8
+services:
+  - docker
+
+branches:
+  only:
+  - master
+
+install:
+  - curl -fsSL get.nextflow.io | bash
+  - docker pull nextflow/examples
+
+script: 
+  - export WITH_DOCKER='-with-docker'; export NXF_CMD=$PWD/nextflow; cd checks/ && bash run.sh 
+       
