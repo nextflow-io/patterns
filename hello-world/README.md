@@ -5,7 +5,7 @@ Classic Hello world example.
 ## Synopsis 
 
 This example shows how to write a basic task to execute a user command 
-in parallel manner. 
+in a parallel manner. 
 
 To execute it use the following command: 
 
