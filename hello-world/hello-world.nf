@@ -25,7 +25,7 @@
  * Creates a channel emitting some string values
  */
  
-str = Channel.from('hello', 'hola', 'bonjour', 'ciao')
+cheers = Channel.from('hello', 'hola', 'bonjour', 'ciao')
 
 /*
  * Creates a process which declares the channel `str` as an input
@@ -37,7 +37,7 @@ str = Channel.from('hello', 'hola', 'bonjour', 'ciao')
 process printHello {
 
    input:
-   val str 
+   val str from cheers
 
    output: 
    stdout into result
