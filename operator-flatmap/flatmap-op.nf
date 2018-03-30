@@ -1,5 +1,5 @@
 #!/usr/bin/env nextflow
- 
+
 /*
  *
  * Copyright (c) 2013-2018, Centre for Genomic Regulation (CRG).
@@ -19,33 +19,21 @@
  *
  *   You should have received a copy of the GNU General Public License
  *   along with Nextflow.  If not, see <http://www.gnu.org/licenses/>.
- */ 
- 
-/* 
- * Define the pipeline parameters
  */
-params.chunkSize = 10
-params.query = "$baseDir/data/sample.fa"
-params.db = "$baseDir/blast-db/pdb/tiny"
-
-db_name = file(params.db).name
-db_path = file(params.db).parent
-fasta = file(params.query)
-seq = Channel.from(fasta).splitFasta(by: params.chunkSize)
 
 /*
- * Execute a BLAST job for each chunk for the provided sequences
+ * This example shows how concatenate operators
+ *
+ * - `from` creates a channel emitting two (or more) strings
+ * - `map` transforms each string to a list of words
+ * - `flatMap` will emits each entry in the list as a sole emission
+ * - `map` will transform each word to a pair containing the word itself and its length
+ * - `subscribe` finally will print the result (note the argument expansion)
  */
- 
-process blast {
-    input:
-    file 'seq.fa' from seq
-    file db_path
 
-    output:
-    file 'out' into blast_result
-
-    """
-    blastp -db $db_path/$db_name -query seq.fa -outfmt 6 > out
-    """
-}
+Channel
+    .from( "Hello world", "it's a beautiful day" )
+    .map { it.tokenize() }
+    //.flatMap()
+    .map { [ it, it.size() ] }
+    .println { word, size -> "word '$word' contains $size characters" }

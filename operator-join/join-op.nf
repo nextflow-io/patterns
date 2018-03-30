@@ -21,41 +21,20 @@
  *   along with Nextflow.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-params.query = "$baseDir/data/sample.fa"
-params.db = "$baseDir/blast-db/pdb/tiny"
-
-db_name = file(params.db).name
-db_path = file(params.db).parent
-
-query = file(params.query)
-
-process blastSearch {
-    input:
-    file query
-    file db_path
-
-    output:
-    file top_hits
-
-    """
-    blastp -db $db_path/$db_name -query $query -outfmt 6 > blast_result
-    cat blast_result | head -n 10 | cut -f 2 > top_hits
-    """
-}
+/* 
+ * This example shows how join two channels
+ * 
+ * It creates two channels that emits a pairs. The first entry in the pair 
+ * represent the language identifier and the second a word in that 
+ * language. 
+ * 
+ * Then, the `join` operator synchronise the emission of the channel creating a new pair 
+ * containing the words having the same lang identifier (the first element) 
+ */
+ 
+foo = Channel.from( tuple('sv', 'värld'), tuple('es', 'mundo'), tuple('en', 'world') )
+bar = Channel.from( tuple('en', 'Hello'), tuple('es', 'Hola'), tuple('sv', 'Hallå') )
 
 
-process extractTopHits {
-    input:
-    file top_hits
-    file db_path
-
-    output:
-    file sequences
-
-    """
-    blastdbcmd -db $db_path/$db_name -entry_batch $top_hits > sequences
-    """
-}
-
-sequences.subscribe {  println it.text }
+bar.join(foo)
+   .println { key, left, right -> "lang: $key -> $left $right" }

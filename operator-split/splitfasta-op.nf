@@ -21,20 +21,12 @@
  *   along with Nextflow.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+
 /* 
- * This example shows how join to channels
- * 
- * It creates two channels that emits a pairs. The first entry in the pair 
- * represent the language identifier and the second a word in that 
- * language. 
- * 
- * Then, the phase operator synchronise the emission of the channel creating a new pair 
- * containing the words having the same lang identifier (the first element) 
+ * Split a FASTA file and print each sequence item
  */
- 
-foo = Channel.from( tuple('sv', 'värld'), tuple('es', 'mundo'), tuple('en', 'world') )
-bar = Channel.from( tuple('en', 'Hello'), tuple('es', 'Hola'), tuple('sv', 'Hallå') )
 
+Channel.fromPath("$baseDir/data/sample.fa")
+       .splitFasta()
+       .println() 
 
-bar.phase(foo)
-   .println { first, second -> "lang: ${first[0]} -> ${first[1]} ${second[1]}" }

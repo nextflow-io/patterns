@@ -20,38 +20,22 @@
  *   You should have received a copy of the GNU General Public License
  *   along with Nextflow.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-params.query = "$baseDir/data/sample.fa"
-params.db = "$baseDir/blast-db/pdb/tiny"
-
-proteins = file(params.query)
-db_name = file(params.db).name
-db_path = file(params.db).parent
-
-/*
- * Executes a Blast search with using the `protein` file.
- * The output is sent over the `result` channel 
+ 
+ 
+/* 
+ * Environment variables can be accessed directly in the script context 
  */
-
-process blastJob {
-
-  input:
-  file 'query.fa' from proteins
-  file db_path
-
-  output: 
-  file 'out.txt' into blast_result
-
-   """ 
-   blastp -query query.fa -db $db_path/$db_name -outfmt 6 > out.txt
-   """
-
-}
+ 
+println "Current home: $HOME"
+println "Current user: $USER"
+println "Current path: $PWD"
 
 /* 
- * The `subscribe` operator is triggered when the `blast_result`
- * emits the output produced by the above process, printing 
- * the blast result
- */
-blast_result.println { it.text }
-
+ * In the script are defined implicitly the following variables: 
+ * - baseDir: path of the directly where the main script is located
+ * - workDir: path of nextflow scratch directory where intermediate 
+ *            result files are stored 
+ */ 
+ 
+println "Script dir: $baseDir"
+println "Working dir: $workDir"

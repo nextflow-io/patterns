@@ -21,38 +21,53 @@
  *   along with Nextflow.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-params.db = "$baseDir/blast-db/pdb/tiny"
+
+/*
+ * Defines the pipeline inputs parameters (giving a default value for each for them)
+ * Each of the following parameters can be specified as command line options
+ */
 params.query = "$baseDir/data/sample.fa"
-params.chunk = 1 
+params.db = "$baseDir/blast-db/pdb/tiny"
+params.out = "result.txt"
+params.chunk_size = 100
 
 db_name = file(params.db).name
 db_path = file(params.db).parent
 
- Channel
-        .fromPath(params.query)
-        .splitFasta(by: params.chunk)
-        .set { chunks }
+/*
+ * Given the query parameter creates a channel emitting the query fasta file(s),
+ * the file is split in chunks containing as many sequences as defined by the parameter 'chunk_size'.
+ * Finally assign the result channel to the variable 'fasta'
+ */
+Channel
+    .fromPath(params.query)
+    .splitFasta(by: params.chunk_size)
+    .set { fasta }
 
-/* 
- * Extends a BLAST query for each entry in the 'chunks' channel 
+/*
+ * Executes a BLAST job for each chunk emitted by the 'fasta' channel
+ * and creates as output a channel named 'top_hits' emitting the resulting
+ * BLAST matches
  */
 process blast {
     input:
-    file 'query.fa' from chunks
-    file db_path
+    file 'query.fa' from fasta
+    file db from db_path
 
     output:
     file top_hits
 
     """
-    blastp -db $db_path/$db_name -query query.fa -outfmt 6 > blast_result
+    blastp -db $db/$db_name -query query.fa -outfmt 6 > blast_result
     cat blast_result | head -n 10 | cut -f 2 > top_hits
     """
 }
 
+
 /*
- * Find out the top 10 matches returned by the BLAST query
- */ 
+ * Each time a file emitted by the 'top_hits' channel an extract job is executed
+ * producing a file containing the matching sequences
+ */
 process extract {
     input:
     file top_hits
@@ -66,23 +81,20 @@ process extract {
     """
 }
 
-/*
- * Collect all hits to a single file called  'all_seq'
- */ 
-all_seq = sequences.collectFile(name:'all_seq')
 
 /*
- * Aligns a T-Coffee MSA and print it 
+ * Collect all sequences found in the upstream process and
+ * align all of them using T-Coffee.
+ *
+ * Note how the `merge` is performed by the `collectFile` operator.
  */
 process align {
     echo true
-    cache 'deep'
 
     input:
-    file all_seq
+    file all_seq from sequences.collectFile(name:'seqs.txt')
 
     """
     t_coffee $all_seq 2>/dev/null | tee align_result
     """
 }
-
