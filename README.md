@@ -148,7 +148,7 @@ For example:
 
 #### 9. Gather output files (*)
 
-Shows how splits a multi FASTA file, execute a BLAST query for ach chunk and create a result file
+Shows how splits a multi FASTA file, execute a BLAST query for each chunk and create a result file
 
 Run the example with this command: 
 
