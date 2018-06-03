@@ -2,7 +2,7 @@
 
 This repository contains a collection of scripts introducing Nextflow basic features. 
 
-![CircleCI status](https://circleci.com/gh/nextflow-io/examples.png?style=shield)
+[![Build Status](https://travis-ci.org/nextflow-io/examples.svg?branch=master)](https://travis-ci.org/nextflow-io/examples)
 
 ## Dependencies 
 
