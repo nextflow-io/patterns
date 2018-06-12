@@ -1,3 +1,0 @@
-$NXF_RUN  | tee stdout
-
-< stdout grep -c "260" 

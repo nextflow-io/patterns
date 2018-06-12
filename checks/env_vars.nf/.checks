@@ -1,5 +1,0 @@
-$NXF_RUN | tee stdout
-
-< stdout grep -c "Current home: $HOME" 
-< stdout grep -c "Current user: $USER" 
-

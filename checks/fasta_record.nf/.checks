@@ -1,7 +1,0 @@
-$NXF_RUN | tee stdout
-
-< stdout grep -c "1aboA" 
-< stdout grep -c "1ycsB" 
-< stdout grep -c "1pht" 
-< stdout grep -c "1vie" 
-< stdout grep -c "1ihvA" 

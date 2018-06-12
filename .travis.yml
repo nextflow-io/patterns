@@ -2,13 +2,10 @@ sudo: required
 jdk: openjdk8
 services:
 - docker
-branches:
-  only:
-  - master
 install:
 - sudo apt-get -qq update
 - sudo apt-get -qq -y install graphviz realpath
 - curl -fsSL get.nextflow.io | bash
-- docker pull nextflow/examples
+- sudo cp nextflow /usr/local/bin
 script: 
-- export WITH_DOCKER='-with-docker'; export NXF_CMD=$PWD/nextflow; cd checks/ && bash run.sh 
+- bash test.sh

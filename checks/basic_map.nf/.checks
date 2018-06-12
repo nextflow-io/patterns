@@ -1,7 +1,0 @@
-$NXF_RUN  | tee stdout
-
-< stdout grep -c "1" 
-< stdout grep -c "4" 
-< stdout grep -c "9" 
-< stdout grep -c "16" 
-< stdout grep -c "25" 
