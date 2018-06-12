@@ -27,7 +27,7 @@
 
 params.input = 'hello.txt'
 
-condition = { it.readLines().size()>=3 }
+condition = { it.readLines().size()>3 }
 feedback_ch = Channel.create()
 input_ch = Channel.fromPath(params.input).mix( feedback_ch.until(condition) )
 
