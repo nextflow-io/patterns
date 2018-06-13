@@ -7,8 +7,8 @@ for each of them.
 
 ## Solution
 
-Use the the [splitText](https://www.nextflow.io/docs/latest/operator.html#splittext) operator to split a file in chunk of a given size. Use 
-the resulting channel a input of the process. 
+Use the the [splitText](https://www.nextflow.io/docs/latest/operator.html#splittext) operator to split a file in chunks of a given size. Use 
+the resulting channel as input of the process. 
 
 Caveat: By default chunks are kept in memory. When splitting big files specify the parameter `file: true` to save the chunks into files. See the [documentation](https://www.nextflow.io/docs/latest/operator.html#splittext) for details.
 

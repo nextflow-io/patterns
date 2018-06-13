@@ -3,12 +3,12 @@
 ## Problem 
 
 A workflow process outputs two or more files for each execution. A downstream
-process needs to executed for each file produced.
+process needs to be executed for each file produced.
 
 ## Solution
 
-Use the [flatten](https://www.nextflow.io/docs/latest/operator.html#flatten) to 
-transform the output of the upstream process to a channel producing each file as a sole emission. 
+Use the [flatten](https://www.nextflow.io/docs/latest/operator.html#flatten) operator to 
+transform the outputs of the upstream process to a channel emitting each file separately. 
 Use this channel as the downstream process input. 
 
 

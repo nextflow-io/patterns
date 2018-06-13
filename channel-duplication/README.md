@@ -2,12 +2,12 @@
 
 ## Problem 
 
-You need you use the same channel as input in two or more process.
+You need to you use the same channel as input in two or more processes.
 
 ## Solution
 
-Use the [into]() operator to create two (or more copies) of the same channels, 
-then use the new channels as process inputs. 
+Use the [into](https://www.nextflow.io/docs/latest/operator.html#into) operator to create two (or more) copies of the source channel, 
+then use the new channels as the input of the processes. 
 
 ## Code 
 

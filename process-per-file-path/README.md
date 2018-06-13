@@ -2,11 +2,11 @@
 
 ## Problem 
 
-Execute a process for each file in a given path or matching a glob pattern. 
+Execute a process for each file in a path that matches a glob pattern. 
 
 ## Solution
 
-Use the [Channel.fromPath]() method to create a channel emitting all files matching 
+Use the [Channel.fromPath](https://www.nextflow.io/docs/latest/channel.html#frompath) method to create a channel emitting all files matching 
 the specified glob pattern. Use the channel as process input. 
 
 

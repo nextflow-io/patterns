@@ -25,7 +25,7 @@ FC819P0ABXX,reads/110128_I481_FC819P0ABXX_L5_HUMrutRGWDIAAPE_1.fq.gz,reads/11012
 
 This snippet parses the file and executes a process for each line:
 
-```
+```nextflow
 params.index = 'index.csv'
 
 Channel
