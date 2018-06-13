@@ -1,0 +1,45 @@
+# Feedback loop  
+
+## Problem 
+
+You need to process all the outputs of an upstream process altogether. 
+
+## Solution
+
+Use the [collect](https://www.nextflow.io/docs/latest/operator.html#collect) operator to gather 
+all the outputs produced by the upstream process and to release them as a sole emission. 
+Then use the resulting channel as the process input.
+
+## Code 
+
+```nextflow 
+
+Channel.fromPath('reads/*_1.fq.gz').set { samples_ch }
+
+process foo {
+  input:
+  file x from samples_ch
+  output:
+  file 'file.fq' into unzipped_ch
+  script:
+  """
+  < $x zcat > file.fq
+  """
+}
+
+process bar {
+  echo true   
+  input:
+  file '*.fq' from unzipped_ch.collect()
+  """
+  cat *.fq
+  """
+}
+
+```
+
+## Run it
+
+Use the the following command to execute the example:
+
+    nextflow run main.nf

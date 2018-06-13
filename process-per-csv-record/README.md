@@ -1,14 +1,14 @@
-# Parse a CSV index table 
+# Process per record in a CSV file
 
 ## Problem 
 
-Workflow inputs are given by a CSV file, where each line represent one or more file to be processed along with some metadata. 
+Execute a process for each record in one or more CVS files.
 
 ## Solution 
 
 Read the CSV file line-by-line using the [sliptCsv](https://www.nextflow.io/docs/latest/operator.html#splitcsv) operator,
-then use the [map](https://www.nextflow.io/docs/latest/operator.html#map) to return a tuple for each line 
-holding the entry metadata along with the file object for each line in the given CSV.
+then use the [map](https://www.nextflow.io/docs/latest/operator.html#map) to return a tuple with the required columns for each line and converting any string path to a file path object using the `file` function. 
+Use the resulting channel as process input. 
 
 ## Code
 
