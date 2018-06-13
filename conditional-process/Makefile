@@ -1,3 +1,5 @@
+SHELL=/bin/bash
+
 test:
 	nextflow -q run . > stdout
 	[[ `< stdout grep -c foo` == 1 ]] || false

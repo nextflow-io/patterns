@@ -6,6 +6,6 @@ install:
 - sudo apt-get -qq update
 - sudo apt-get -qq -y install graphviz realpath
 - curl -fsSL get.nextflow.io | bash
-- sudo cp nextflow /usr/local/bin
+- mkdir -p ~/bin; cp nextflow ~/bin
 script: 
 - bash test.sh

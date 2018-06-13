@@ -1,7 +1,7 @@
 #!/bin/bash 
 set -e 
 
-for x in $(find . -depth 1 -type d); do 
+for x in $(find . -maxdepth 1 -type d); do 
   (
       cd $x
       if [[ -f Makefile ]]; then
