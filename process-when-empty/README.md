@@ -2,12 +2,12 @@
 
 ## Problem 
 
-Execute a process if a channel is empty 
+You need to execute a process if a channel is empty. 
 
 ## Solution 
 
 Use the [ifEmpty](https://www.nextflow.io/docs/latest/operator.html#ifempty) operator to emit 
-a *marker* value used to trigger the execution of the process. 
+a *marker* value to trigger the execution of the process. 
 
 ## Example 
 
@@ -21,7 +21,7 @@ process foo {
 
   script:
   '''
-  echo hello
+  your_command
   ''' 
 }
 ```

@@ -8,10 +8,10 @@ then a third task should post-process the results of the previous execution.
 ## Solution
 
 Use a [when](https://www.nextflow.io/docs/latest/process.html#when) statement to conditionally 
-execute the two processes, having each of them to declare two different output channels.
+execute two different processes. Each process declares its own output channel.
 
-Then use the [mix](https://www.nextflow.io/docs/latest/operator.html#mix) to create 
-a new channel that holds the outputs produced by the two process and use it as the input
+Then use the [mix](https://www.nextflow.io/docs/latest/operator.html#mix) operator to create 
+a new channel that will emit the outputs produced by the two processes and use it as the input
 for the third process.
 
 ## Code 

@@ -1,15 +1,15 @@
-# Process per output file 
+# Process per file output 
 
 ## Problem 
 
-A workflow process outputs two or more files for each execution. A downstream
-process needs to be executed for each file produced.
+A task in your workflow produces two or more files at time. A downstream task needs to process each
+of these files independently.
 
 ## Solution
 
 Use the [flatten](https://www.nextflow.io/docs/latest/operator.html#flatten) operator to 
 transform the outputs of the upstream process to a channel emitting each file separately. 
-Use this channel as the downstream process input. 
+Then use this channel as input for the tdownstream process. 
 
 
 # Code 

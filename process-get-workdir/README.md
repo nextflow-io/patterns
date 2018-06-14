@@ -1,4 +1,4 @@
-# Get the task work directory 
+# Get process work directory
 
 ## Problem 
 
@@ -6,10 +6,9 @@ A tool need the explicit path of the current task work directory.
 
 ## Solution 
 
-Use the `$PWD` Bash variable or the `pwd` command to retrieve the task 
-path working directory. 
+Use the `$PWD` Bash variable or the `pwd` command to retrieve the task working directory path. 
 
-Make sure use to escape the `$` variable placeholder 
+Note: Make sure use to escape the `$` variable placeholder 
 when the command script is enclosed in double quote characters.
 
 

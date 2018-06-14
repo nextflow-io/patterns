@@ -1,14 +1,14 @@
-# Feedback loop  
+# Process all outputs altogether  
 
 ## Problem 
 
-You need to process all the outputs of an upstream process altogether. 
+You need to process all the outputs of an upstream task altogether. 
 
 ## Solution
 
 Use the [collect](https://www.nextflow.io/docs/latest/operator.html#collect) operator to gather 
-all the outputs produced by the upstream process and to release them as a sole emission. 
-Then use the resulting channel as the process input.
+all the outputs produced by the upstream task and emit them as a sole output. 
+Then use the resulting channel as input input for the process.
 
 ## Code 
 

@@ -1,13 +1,13 @@
-# Collect into a file 
+# Collect outputs into a file
 
 ## Problem 
 
-You need to concatenate into a single file all the outputs an upstream process. 
+You need to concatenate into a single file all output files produced by an upstream process. 
 
 ## Solution 
 
-Use the [https://www.nextflow.io/docs/latest/operator.html#collectfile] to merge all
-upstream output files into a single file. 
+Use the [collectFile](https://www.nextflow.io/docs/latest/operator.html#collectfile) operator to merge all
+the output files into a single file. 
 
 ## Code
 

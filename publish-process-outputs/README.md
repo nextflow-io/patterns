@@ -2,8 +2,7 @@
 
 ## Problem 
 
-You need to store the outputs of one or more processes into a 
-directory structure of your choice.
+You need to store the outputs of one or more processes into a directory structure of your choice.
 
 ## Solution 
 

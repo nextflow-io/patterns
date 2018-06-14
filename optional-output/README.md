@@ -1,8 +1,8 @@
-# Feedback loop  
+# Optional output  
 
 ## Problem 
 
-A task is expected to not create an output file in some circumstances. 
+A task in your workflow is expected to not create an output file in some circumstances. 
 
 ## Solution
 

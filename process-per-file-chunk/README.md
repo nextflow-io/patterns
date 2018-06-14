@@ -1,14 +1,12 @@
-# Process per chunk  
+# Process per file chunk  
 
 ## Problem 
 
-Split one or more input files in chunks and execute a process 
-for each of them.
+You need to split one or more input files into chunks and execute a task for each of them.
 
 ## Solution
 
-Use the the [splitText](https://www.nextflow.io/docs/latest/operator.html#splittext) operator to split a file in chunks of a given size. Use 
-the resulting channel as input of the process. 
+Use the the [splitText](https://www.nextflow.io/docs/latest/operator.html#splittext) operator to split a file in chunks of a given size. Then use the resulting channel as input for the process implementing your task. 
 
 Caveat: By default chunks are kept in memory. When splitting big files specify the parameter `file: true` to save the chunks into files. See the [documentation](https://www.nextflow.io/docs/latest/operator.html#splittext) for details.
 

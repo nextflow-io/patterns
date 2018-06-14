@@ -1,13 +1,13 @@
-# Process per file  
+# Process per file path  
 
 ## Problem 
 
-Execute a process for each file in a path that matches a glob pattern. 
+You need to execute a task for each file that matches a glob pattern. 
 
 ## Solution
 
 Use the [Channel.fromPath](https://www.nextflow.io/docs/latest/channel.html#frompath) method to create a channel emitting all files matching 
-the specified glob pattern. Use the channel as process input. 
+the glob pattern. Then, use the channel as input of the process implementing your task. 
 
 
 ## Code 
@@ -22,7 +22,7 @@ process foo {
   
   script:
   """
-  echo your_command --input $x
+  your_command --input $x
   """
 }
 ```

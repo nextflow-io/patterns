@@ -6,9 +6,8 @@ You need to process in the same batch all files that have a matching key in the 
 
 ## Solution 
 
-Use the [map](https://www.nextflow.io/docs/latest/operator.html#map) to associate to each file
-a key extract by the file name. Then use the [groupTuple](https://www.nextflow.io/docs/latest/operator.html#grouptuple) to group together all files that 
-have a matching key. Finally use the resulting channel as the process input.
+Use the [map](https://www.nextflow.io/docs/latest/operator.html#map) operator to associate with each file
+a key extracted from the file name. Then chain the resulting channel with the [groupTuple](https://www.nextflow.io/docs/latest/operator.html#grouptuple) operator to group together all files that have a matching key. Finally use the resulting channel as input for the process.
 
 ## Code
 

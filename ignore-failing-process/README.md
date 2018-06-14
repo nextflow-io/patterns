@@ -2,12 +2,11 @@
 
 ## Problem 
 
-A process is expected to fail in certain situation. It's required to ignore
-the failing process and allows the remaining workflow to complete. 
+A task is expected to fail in a certain condition. You want to ignore the failure and continue the execution of the remaining tasks in the workflow. 
 
 ## Solution
 
-Use the `errorStrategy 'ignore'` [directive](https://www.nextflow.io/docs/latest/process.html#errorstrategy) to ignore the error condition. 
+Use the process [directive](https://www.nextflow.io/docs/latest/process.html#errorstrategy) `errorStrategy 'ignore'` to ignore the error condition. 
 
 
 ## Code 

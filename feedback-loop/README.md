@@ -2,18 +2,16 @@
 
 ## Problem 
 
-Iterate the execution of one or more processes until  a condition
-is reached. 
+You need to repeat the execution of one or more tasks, using the output as the input for a new iteration, until a certain condition is reached. 
 
 ## Solution
 
-Use the output of the process to iterate over as the input of the same or an upstream process. 
+Use the output of the last process in the iteration loop as the input for the first process. 
 
-To do so, explicitly create the output channel using [Channel.create](https://www.nextflow.io/docs/latest/channel.html#create) function. 
+To do so, explicitly create the output channel using [Channel.create](https://www.nextflow.io/docs/latest/channel.html#create) method. 
 
-Then define the process input as a mix of of the initial input and the
-process output to which is applied an [until]() operator defining the 
-termination condition. 
+Then define the process input as a [mix](https://www.nextflow.io/docs/latest/operator.html#mix) of the initial input and the
+process output to which is applied the [until](https://www.nextflow.io/docs/latest/operator.html#until) operator which defines the termination condition. 
 
 ## Code 
 

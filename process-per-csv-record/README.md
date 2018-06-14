@@ -1,14 +1,14 @@
-# Process per record in a CSV file
+# Process per CSV record
 
 ## Problem 
 
-Execute a process for each record in one or more CVS files.
+You need to execute a task for each record in one or more CSV files.
 
 ## Solution 
 
 Read the CSV file line-by-line using the [sliptCsv](https://www.nextflow.io/docs/latest/operator.html#splitcsv) operator,
-then use the [map](https://www.nextflow.io/docs/latest/operator.html#map) to return a tuple with the required columns for each line and converting any string path to a file path object using the `file` function. 
-Use the resulting channel as process input. 
+then use the [map](https://www.nextflow.io/docs/latest/operator.html#map) to return a tuple with the required field for each line and convert any string path to a file path object using the `file` function. 
+Finally use the resulting channel as input for the process. 
 
 ## Code
 
@@ -45,7 +45,7 @@ process foo {
 }
 ```
 
-Note: the relative paths are resolved by the `file` function against the launching directory. 
+Note: relative paths are resolved by the `file` function against the execution directory. 
 In a real use case prefer absolute file paths.
 
 ## Run it
