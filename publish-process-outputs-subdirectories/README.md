@@ -17,31 +17,30 @@ params.outdir = 'my-results'
 Channel.fromFilePairs(params.reads).set{ samples_ch }
 
 process foo {
-publishDir "$params.outdir/$sampleId",
-saveAs: {
-filename ->
-if (filename.indexOf("readCounts.txt") > 0) "read_counts/$filename"
-else if (filename.indexOf("outlook.txt") > 0) "outlook/$filename"
-else "fq/$filename"
-}
+  publishDir "$params.outdir/$sampleId",
+    saveAs: { filename ->
+        if (filename.indexOf("readCounts.txt") > 0) "read_counts/$filename"
+        else if (filename.indexOf("outlook.txt") > 0) "outlook/$filename"
+        else "fq/$filename"
+    }
 
-input:
-set sampleId, file(samples) from samples_ch
-output:
-file '.txt', '.fq'
+  input:
+  set sampleId, file(samples) from samples_ch
 
-script:
-"""
-< ${samples[0]} zcat > sample1.fq
-< ${samples[1]} zcat > sample2.fq
+  output:
+  set file('*.txt'), file('*.fq')
 
-awk '{s++}END{print s/4}' sample1.fq > sample1_readCounts.txt
-awk '{s++}END{print s/4}' sample2.fq > sample2_readCounts.txt
+  script:
+  """
+  < ${samples[0]} zcat > sample1.fq
+  < ${samples[1]} zcat > sample2.fq
 
-head -n 50 sample1.fq > sample1_outlook.txt
-head -n 50 sample2.fq > sample2_outlook.txt
+  awk '{s++}END{print s/4}' sample1.fq > sample1_readCounts.txt
+  awk '{s++}END{print s/4}' sample2.fq > sample2_readCounts.txt
 
-"""
+  head -n 50 sample1.fq > sample1_outlook.txt
+  head -n 50 sample2.fq > sample2_outlook.txt
+  """
 }
 ```
 
