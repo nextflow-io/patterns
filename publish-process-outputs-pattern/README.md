@@ -45,4 +45,4 @@ process footwo{
 
 Run the script with the following command:
 
-  nextflow run main.nf
+`nextflow run main.nf`
