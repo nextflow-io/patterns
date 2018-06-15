@@ -25,7 +25,7 @@ A curated collections of Nextflow implementation patterns
 ### Organize outputs
 
 * [Store process outputs](publish-process-outputs)
-* [Store process outputs based on pattern](publish-process-outputs-pattern)
+* [Store outputs matching a glob pattern](publish-matching-glob)
 
 ## Other
 * [Get process work directory](process-get-workdir)

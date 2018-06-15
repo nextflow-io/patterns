@@ -44,6 +44,6 @@ process bar {
   input:
   file '*.fq' from unzipped_ch.collect()
   """
-  cat *.fq
+  cat *.fq | head -n 50
   """
 }

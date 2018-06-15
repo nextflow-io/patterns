@@ -41,4 +41,4 @@ process foo {
 
 unzipped_ch
       .collectFile()
-      .println{ it.text }
+      .println()
