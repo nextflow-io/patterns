@@ -1,3 +1,8 @@
+
+/*
+* author Kevin Sayers <sayerskt@gmail.com>
+*/
+
 process foo{
   publishDir './foo', mode: 'copy', pattern: "*.*[!bam,bai]"
 
