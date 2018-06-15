@@ -1,4 +1,4 @@
-#!/usr/bin/env nextflo
+#!/usr/bin/env nextflow
 
 /*
  * Copyright (c) 2018, Centre for Genomic Regulation (CRG).
