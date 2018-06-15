@@ -1,14 +1,14 @@
-# Nextflow Patterns 
+# Nextflow Patterns
 
 A curated collections of Nextflow implementation patterns  
 
 [![Build Status](https://travis-ci.org/nextflow-io/patterns.svg?branch=master)](https://travis-ci.org/nextflow-io/patterns)
 
-## Basic patterns 
+## Basic patterns
 
 * [Channel duplication](channel-duplication)
 
-### Scatter executions 
+### Scatter executions
 
 * [Process per file path](process-per-file-path)
 * [Process per file chunk](process-per-file-chunk)
@@ -18,20 +18,21 @@ A curated collections of Nextflow implementation patterns
 
 ### Gather results
 
-* [Process all outputs altogether](process-collect) 
+* [Process all outputs altogether](process-collect)
 * [Process outputs into groups](process-into-groups)
 * [Collect outputs into a file](collect-into-file)
 
 ### Organize outputs
 
 * [Store process outputs](publish-process-outputs)
+* [Store process outputs based on pattern](publish-process-outputs-pattern)
 
-## Other 
+## Other
 * [Get process work directory](process-get-workdir)
 * [Ignore failing process](ignore-failing-process)
 
 
-## Advanced patterns 
+## Advanced patterns
 * [Condition process executions](conditional-process)
 * [Feedback loop](feedback-loop)
 * [Optional input](optional-input)
