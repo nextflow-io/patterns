@@ -2,7 +2,8 @@
 
 ## Problem
 
-You need to use a pattern to save only select files from a process into a directory.
+You need to use a pattern to save only select files from a process into a directory. For example
+in the `foo` process below you want to save only those files which are not `.bam` or `.bai`.
 
 ## Solution
 
