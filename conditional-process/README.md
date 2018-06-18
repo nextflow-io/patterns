@@ -1,4 +1,4 @@
-# Conditional process execution 
+# Conditional process executions 
 
 ## Problem 
 
@@ -68,3 +68,63 @@ with the `--flag` command line option.
 
 This time the processes `bar` and `omega` are executed.
 
+
+## Alternative solution
+
+Conditionally create the input channels normally (with data) or as 
+[empty](https://www.nextflow.io/docs/latest/channel.html#empty) channels. 
+The process consuming the individual input channels will only execute if 
+the channel is populated. Each process still declares its own output channel.
+
+Then use the [mix](https://www.nextflow.io/docs/latest/operator.html#mix) operator to create 
+a new channel that will emit the outputs produced by the two processes and use it as the input
+for the third process.
+
+## Code 
+
+```nextflow
+
+params.flag = false
+
+(foo_inch, bar_inch) = ( params.flag
+                     ? [ Channel.empty(), Channel.from(1,2,3) ]
+                     : [ Channel.from(4,5,6), Channel.empty() ] )   
+
+process foo {
+
+  input:
+  val(f) from foo_inch
+
+  output:
+  file 'x.txt' into foo_ch
+
+  script:
+  """
+  echo $f > x.txt
+  """
+}
+
+process bar {
+  input:
+  val(b) from bar_inch
+
+  output:
+  file 'x.txt' into bar_ch
+
+  script:
+  """
+  echo $b > x.txt
+  """
+}
+
+process omega {
+  echo true
+  input:
+  file x from foo_ch.mix(bar_ch)
+
+  script:
+  """
+  cat $x
+  """
+}
+```
