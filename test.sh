@@ -5,8 +5,10 @@ for x in $(find . -maxdepth 1 -type d); do
   (
       cd $x
       if [[ -f Makefile ]]; then
-        make
+        printf "\n\n== Testing > $(basename $x) ==\n\n" 
+        make test
       elif [[ -f main.nf ]]; then
+        printf "\n\n== Testing > $(basename $x) ==\n\n"  
         nextflow run main.nf 
       fi 
   )
