@@ -18,7 +18,7 @@ of the first process output (when executed) and the input channel.
 ```nextflow
 
 params.skip = false
-params.input = "$baseDir/reads/110101_I315_FC816RLABXX_L1_HUMrutRGXDIAAPE_1.fq.gz" 
+params.input = "$baseDir/sample.fq.gz" 
 
 Channel.fromPath(params.input).set{ input_ch }
 
@@ -54,11 +54,11 @@ process bar {
 
 Use the the following command to execute the example:
 
-    nextflow run patterns/conditional-process
+    nextflow run nextflow-io/patterns/skip-process-execution/main.nf
 
 The processes `foo` and `bar` are executed. Run the same command 
 with the `--skip` command line option. 
 
-    nextflow run nextflow run patterns/conditional-process --skip
+    nextflow run nextflow-io/patterns/skip-process-execution/main.nf --skip
 
 This time only processes `bar` is executed.

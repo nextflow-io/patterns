@@ -27,7 +27,7 @@
   */
 
 params.skip = false
-params.input = "$baseDir/reads/110101_I315_FC816RLABXX_L1_HUMrutRGXDIAAPE_1.fq.gz" 
+params.input = "$baseDir/sample.fq.gz" 
 
 Channel.fromPath(params.input).set{ input_ch }
 
