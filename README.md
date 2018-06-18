@@ -33,7 +33,8 @@ A curated collections of Nextflow implementation patterns
 
 
 ## Advanced patterns
-* [Condition process executions](conditional-process)
+* [Conditional process executions](conditional-process)
+* [Conditional channel executions](conditional-channels)
 * [Feedback loop](feedback-loop)
 * [Optional input](optional-input)
 * [Optional output](optional-output)
