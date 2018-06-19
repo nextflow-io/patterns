@@ -29,30 +29,30 @@
 
 params.flag = false
 
-(foo_inch, bar_inch) = ( params.flag
-                     ? [ Channel.empty(), Channel.from(1,2,3) ]
-                     : [ Channel.from(4,5,6), Channel.empty() ] )   
+(foo_ch, bar_ch) = ( params.flag
+                    ? [ Channel.empty(), Channel.from(1,2,3) ]
+                    : [ Channel.from(4,5,6), Channel.empty() ] )   
 
 process foo {
 
   input:
-  val(f) from foo_inch
+  val x from foo_ch
 
   output:
-  file 'x.txt' into foo_ch
+  file 'x.txt' into out1_ch
 
   script:
   """
-  echo $f > x.txt
+  echo $x > x.txt
   """
 }
 
 process bar {
   input:
-  val(b) from bar_inch
+  val(b) from bar_ch
 
   output:
-  file 'x.txt' into bar_ch
+  file 'x.txt' into out2_ch
 
   script:
   """
@@ -63,7 +63,7 @@ process bar {
 process omega {
   echo true
   input:
-  file x from foo_ch.mix(bar_ch)
+  file x from out1_ch.mix(out2_ch)
 
   script:
   """
