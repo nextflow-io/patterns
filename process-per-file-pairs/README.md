@@ -30,3 +30,25 @@ process foo {
 }
 
 ```    
+
+## Custom grouping strategy
+
+When needed it is possible to define a custom grouping strategy. A common use case is for alignment BAM files (`sample1.bam`) that come along with their index file. The difficulty is that the index is sometimes called `sample1.bai` and sometimes `sample1.bam.bai` depending on the software used. The following example can accomodate both cases. 
+
+```nextflow 
+
+Channel
+    .fromFilePairs('alignment/*{.bam,.bai}')  { file -> file.name.replace('.bai','').replace('.bam','') }
+    .set { samples_ch }
+
+process foo {
+  input:
+  set sampleId, file(bam) from samples_ch
+
+  script:
+  """
+  your_command --sample $sampleId --bam ${sampleId}.bam
+  """
+}
+
+```    
