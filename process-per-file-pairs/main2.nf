@@ -27,7 +27,7 @@
   */
 
 Channel
-    .fromFilePairs('alignment/*{.bam,.bai}')  { file -> file.name.replace('.bai','').replace('.bam','') }
+    .fromFilePairs('alignment/*.{bam,bai}') { file -> file.name.replaceAll(/.bam|.bai$/,'') }
     .set { samples_ch }
 
 process foo {
@@ -36,6 +36,6 @@ process foo {
 
   script:
   """
-  your_command --sample $sampleId --bam ${sampleId}.bam
+  echo your_command --sample $sampleId --bam ${sampleId}.bam
   """
 }

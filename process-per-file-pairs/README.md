@@ -38,7 +38,7 @@ When needed it is possible to define a custom grouping strategy. A common use ca
 ```nextflow 
 
 Channel
-    .fromFilePairs('alignment/*{.bam,.bai}')  { file -> file.name.replace('.bai','').replace('.bam','') }
+    .fromFilePairs('alignment/*.{bam,bai}') { file -> file.name.replaceAll(/.bam|.bai$/,'') }
     .set { samples_ch }
 
 process foo {
