@@ -26,9 +26,10 @@
   * author Paolo Di Tommaso <paolo.ditommaso@gmail.com> 
   */
 
+
 Channel
   .from(1..23)
-  .map { chr -> tuple("sample$chr", file("/some/path/foo.${chr}.indels.vcf"), file("/other/path/foo.snvs.${chr}.vcf")) }
+  .map { chr -> ["sample$chr", file("/some/path/foo.${chr}.indels.vcf"), file("/other/path/foo.snvs.${chr}.vcf")] }
   .set { pairs_ch }
   
   

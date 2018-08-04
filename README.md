@@ -13,6 +13,7 @@ A curated collections of Nextflow implementation patterns
 * [Process per file path](process-per-file-path)
 * [Process per file chunk](process-per-file-chunk)
 * [Process per file pairs](process-per-file-pairs)
+* [Process per file range](process-per-file-range)
 * [Process per CSV record](process-per-csv-record)
 * [Process per file output](process-per-file-output)
 
