@@ -12,7 +12,7 @@ transform the outputs of the upstream process to a channel emitting each file se
 Then use this channel as input for the tdownstream process. 
 
 
-# Code 
+## Code 
 
 ```nextflow
 
