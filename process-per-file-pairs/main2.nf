@@ -31,6 +31,8 @@ Channel
     .set { samples_ch }
 
 process foo {
+  tag "$sampleId"
+  
   input:
   set sampleId, file(bam) from samples_ch
 
