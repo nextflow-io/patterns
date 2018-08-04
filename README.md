@@ -27,6 +27,7 @@ A curated collections of Nextflow implementation patterns
 
 * [Store process outputs](publish-process-outputs)
 * [Store outputs matching a glob pattern](publish-matching-glob)
+* [Store outputs renaming files](publish-rename-outputs)
 
 ## Other
 * [Get process work directory](process-get-workdir)
