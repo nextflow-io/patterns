@@ -22,10 +22,6 @@
  * SOFTWARE.
  */
 
- /*
-  * author Paolo Di Tommaso <paolo.ditommaso@gmail.com>
-  */
-
 /*
  * Copyright (c) 2018, Warren Kretzschmar <warrenk@kth.se>
  *
@@ -47,6 +43,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+
+ /*
+  * authors
+  *    Paolo Di Tommaso <paolo.ditommaso@gmail.com>
+  *    Warren W. Kretzschmar <warrenk@kth.se>
+  */
+
 
 Channel.fromPath('reads/*_1.fq.gz').set { samples_ch }
 
