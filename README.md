@@ -35,6 +35,7 @@ A curated collections of Nextflow implementation patterns
 * [Mock dependency](mock-dependency)
 
 ## Advanced patterns
+* [Conditional process resources](conditional-resources)
 * [Conditional process executions](conditional-process)
 * [Skip process execution](skip-process-execution)
 * [Feedback loop](feedback-loop)
