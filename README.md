@@ -32,7 +32,7 @@ A curated collections of Nextflow implementation patterns
 ## Other
 * [Get process work directory](process-get-workdir)
 * [Ignore failing process](ignore-failing-process)
-
+* [Mock dependency](mock-dependency)
 
 ## Advanced patterns
 * [Conditional process executions](conditional-process)
