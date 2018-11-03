@@ -1,0 +1,61 @@
+= Nextflow Patterns image:nextflow_logo.png[Logo,300,100,float="right", role="Nextflow Logo"]
+:docinfo: private
+:year: 2018
+:hide-uri-scheme:
+:nofooter:
+:icons: font
+:toclevels: 2
+:imagesdir: img
+:toc: left
+:source-highlighter: highlight.js
+:highlightjs-theme: github
+
+:sectnums:
+
+== Basic patterns
+:leveloffset: +2
+include::channel-duplication.adoc[]
+:leveloffset: -2
+
+== Scatter executions
+:leveloffset: +2
+include::process-per-file-path.adoc[]
+include::process-per-file-chunk.adoc[]
+include::process-per-file-pairs.adoc[]
+include::process-per-file-range.adoc[]
+include::process-per-csv-record.adoc[]
+include::process-per-file-output.adoc[]
+:leveloffset: -2
+
+== Gather results
+:leveloffset: +2
+include::process-collect.adoc[]
+include::process-into-groups.adoc[]
+include::collect-into-file.adoc[]
+:leveloffset: -2
+
+== Organize outputs
+:leveloffset: +2
+include::publish-process-outputs.adoc[]
+include::publish-matching-glob.adoc[]
+include::publish-rename-outputs.adoc[]
+:leveloffset: -2
+
+== Other
+:leveloffset: +2
+include::process-get-workdir.adoc[]
+include::ignore-failing-process.adoc[]
+include::mock-dependency.adoc[]
+:leveloffset: -2
+
+== Advanced patterns
+:leveloffset: +2
+include::conditional-resources.adoc[]
+include::conditional-process.adoc[]
+include::skip-process-execution.adoc[]
+include::feedback-loop.adoc[]
+include::optional-input.adoc[]
+include::optional-output.adoc[]
+include::process-when-empty.adoc[]
+:leveloffset: -2
+

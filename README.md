@@ -6,39 +6,39 @@ A curated collections of Nextflow implementation patterns
 
 ## Basic patterns
 
-* [Channel duplication](channel-duplication)
+* [Channel duplication](docs/channel-duplication.adoc)
 
 ### Scatter executions
 
-* [Process per file path](process-per-file-path)
-* [Process per file chunk](process-per-file-chunk)
-* [Process per file pairs](process-per-file-pairs)
-* [Process per file range](process-per-file-range)
-* [Process per CSV record](process-per-csv-record)
-* [Process per file output](process-per-file-output)
+* [Process per file path](docs/process-per-file-path.adoc)
+* [Process per file chunk](docs/process-per-file-chunk.adoc)
+* [Process per file pairs](docs/process-per-file-pairs.adoc)
+* [Process per file range](docs/process-per-file-range.adoc)
+* [Process per CSV record](docs/process-per-csv-record.adoc)
+* [Process per file output](docs/process-per-file-output.adoc)
 
 ### Gather results
 
-* [Process all outputs altogether](process-collect)
-* [Process outputs into groups](process-into-groups)
-* [Collect outputs into a file](collect-into-file)
+* [Process all outputs altogether](docs/process-collect.adoc)
+* [Process outputs into groups](docs/process-into-groups.adoc)
+* [Collect outputs into a file](docs/collect-into-file.adoc)
 
 ### Organize outputs
 
-* [Store process outputs](publish-process-outputs)
-* [Store outputs matching a glob pattern](publish-matching-glob)
-* [Store outputs renaming files](publish-rename-outputs)
+* [Store process outputs](docs/publish-process-outputs.adoc)
+* [Store outputs matching a glob pattern](docs/publish-matching-glob.adoc)
+* [Store outputs renaming files](docs/publish-rename-outputs.adoc)
 
 ## Other
-* [Get process work directory](process-get-workdir)
-* [Ignore failing process](ignore-failing-process)
-* [Mock dependency](mock-dependency)
+* [Get process work directory](docs/process-get-workdir.adoc)
+* [Ignore failing process](docs/ignore-failing-process.adoc)
+* [Mock dependency](docs/mock-dependency.adoc)
 
 ## Advanced patterns
-* [Conditional process resources](conditional-resources)
-* [Conditional process executions](conditional-process)
-* [Skip process execution](skip-process-execution)
-* [Feedback loop](feedback-loop)
-* [Optional input](optional-input)
-* [Optional output](optional-output)
-* [Process when empty](process-when-empty)
+* [Conditional process resources](docs/conditional-resources.adoc)
+* [Conditional process executions](docs/conditional-process.adoc)
+* [Skip process execution](docs/skip-process-execution.adoc)
+* [Feedback loop](docs/feedback-loop.adoc)
+* [Optional input](docs/optional-input.adoc)
+* [Optional output](docs/optional-output.adoc)
+* [Process when empty](docs/process-when-empty.adoc)
