@@ -1,7 +1,7 @@
-= Nextflow Patterns image:nextflow_logo.png[Logo,300,100,float="right", role="Nextflow Logo"]
-:docinfo: private
-:year: 2018
-:hide-uri-scheme:
+= Nextflow Patterns image:https://www.nextflow.io/img/nextflow2014_no-bg.png[Logo,300,100,float="right", role="Nextflow Logo"]
+:docinfo:
+:keywords: Nextflow, computational workflows, patterns
+:description: Nextflow implementation patterns.
 :nofooter:
 :icons: font
 :toclevels: 2
@@ -9,8 +9,10 @@
 :toc: left
 :source-highlighter: highlight.js
 :highlightjs-theme: github
-
 :sectnums:
+
+This page collects some recurrent implementation patterns used in Nextflow applications. 
+Feel free to contribute opening a pull request in the GitHub repository at https://github.com/nextflow-io/patterns[this link].
 
 == Basic patterns
 :leveloffset: +2

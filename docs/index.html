@@ -5,6 +5,8 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.7.1">
+<meta name="description" content="Nextflow implementation patterns.">
+<meta name="keywords" content="Nextflow, computational workflows, patterns">
 <title>Nextflow Patterns</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -433,7 +435,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Nextflow Patterns <span class="image Nextflow Logo" style="float: right"><img src="img/nextflow_logo.png" alt="Logo" width="300" height="100"></span></h1>
+<h1>Nextflow Patterns <span class="image Nextflow Logo" style="float: right"><img src="https://www.nextflow.io/img/nextflow2014_no-bg.png" alt="Logo" width="300" height="100"></span></h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
@@ -488,6 +490,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This page collects some recurrent implementation patterns used in Nextflow applications.
+Feel free to contribute opening a pull request in the GitHub repository at <a href="https://github.com/nextflow-io/patterns">this link</a>.</p>
+</div>
+</div>
+</div>
 <div class="sect1">
 <h2 id="_basic_patterns">1. Basic patterns</h2>
 <div class="sectionbody">
@@ -792,16 +802,47 @@ Finally use the resulting channel as input for the process.</p>
 <div class="paragraph">
 <p>Given the file <code>index.csv</code> with the following content:</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code>sampleId,read1,read2
-FC816RLABXX,reads/110101_I315_FC816RLABXX_L1_HUMrutRGXDIAAPE_1.fq.gz,reads/110101_I315_FC816RLABXX_L1_HUMrutRGXDIAAPE_2.fq.gz
-FC812MWABXX,reads/110105_I186_FC812MWABXX_L8_HUMrutRGVDIABPE_1.fq.gz,reads/110105_I186_FC812MWABXX_L8_HUMrutRGVDIABPE_2.fq.gz
-FC81DE8ABXX,reads/110121_I288_FC81DE8ABXX_L3_HUMrutRGXDIAAPE_1.fq.gz,reads/110121_I288_FC81DE8ABXX_L3_HUMrutRGXDIAAPE_2.fq.gz
-FC81DB5ABXX,reads/110122_I329_FC81DB5ABXX_L6_HUMrutRGVDIAAPE_1.fq.gz,reads/110122_I329_FC81DB5ABXX_L6_HUMrutRGVDIAAPE_2.fq.gz
-FC819P0ABXX,reads/110128_I481_FC819P0ABXX_L5_HUMrutRGWDIAAPE_1.fq.gz,reads/110128_I481_FC819P0ABXX_L5_HUMrutRGWDIAAPE_2.fq.gz</code></pre>
-</div>
-</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">sampleId</th>
+<th class="tableblock halign-left valign-top">read1</th>
+<th class="tableblock halign-left valign-top">read2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FC816RLABXX</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reads/110101_I315_FC816RLABXX_L1_HUMrutRGXDIAAPE_1.fq.gz</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reads/110101_I315_FC816RLABXX_L1_HUMrutRGXDIAAPE_2.fq.gz</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FC812MWABXX</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reads/110105_I186_FC812MWABXX_L8_HUMrutRGVDIABPE_1.fq.gz</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reads/110105_I186_FC812MWABXX_L8_HUMrutRGVDIABPE_2.fq.gz</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FC81DE8ABXX</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reads/110121_I288_FC81DE8ABXX_L3_HUMrutRGXDIAAPE_1.fq.gz</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reads/110121_I288_FC81DE8ABXX_L3_HUMrutRGXDIAAPE_2.fq.gz</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FC81DB5ABXX</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reads/110122_I329_FC81DB5ABXX_L6_HUMrutRGVDIAAPE_1.fq.gz</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reads/110122_I329_FC81DB5ABXX_L6_HUMrutRGVDIAAPE_2.fq.gz</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FC819P0ABXX</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reads/110128_I481_FC819P0ABXX_L5_HUMrutRGWDIAAPE_1.fq.gz</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reads/110128_I481_FC819P0ABXX_L5_HUMrutRGWDIAAPE_2.fq.gz</p></td>
+</tr>
+</tbody>
+</table>
 <div class="paragraph">
 <p>This snippet parses the file and executes a process for each line:</p>
 </div>
@@ -1978,6 +2019,16 @@ some input files, that prevents the process to be executed:</p>
 </div>
 </div>
 </div>
+<script>
+    if( window.location.hostname == 'localhost' || window.location.hostname == '127.0.0.1' ) { throw new Error('Skip GA on localhost') };
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-364526-10', 'auto');
+    ga('send', 'pageview');
+</script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 <script>hljs.initHighlighting()</script>
