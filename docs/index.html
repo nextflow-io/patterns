@@ -523,6 +523,11 @@ table.CodeRay td.code>pre{padding:0}
 .CodeRay .change .change{color:#66f}
 .CodeRay .head .head{color:#f4f}
 </style>
+<!-- fixes nowrap line numbers https://github.com/asciidoctor/asciidoctor/issues/1706#issuecomment-314601209 -->
+<style>
+table.CodeRay { display: block; overflow-x: auto; }
+td.code > pre { white-space: pre; }
+</style>
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
