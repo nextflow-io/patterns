@@ -14,8 +14,8 @@ Then use this channel as input for the downstream process.
 
 == Code 
 
-```nextflow
-
+[source,nextflow,linenums,options="nowrap"]
+----
 process foo {
   output:
   file '*.txt' into foo_ch 
@@ -35,7 +35,7 @@ process foo {
   cat $x
   """
 }
-```
+----
 
 == Run it
 

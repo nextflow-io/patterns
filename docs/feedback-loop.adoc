@@ -15,8 +15,8 @@ process output to which is applied the https://www.nextflow.io/docs/latest/opera
 
 == Code 
 
-```nextflow 
-
+[source,nextflow,linenums,options="nowrap"]
+----
 params.input = 'hello.txt'
 
 condition = { it.readLines().size()>3 }
@@ -48,7 +48,7 @@ process bar {
 }
 
 result_ch.last().println { "Result:\n${it.text.indent(' ')}" }
-```
+----
 
 == Run it
 

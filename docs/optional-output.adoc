@@ -10,8 +10,8 @@ Declare such output as an `optional` file.
 
 == Code 
 
-```nextflow 
-
+[source,nextflow,linenums,options="nowrap"]
+----
 process foo {
   output: 
   file 'foo.txt' optional true into foo_ch 
@@ -21,7 +21,7 @@ process foo {
   your_command 
   '''
 }
-```
+----
 
 == Run it
 

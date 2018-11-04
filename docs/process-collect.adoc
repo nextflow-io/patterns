@@ -12,8 +12,8 @@ Then use the resulting channel as input input for the process.
 
 == Code 
 
-```nextflow 
-
+[source,nextflow,linenums,options="nowrap"]
+----
 Channel.fromPath('reads/*_1.fq.gz').set { samples_ch }
 
 process foo {
@@ -35,8 +35,7 @@ process bar {
   cat *.fq
   """
 }
-
-```
+----
 
 == Run it
 

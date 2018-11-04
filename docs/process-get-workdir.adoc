@@ -14,8 +14,8 @@ when the command script is enclosed in double quote characters.
 
 == Example 
 
-```nextflow
-
+[source,nextflow,linenums,options="nowrap"]
+----
 process foo {
   echo true
   script:
@@ -31,7 +31,7 @@ process bar {
   echo bar task path: $PWD
   ''' 
 }
-```
+----
 
 == Run it 
 

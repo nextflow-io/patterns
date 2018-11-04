@@ -7,8 +7,8 @@
 :toclevels: 2
 :imagesdir: img
 :toc: left
-:source-highlighter: highlight.js
-:highlightjs-theme: github
+:source-highlighter: coderay
+:coderay-linenums-mode: table
 :sectnums:
 
 This page collects some recurrent implementation patterns used in Nextflow applications. 

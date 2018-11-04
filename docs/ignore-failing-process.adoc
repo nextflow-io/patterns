@@ -11,8 +11,8 @@ Use the process https://www.nextflow.io/docs/latest/process.html#errorstrategy[d
 
 == Code 
 
-```nextflow 
-
+[source,nextflow,linenums,options="nowrap"]
+----
 process foo {
   errorStrategy 'ignore'
   script:
@@ -28,7 +28,7 @@ process bar {
   echo OK
   '''
 }
-```
+----
 
 == Run it 
 

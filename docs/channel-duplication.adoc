@@ -10,8 +10,8 @@ Use the https://www.nextflow.io/docs/latest/operator.html#into[into] operator to
 
 == Code 
 
-```nextflow
-
+[source,nextflow,linenums,options="nowrap"]
+----
 Channel
     .fromPath('prots/*_?.fa')
     .into { prot1_ch; prot2_ch }
@@ -31,8 +31,7 @@ process bar {
     your_command --input $x
   """
 }    
-
-```
+----
 
 == Run it
 

@@ -13,8 +13,8 @@ using the option `pattern` to store into each directory only the files that matc
 
 == Code
 
-```nextflow
-
+[source,nextflow,linenums,options="nowrap"]
+----
 params.reads = 'reads/*_{1,2}.fq.gz'
 params.outdir = 'my-results'
 
@@ -43,8 +43,7 @@ process foo {
     head -n 50 sample2.fq > sample2_outlook.txt
   """
 }
-
-```
+----
 
 == Run it
 

@@ -17,8 +17,8 @@ definition.
 
 == Code 
 
-```nextflow 
-
+[source,nextflow,linenums,options="nowrap"]
+----
 Channel
     .fromPath('reads/*_1.fq.gz')
     .set { reads_ch }
@@ -33,7 +33,7 @@ process foo {
     your_command_here --in $reads
     """
 }
-```
+----
 
 == Run it 
 

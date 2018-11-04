@@ -17,8 +17,8 @@ its execution when the other process completes.
 
 == Code 
 
-```nextflow
-
+[source,nextflow,linenums,options="nowrap"]
+----
 Channel
     .fromPath('.data/reads/*.fq.gz')
     .set{ reads_ch }
@@ -43,7 +43,7 @@ process bar {
     other_commad_here --reads $fq
     """
 }
-```
+----
 
 == Run it
 

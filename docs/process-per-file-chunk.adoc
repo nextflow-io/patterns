@@ -15,8 +15,8 @@ Splitter for specific file formats are available, eg https://www.nextflow.io/doc
 
 == Code 
 
-```nextflow
-
+[source,nextflow,linenums,options="nowrap"]
+----
 Channel
     .fromPath('poem.txt')
     .splitText(by: 5)
@@ -32,7 +32,7 @@ process foo {
   rev $x | rev
   """
 } 
-```
+----
 
 == Run it 
 

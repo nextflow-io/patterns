@@ -15,8 +15,8 @@ of the first process output (when executed) and the input channel.
 
 == Code 
 
-```nextflow
-
+[source,nextflow,linenums,options="nowrap"]
+----
 params.skip = false
 params.input = "$baseDir/sample.fq.gz" 
 
@@ -47,8 +47,7 @@ process bar {
   echo your_command --input $x
   """
 }
-
-```
+----
 
 == Run it
 

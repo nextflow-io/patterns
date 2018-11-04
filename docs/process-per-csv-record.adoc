@@ -25,7 +25,8 @@ FC819P0ABXX,reads/110128_I481_FC819P0ABXX_L5_HUMrutRGWDIAAPE_1.fq.gz,reads/11012
 
 This snippet parses the file and executes a process for each line:
 
-```nextflow
+[source,nextflow,linenums,options="nowrap"]
+----
 params.index = 'index.csv'
 
 Channel
@@ -43,7 +44,7 @@ process foo {
     echo your_command --sample $sampleId --reads $read1 $read2
     """
 }
-```
+----
 
 Note: relative paths are resolved by the `file` function against the execution directory. 
 In a real use case prefer absolute file paths.

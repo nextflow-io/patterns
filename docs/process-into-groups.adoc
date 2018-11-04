@@ -11,8 +11,8 @@ a key extracted from the file name. Then chain the resulting channel with the ht
 
 == Code
 
-```nextflow 
-
+[source,nextflow,linenums,options="nowrap"]
+----
 Channel
     .fromPath('reads/*')  
     .map { file -> 
@@ -32,8 +32,7 @@ process foo {
   echo your_command --batch $key --input $samples 
   """
 } 
-
-```
+----
 
 == Run it 
 

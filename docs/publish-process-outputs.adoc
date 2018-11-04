@@ -11,8 +11,8 @@ to set a custom directory where the process outputs need to be made available.
 
 == Code 
 
-```nextflow
-
+[source,nextflow,linenums,options="nowrap"]
+----
 params.reads = 'reads/*{1,2}.fq.gz'
 params.outdir = 'my-results'
 
@@ -31,7 +31,7 @@ process foo {
   < ${samples[1]} zcat > sample_2.fq 
   """
 }
-```
+----
 
 == Run it 
 

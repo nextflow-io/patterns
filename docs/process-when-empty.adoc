@@ -11,8 +11,8 @@ a _marker_ value to trigger the execution of the process.
 
 == Example 
 
-```nextflow
-
+[source,nextflow,linenums,options="nowrap"]
+----
 process foo {
   input:
   val x from ch.ifEmpty { 'EMPTY' } 
@@ -24,7 +24,7 @@ process foo {
   your_command
   ''' 
 }
-```
+----
 
 == Run it 
 

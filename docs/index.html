@@ -432,6 +432,97 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+/* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
+/*pre.CodeRay {background-color:#f7f7f8;}*/
+.CodeRay .line-numbers{border-right:1px solid #d8d8d8;padding:0 0.5em 0 .25em}
+.CodeRay span.line-numbers{display:inline-block;margin-right:.5em;color:rgba(0,0,0,.3)}
+.CodeRay .line-numbers strong{color:rgba(0,0,0,.4)}
+table.CodeRay{border-collapse:separate;border-spacing:0;margin-bottom:0;border:0;background:none}
+table.CodeRay td{vertical-align: top;line-height:1.45}
+table.CodeRay td.line-numbers{text-align:right}
+table.CodeRay td.line-numbers>pre{padding:0;color:rgba(0,0,0,.3)}
+table.CodeRay td.code{padding:0 0 0 .5em}
+table.CodeRay td.code>pre{padding:0}
+.CodeRay .debug{color:#fff !important;background:#000080 !important}
+.CodeRay .annotation{color:#007}
+.CodeRay .attribute-name{color:#000080}
+.CodeRay .attribute-value{color:#700}
+.CodeRay .binary{color:#509}
+.CodeRay .comment{color:#998;font-style:italic}
+.CodeRay .char{color:#04d}
+.CodeRay .char .content{color:#04d}
+.CodeRay .char .delimiter{color:#039}
+.CodeRay .class{color:#458;font-weight:bold}
+.CodeRay .complex{color:#a08}
+.CodeRay .constant,.CodeRay .predefined-constant{color:#008080}
+.CodeRay .color{color:#099}
+.CodeRay .class-variable{color:#369}
+.CodeRay .decorator{color:#b0b}
+.CodeRay .definition{color:#099}
+.CodeRay .delimiter{color:#000}
+.CodeRay .doc{color:#970}
+.CodeRay .doctype{color:#34b}
+.CodeRay .doc-string{color:#d42}
+.CodeRay .escape{color:#666}
+.CodeRay .entity{color:#800}
+.CodeRay .error{color:#808}
+.CodeRay .exception{color:inherit}
+.CodeRay .filename{color:#099}
+.CodeRay .function{color:#900;font-weight:bold}
+.CodeRay .global-variable{color:#008080}
+.CodeRay .hex{color:#058}
+.CodeRay .integer,.CodeRay .float{color:#099}
+.CodeRay .include{color:#555}
+.CodeRay .inline{color:#000}
+.CodeRay .inline .inline{background:#ccc}
+.CodeRay .inline .inline .inline{background:#bbb}
+.CodeRay .inline .inline-delimiter{color:#d14}
+.CodeRay .inline-delimiter{color:#d14}
+.CodeRay .important{color:#555;font-weight:bold}
+.CodeRay .interpreted{color:#b2b}
+.CodeRay .instance-variable{color:#008080}
+.CodeRay .label{color:#970}
+.CodeRay .local-variable{color:#963}
+.CodeRay .octal{color:#40e}
+.CodeRay .predefined{color:#369}
+.CodeRay .preprocessor{color:#579}
+.CodeRay .pseudo-class{color:#555}
+.CodeRay .directive{font-weight:bold}
+.CodeRay .type{font-weight:bold}
+.CodeRay .predefined-type{color:inherit}
+.CodeRay .reserved,.CodeRay .keyword {color:#000;font-weight:bold}
+.CodeRay .key{color:#808}
+.CodeRay .key .delimiter{color:#606}
+.CodeRay .key .char{color:#80f}
+.CodeRay .value{color:#088}
+.CodeRay .regexp .delimiter{color:#808}
+.CodeRay .regexp .content{color:#808}
+.CodeRay .regexp .modifier{color:#808}
+.CodeRay .regexp .char{color:#d14}
+.CodeRay .regexp .function{color:#404;font-weight:bold}
+.CodeRay .string{color:#d20}
+.CodeRay .string .string .string{background:#ffd0d0}
+.CodeRay .string .content{color:#d14}
+.CodeRay .string .char{color:#d14}
+.CodeRay .string .delimiter{color:#d14}
+.CodeRay .shell{color:#d14}
+.CodeRay .shell .delimiter{color:#d14}
+.CodeRay .symbol{color:#990073}
+.CodeRay .symbol .content{color:#a60}
+.CodeRay .symbol .delimiter{color:#630}
+.CodeRay .tag{color:#008080}
+.CodeRay .tag-special{color:#d70}
+.CodeRay .variable{color:#036}
+.CodeRay .insert{background:#afa}
+.CodeRay .delete{background:#faa}
+.CodeRay .change{color:#aaf;background:#007}
+.CodeRay .head{color:#f8f;background:#505}
+.CodeRay .insert .insert{color:#080}
+.CodeRay .delete .delete{color:#800}
+.CodeRay .change .change{color:#66f}
+.CodeRay .head .head{color:#f4f}
+</style>
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
@@ -519,25 +610,47 @@ Feel free to contribute opening a pull request in the GitHub repository at <a hr
 <h4 id="_code">1.1.3. Code</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nextflow hljs" data-lang="nextflow">Channel
+<pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td>
+  <td class="code"><pre>Channel
     .fromPath('prots/*_?.fa')
     .into { prot1_ch; prot2_ch }
 
 process foo {
   input: file x from prot1_ch
   script:
-  """
+  &quot;&quot;&quot;
     echo your_command --input $x
-  """
+  &quot;&quot;&quot;
 }
 
 process bar {
   input: file x from prot2_ch
   script:
-  """
+  &quot;&quot;&quot;
     your_command --input $x
-  """
-}</code></pre>
+  &quot;&quot;&quot;
+}</pre></td>
+</tr></table></code></pre>
 </div>
 </div>
 </div>
@@ -576,17 +689,31 @@ process bar {
 <h4 id="_code_2">2.1.3. Code</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nextflow hljs" data-lang="nextflow">Channel.fromPath('reads/*_1.fq.gz').set{ samples_ch }
+<pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td>
+  <td class="code"><pre>Channel.fromPath('reads/*_1.fq.gz').set{ samples_ch }
 
 process foo {
   input:
   file x from samples_ch
 
   script:
-  """
+  &quot;&quot;&quot;
   your_command --input $x
-  """
-}</code></pre>
+  &quot;&quot;&quot;
+}</pre></td>
+</tr></table></code></pre>
 </div>
 </div>
 </div>
@@ -626,7 +753,24 @@ process foo {
 <h4 id="_code_3">2.2.3. Code</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nextflow hljs" data-lang="nextflow">Channel
+<pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td>
+  <td class="code"><pre>Channel
     .fromPath('poem.txt')
     .splitText(by: 5)
     .set{ chunks_ch }
@@ -637,10 +781,11 @@ process foo {
   file x from chunks_ch
 
   script:
-  """
+  &quot;&quot;&quot;
   rev $x | rev
-  """
-}</code></pre>
+  &quot;&quot;&quot;
+}</pre></td>
+</tr></table></code></pre>
 </div>
 </div>
 </div>
@@ -677,7 +822,22 @@ process foo {
 <h4 id="_code_4">2.3.3. Code</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nextflow hljs" data-lang="nextflow">Channel
+<pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td>
+  <td class="code"><pre>Channel
     .fromFilePairs('reads/*_{1,2}.fq.gz')
     .set { samples_ch }
 
@@ -686,10 +846,11 @@ process foo {
   set sampleId, file(reads) from samples_ch
 
   script:
-  """
+  &quot;&quot;&quot;
   your_command --sample $sampleId --reads $reads
-  """
-}</code></pre>
+  &quot;&quot;&quot;
+}</pre></td>
+</tr></table></code></pre>
 </div>
 </div>
 </div>
@@ -697,7 +858,7 @@ process foo {
 <h4 id="_run_it_4">2.3.4. Run it</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>nextflow run patterns/process-per-file-pairs.nf</code></pre>
+<pre class="CodeRay highlight"><code>nextflow run patterns/process-per-file-pairs.nf</code></pre>
 </div>
 </div>
 </div>
@@ -708,7 +869,22 @@ process foo {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nextflow hljs" data-lang="nextflow">Channel
+<pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td>
+  <td class="code"><pre>Channel
     .fromFilePairs('alignment/*.{bam,bai}') { file -&gt; file.name.replaceAll(/.bam|.bai$/,'') }
     .set { samples_ch }
 
@@ -717,10 +893,11 @@ process foo {
   set sampleId, file(bam) from samples_ch
 
   script:
-  """
+  &quot;&quot;&quot;
   your_command --sample $sampleId --bam ${sampleId}.bam
-  """
-}</code></pre>
+  &quot;&quot;&quot;
+}</pre></td>
+</tr></table></code></pre>
 </div>
 </div>
 </div>
@@ -728,7 +905,7 @@ process foo {
 <h4 id="_run_it_5">2.3.6. Run it</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>nextflow run patterns/process-per-file-pairs-custom.nf</code></pre>
+<pre class="CodeRay highlight"><code>nextflow run patterns/process-per-file-pairs-custom.nf</code></pre>
 </div>
 </div>
 </div>
@@ -754,22 +931,41 @@ to associate the each index the corresponding input files. Finally use the resul
 <h4 id="_code_5">2.4.3. Code</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nextflow hljs" data-lang="nextflow">Channel
+<pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td>
+  <td class="code"><pre>Channel
   .from(1..23)
-  .map { chr -&gt; tuple("sample$chr", file("/some/path/foo.${chr}.indels.vcf"), file("/other/path/foo.snvs.${chr}.vcf")) }
+  .map { chr -&gt; tuple(&quot;sample$chr&quot;, file(&quot;/some/path/foo.${chr}.indels.vcf&quot;), file(&quot;/other/path/foo.snvs.${chr}.vcf&quot;)) }
   .set { pairs_ch }
 
 
 process foo {
-  tag "$sampleId"
+  tag &quot;$sampleId&quot;
 
   input:
   set sampleId, file(indels), file(snps) from pairs_ch
 
-  """
+  &quot;&quot;&quot;
   echo foo_command --this $indels --that $snps
-  """
-}</code></pre>
+  &quot;&quot;&quot;
+}</pre></td>
+</tr></table></code></pre>
 </div>
 </div>
 </div>
@@ -777,7 +973,7 @@ process foo {
 <h4 id="_run_it_6">2.4.4. Run it</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>nextflow run patterns/process-per-file-range.nf</code></pre>
+<pre class="CodeRay highlight"><code>nextflow run patterns/process-per-file-range.nf</code></pre>
 </div>
 </div>
 </div>
@@ -848,7 +1044,26 @@ Finally use the resulting channel as input for the process.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nextflow hljs" data-lang="nextflow">params.index = 'index.csv'
+<pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td>
+  <td class="code"><pre>params.index = 'index.csv'
 
 Channel
     .fromPath(params.index)
@@ -861,10 +1076,11 @@ process foo {
     set sampleId, file(read1), file(read2) from samples_ch
 
     script:
-    """
+    &quot;&quot;&quot;
     echo your_command --sample $sampleId --reads $read1 $read2
-    """
-}</code></pre>
+    &quot;&quot;&quot;
+}</pre></td>
+</tr></table></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -879,7 +1095,7 @@ In a real use case prefer absolute file paths.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>nextflow run patterns/process-per-csv-record.nf</code></pre>
+<pre class="CodeRay highlight"><code>nextflow run patterns/process-per-csv-record.nf</code></pre>
 </div>
 </div>
 </div>
@@ -905,7 +1121,28 @@ Then use this channel as input for the downstream process.</p>
 <h4 id="_code_7">2.6.3. Code</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nextflow hljs" data-lang="nextflow">process foo {
+<pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td>
+  <td class="code"><pre>process foo {
   output:
   file '*.txt' into foo_ch
   script:
@@ -920,10 +1157,11 @@ process foo {
   input:
   file x from foo_ch.flatten()
   script:
-  """
+  &quot;&quot;&quot;
   cat $x
-  """
-}</code></pre>
+  &quot;&quot;&quot;
+}</pre></td>
+</tr></table></code></pre>
 </div>
 </div>
 </div>
@@ -934,7 +1172,7 @@ process foo {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>nextflow run patterns/process-per-file-output.nf</code></pre>
+<pre class="CodeRay highlight"><code>nextflow run patterns/process-per-file-output.nf</code></pre>
 </div>
 </div>
 </div>
@@ -964,7 +1202,30 @@ Then use the resulting channel as input input for the process.</p>
 <h4 id="_code_8">3.1.3. Code</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nextflow hljs" data-lang="nextflow">Channel.fromPath('reads/*_1.fq.gz').set { samples_ch }
+<pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td>
+  <td class="code"><pre>Channel.fromPath('reads/*_1.fq.gz').set { samples_ch }
 
 process foo {
   input:
@@ -972,19 +1233,20 @@ process foo {
   output:
   file 'file.fq' into unzipped_ch
   script:
-  """
+  &quot;&quot;&quot;
   &lt; $x zcat &gt; file.fq
-  """
+  &quot;&quot;&quot;
 }
 
 process bar {
   echo true
   input:
   file '*.fq' from unzipped_ch.collect()
-  """
+  &quot;&quot;&quot;
   cat *.fq
-  """
-}</code></pre>
+  &quot;&quot;&quot;
+}</pre></td>
+</tr></table></code></pre>
 </div>
 </div>
 </div>
@@ -995,7 +1257,7 @@ process bar {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>nextflow run patterns/process-collect.nf</code></pre>
+<pre class="CodeRay highlight"><code>nextflow run patterns/process-collect.nf</code></pre>
 </div>
 </div>
 </div>
@@ -1019,7 +1281,28 @@ a key extracted from the file name. Then chain the resulting channel with the <a
 <h4 id="_code_9">3.2.3. Code</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nextflow hljs" data-lang="nextflow">Channel
+<pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td>
+  <td class="code"><pre>Channel
     .fromPath('reads/*')
     .map { file -&gt;
         def key = file.name.toString().tokenize('_').get(0)
@@ -1034,10 +1317,11 @@ process foo {
   set key, file(samples) from groups_ch
 
   script:
-  """
+  &quot;&quot;&quot;
   echo your_command --batch $key --input $samples
-  """
-}</code></pre>
+  &quot;&quot;&quot;
+}</pre></td>
+</tr></table></code></pre>
 </div>
 </div>
 </div>
@@ -1045,7 +1329,7 @@ process foo {
 <h4 id="_run_it_10">3.2.4. Run it</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>nextflow run patterns/process-into-groups.nf</code></pre>
+<pre class="CodeRay highlight"><code>nextflow run patterns/process-into-groups.nf</code></pre>
 </div>
 </div>
 </div>
@@ -1069,7 +1353,25 @@ the output files into a single file.</p>
 <h4 id="_code_10">3.3.3. Code</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nextflow hljs" data-lang="nextflow">Channel.fromPath('reads/*_1.fq.gz').set { samples_ch }
+<pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td>
+  <td class="code"><pre>Channel.fromPath('reads/*_1.fq.gz').set { samples_ch }
 
 process foo {
   input:
@@ -1077,14 +1379,15 @@ process foo {
   output:
   file 'file.fq' into unzipped_ch
   script:
-  """
+  &quot;&quot;&quot;
   &lt; $x zcat &gt; file.fq
-  """
+  &quot;&quot;&quot;
 }
 
 unzipped_ch
       .collectFile()
-      .println{ it.text }</code></pre>
+      .println{ it.text }</pre></td>
+</tr></table></code></pre>
 </div>
 </div>
 </div>
@@ -1095,7 +1398,7 @@ unzipped_ch
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>nextflow run patterns/collect-into-file.nf</code></pre>
+<pre class="CodeRay highlight"><code>nextflow run patterns/collect-into-file.nf</code></pre>
 </div>
 </div>
 </div>
@@ -1124,24 +1427,45 @@ to set a custom directory where the process outputs need to be made available.</
 <h4 id="_code_11">4.1.3. Code</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nextflow hljs" data-lang="nextflow">params.reads = 'reads/*{1,2}.fq.gz'
+<pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td>
+  <td class="code"><pre>params.reads = 'reads/*{1,2}.fq.gz'
 params.outdir = 'my-results'
 
 Channel.fromFilePairs(params.reads).set{ samples_ch }
 
 process foo {
-  publishDir "$params.outdir/$sampleId"
+  publishDir &quot;$params.outdir/$sampleId&quot;
   input:
   set sampleId, file(samples) from samples_ch
   output:
   file '*.fq'
 
   script:
-  """
+  &quot;&quot;&quot;
   &lt; ${samples[0]} zcat &gt; sample_1.fq
   &lt; ${samples[1]} zcat &gt; sample_2.fq
-  """
-}</code></pre>
+  &quot;&quot;&quot;
+}</pre></td>
+</tr></table></code></pre>
 </div>
 </div>
 </div>
@@ -1152,7 +1476,7 @@ process foo {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>nextflow run patterns/publish-process-outputs.nf</code></pre>
+<pre class="CodeRay highlight"><code>nextflow run patterns/publish-process-outputs.nf</code></pre>
 </div>
 </div>
 </div>
@@ -1178,7 +1502,37 @@ using the option <code>pattern</code> to store into each directory only the file
 <h4 id="_code_12">4.2.3. Code</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nextflow hljs" data-lang="nextflow">params.reads = 'reads/*_{1,2}.fq.gz'
+<pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+</pre></td>
+  <td class="code"><pre>params.reads = 'reads/*_{1,2}.fq.gz'
 params.outdir = 'my-results'
 
 Channel
@@ -1186,16 +1540,16 @@ Channel
     .set{ samples_ch }
 
 process foo {
-  publishDir "$params.outdir/$sampleId/counts", pattern: "*_counts.txt"
-  publishDir "$params.outdir/$sampleId/outlooks", pattern: '*_outlook.txt'
-  publishDir "$params.outdir/$sampleId/", pattern: '*.fq'
+  publishDir &quot;$params.outdir/$sampleId/counts&quot;, pattern: &quot;*_counts.txt&quot;
+  publishDir &quot;$params.outdir/$sampleId/outlooks&quot;, pattern: '*_outlook.txt'
+  publishDir &quot;$params.outdir/$sampleId/&quot;, pattern: '*.fq'
 
   input:
     set sampleId, file('sample1.fq.gz'), file('sample2.fq.gz') from samples_ch
   output:
-    file "*"
+    file &quot;*&quot;
   script:
-  """
+  &quot;&quot;&quot;
     &lt; sample1.fq.gz zcat &gt; sample1.fq
     &lt; sample2.fq.gz zcat &gt; sample2.fq
 
@@ -1204,8 +1558,9 @@ process foo {
 
     head -n 50 sample1.fq &gt; sample1_outlook.txt
     head -n 50 sample2.fq &gt; sample2_outlook.txt
-  """
-}</code></pre>
+  &quot;&quot;&quot;
+}</pre></td>
+</tr></table></code></pre>
 </div>
 </div>
 </div>
@@ -1216,7 +1571,7 @@ process foo {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>nextflow run patterns/publish-matching-glob.nf</code></pre>
+<pre class="CodeRay highlight"><code>nextflow run patterns/publish-matching-glob.nf</code></pre>
 </div>
 </div>
 </div>
@@ -1245,8 +1600,21 @@ a custom rule as a <a href="https://www.nextflow.io/docs/latest/script.html#clos
 <h4 id="_code_13">4.3.3. Code</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nextflow hljs" data-lang="nextflow">process foo {
- publishDir 'results', saveAs: { filename -&gt; "foo_$filename" }
+<pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td>
+  <td class="code"><pre>process foo {
+ publishDir 'results', saveAs: { filename -&gt; &quot;foo_$filename&quot; }
 
  output:
  file '*.txt'
@@ -1255,7 +1623,8 @@ a custom rule as a <a href="https://www.nextflow.io/docs/latest/script.html#clos
  touch this.txt
  touch that.txt
  '''
-}</code></pre>
+}</pre></td>
+</tr></table></code></pre>
 </div>
 </div>
 </div>
@@ -1263,7 +1632,7 @@ a custom rule as a <a href="https://www.nextflow.io/docs/latest/script.html#clos
 <h4 id="_run_it_14">4.3.4. Run it</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>nextflow run patterns/publish-rename-outputs.nf</code></pre>
+<pre class="CodeRay highlight"><code>nextflow run patterns/publish-rename-outputs.nf</code></pre>
 </div>
 </div>
 </div>
@@ -1275,8 +1644,21 @@ depending the actual name.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nextflow hljs" data-lang="nextflow">process foo {
- publishDir 'results', saveAs: { filename -&gt; filename.endsWith(".zip") ? "zips/$filename" : filename }
+<pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td>
+  <td class="code"><pre>process foo {
+ publishDir 'results', saveAs: { filename -&gt; filename.endsWith(&quot;.zip&quot;) ? &quot;zips/$filename&quot; : filename }
 
  output:
  file '*'
@@ -1285,7 +1667,8 @@ depending the actual name.</p>
  touch this.txt
  touch that.zip
  '''
-}</code></pre>
+}</pre></td>
+</tr></table></code></pre>
 </div>
 </div>
 <div class="admonitionblock tip">
@@ -1306,7 +1689,7 @@ to store files in a directory outside the <code>publishDir</code> store path.
 <h4 id="_run_it_15">4.3.6. Run it</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>nextflow run patterns/publish-rename-outputs-subdirs.nf</code></pre>
+<pre class="CodeRay highlight"><code>nextflow run patterns/publish-rename-outputs-subdirs.nf</code></pre>
 </div>
 </div>
 </div>
@@ -1338,12 +1721,29 @@ when the command script is enclosed in double quote characters.</p>
 <h4 id="_example">5.1.3. Example</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nextflow hljs" data-lang="nextflow">process foo {
+<pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td>
+  <td class="code"><pre>process foo {
   echo true
   script:
-  """
+  &quot;&quot;&quot;
   echo foo task path: \$PWD
-  """
+  &quot;&quot;&quot;
 }
 
 process bar {
@@ -1352,7 +1752,8 @@ process bar {
   '''
   echo bar task path: $PWD
   '''
-}</code></pre>
+}</pre></td>
+</tr></table></code></pre>
 </div>
 </div>
 </div>
@@ -1395,7 +1796,24 @@ some input files, that prevents the process to be executed:</p>
 <h4 id="_code_14">5.2.3. Code</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nextflow hljs" data-lang="nextflow">process foo {
+<pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td>
+  <td class="code"><pre>process foo {
   errorStrategy 'ignore'
   script:
   '''
@@ -1409,7 +1827,8 @@ process bar {
   '''
   echo OK
   '''
-}</code></pre>
+}</pre></td>
+</tr></table></code></pre>
 </div>
 </div>
 </div>
@@ -1451,7 +1870,33 @@ its execution when the other process completes.</p>
 <h4 id="_code_15">5.3.3. Code</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nextflow hljs" data-lang="nextflow">Channel
+<pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre></td>
+  <td class="code"><pre>Channel
     .fromPath('.data/reads/*.fq.gz')
     .set{ reads_ch }
 
@@ -1460,9 +1905,9 @@ process foo {
     val true into done_ch
 
     script:
-    """
+    &quot;&quot;&quot;
     your_command_here
-    """
+    &quot;&quot;&quot;
 }
 
 process bar {
@@ -1471,10 +1916,11 @@ process bar {
     file fq from reads_ch
 
     script:
-    """
+    &quot;&quot;&quot;
     other_commad_here --reads $fq
-    """
-}</code></pre>
+    &quot;&quot;&quot;
+}</pre></td>
+</tr></table></code></pre>
 </div>
 </div>
 </div>
@@ -1485,7 +1931,7 @@ process bar {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>nextflow run patterns/mock-dependency.nf</code></pre>
+<pre class="CodeRay highlight"><code>nextflow run patterns/mock-dependency.nf</code></pre>
 </div>
 </div>
 </div>
@@ -1521,7 +1967,23 @@ definition.</p>
 <h4 id="_code_16">6.1.3. Code</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nextflow hljs" data-lang="nextflow">Channel
+<pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td>
+  <td class="code"><pre>Channel
     .fromPath('reads/*_1.fq.gz')
     .set { reads_ch }
 
@@ -1531,10 +1993,11 @@ process foo {
     input:
     file reads from reads_ch
 
-    """
+    &quot;&quot;&quot;
     your_command_here --in $reads
-    """
-}</code></pre>
+    &quot;&quot;&quot;
+}</pre></td>
+</tr></table></code></pre>
 </div>
 </div>
 </div>
@@ -1542,7 +2005,7 @@ process foo {
 <h4 id="_run_it_19">6.1.4. Run it</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>nextflow run patterns/conditional-resources.nf</code></pre>
+<pre class="CodeRay highlight"><code>nextflow run patterns/conditional-resources.nf</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1575,7 +2038,45 @@ for the third process.</p>
 <h4 id="_code_17">6.2.3. Code</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nextflow hljs" data-lang="nextflow">params.flag = false
+<pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+</pre></td>
+  <td class="code"><pre>params.flag = false
 
 process foo {
   output:
@@ -1607,10 +2108,11 @@ process omega {
   file x from foo_ch.mix(bar_ch)
 
   script:
-  """
+  &quot;&quot;&quot;
   cat $x
-  """
-}</code></pre>
+  &quot;&quot;&quot;
+}</pre></td>
+</tr></table></code></pre>
 </div>
 </div>
 </div>
@@ -1655,7 +2157,52 @@ for the third process.</p>
 <h4 id="_code_18">6.2.6. Code</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nextflow hljs" data-lang="nextflow">params.flag = false
+<pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+</pre></td>
+  <td class="code"><pre>params.flag = false
 
 (foo_inch, bar_inch) = ( params.flag
                      ? [ Channel.empty(), Channel.from(1,2,3) ]
@@ -1670,9 +2217,9 @@ process foo {
   file 'x.txt' into foo_ch
 
   script:
-  """
+  &quot;&quot;&quot;
   echo $f &gt; x.txt
-  """
+  &quot;&quot;&quot;
 }
 
 process bar {
@@ -1683,9 +2230,9 @@ process bar {
   file 'x.txt' into bar_ch
 
   script:
-  """
+  &quot;&quot;&quot;
   echo $b &gt; x.txt
-  """
+  &quot;&quot;&quot;
 }
 
 process omega {
@@ -1694,10 +2241,11 @@ process omega {
   file x from foo_ch.mix(bar_ch)
 
   script:
-  """
+  &quot;&quot;&quot;
   cat $x
-  """
-}</code></pre>
+  &quot;&quot;&quot;
+}</pre></td>
+</tr></table></code></pre>
 </div>
 </div>
 </div>
@@ -1705,7 +2253,7 @@ process omega {
 <h4 id="_run_it_21">6.2.7. Run it</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>nextflow run patterns/conditional-process2.nf</code></pre>
+<pre class="CodeRay highlight"><code>nextflow run patterns/conditional-process2.nf</code></pre>
 </div>
 </div>
 </div>
@@ -1734,8 +2282,40 @@ of the first process output (when executed) and the input channel.</p>
 <h4 id="_code_19">6.3.3. Code</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nextflow hljs" data-lang="nextflow">params.skip = false
-params.input = "$baseDir/sample.fq.gz"
+<pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td>
+  <td class="code"><pre>params.skip = false
+params.input = &quot;$baseDir/sample.fq.gz&quot;
 
 Channel.fromPath(params.input).set{ input_ch }
 
@@ -1751,19 +2331,20 @@ process foo {
   file('*.fastq') into optional_ch
 
   script:
-  """
+  &quot;&quot;&quot;
   &lt; $x zcat &gt; ${x.simpleName}.fastq
-  """
+  &quot;&quot;&quot;
 }
 
 process bar {
   echo true
   input:
   file x from bar_ch.mix(optional_ch)
-  """
+  &quot;&quot;&quot;
   echo your_command --input $x
-  """
-}</code></pre>
+  &quot;&quot;&quot;
+}</pre></td>
+</tr></table></code></pre>
 </div>
 </div>
 </div>
@@ -1816,7 +2397,40 @@ process output to which is applied the <a href="https://www.nextflow.io/docs/lat
 <h4 id="_code_20">6.4.3. Code</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nextflow hljs" data-lang="nextflow">params.input = 'hello.txt'
+<pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+</pre></td>
+  <td class="code"><pre>params.input = 'hello.txt'
 
 condition = { it.readLines().size()&gt;3 }
 feedback_ch = Channel.create()
@@ -1828,9 +2442,9 @@ process foo {
     output:
     file 'foo.txt' into foo_ch
     script:
-    """
+    &quot;&quot;&quot;
     cat $x &gt; foo.txt
-    """
+    &quot;&quot;&quot;
 }
 
 process bar {
@@ -1840,13 +2454,14 @@ process bar {
     file 'bar.txt' into feedback_ch
     file 'bar.txt' into result_ch
     script:
-    """
+    &quot;&quot;&quot;
     cat $x &gt; bar.txt
     echo World &gt;&gt; bar.txt
-    """
+    &quot;&quot;&quot;
 }
 
-result_ch.last().println { "Result:\n${it.text.indent(' ')}" }</code></pre>
+result_ch.last().println { &quot;Result:\n${it.text.indent(' ')}&quot; }</pre></td>
+</tr></table></code></pre>
 </div>
 </div>
 </div>
@@ -1880,7 +2495,26 @@ result_ch.last().println { "Result:\n${it.text.indent(' ')}" }</code></pre>
 <h4 id="_code_21">6.5.3. Code</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nextflow hljs" data-lang="nextflow">params.inputs = 'prots/*{1,2,3}.fa'
+<pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td>
+  <td class="code"><pre>params.inputs = 'prots/*{1,2,3}.fa'
 params.filter = 'NO_FILE'
 
 prots_ch = Channel.fromPath(params.inputs)
@@ -1892,11 +2526,12 @@ process foo {
   file opt from opt_file
 
   script:
-  def filter = opt.name != 'NO_FILE' ? "--filter $opt" : ''
-  """
+  def filter = opt.name != 'NO_FILE' ? &quot;--filter $opt&quot; : ''
+  &quot;&quot;&quot;
   your_commad --input $seq $filter
-  """
-}</code></pre>
+  &quot;&quot;&quot;
+}</pre></td>
+</tr></table></code></pre>
 </div>
 </div>
 </div>
@@ -1938,7 +2573,18 @@ process foo {
 <h4 id="_code_22">6.6.3. Code</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nextflow hljs" data-lang="nextflow">process foo {
+<pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+  <td class="code"><pre>process foo {
   output:
   file 'foo.txt' optional true into foo_ch
 
@@ -1946,7 +2592,8 @@ process foo {
   '''
   your_command
   '''
-}</code></pre>
+}</pre></td>
+</tr></table></code></pre>
 </div>
 </div>
 </div>
@@ -1981,7 +2628,20 @@ a <em>marker</em> value to trigger the execution of the process.</p>
 <h4 id="_example_2">6.7.3. Example</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nextflow hljs" data-lang="nextflow">process foo {
+<pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td>
+  <td class="code"><pre>process foo {
   input:
   val x from ch.ifEmpty { 'EMPTY' }
   when:
@@ -1991,7 +2651,8 @@ a <em>marker</em> value to trigger the execution of the process.</p>
   '''
   your_command
   '''
-}</code></pre>
+}</pre></td>
+</tr></table></code></pre>
 </div>
 </div>
 </div>
@@ -2029,8 +2690,5 @@ some input files, that prevents the process to be executed:</p>
     ga('create', 'UA-364526-10', 'auto');
     ga('send', 'pageview');
 </script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-<script>hljs.initHighlighting()</script>
 </body>
 </html>

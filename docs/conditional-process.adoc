@@ -16,7 +16,8 @@ for the third process.
 
 == Code 
 
-```nextflow
+[source,nextflow,linenums,options="nowrap"]
+----
 params.flag = false 
 
 process foo {
@@ -53,7 +54,7 @@ process omega {
   cat $x 
   """
 }
-```
+----
 
 == Run it
 
@@ -82,8 +83,8 @@ for the third process.
 
 == Code 
 
-```nextflow
-
+[source,nextflow,linenums,options="nowrap"]
+----
 params.flag = false
 
 (foo_inch, bar_inch) = ( params.flag
@@ -127,7 +128,7 @@ process omega {
   cat $x
   """
 }
-```
+----
 
 == Run it 
 

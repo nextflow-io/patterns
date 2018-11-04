@@ -11,8 +11,8 @@ the output files into a single file.
 
 == Code
 
-```nextflow 
-
+[source,nextflow,linenums,options="nowrap"]
+----
 Channel.fromPath('reads/*_1.fq.gz').set { samples_ch }
 
 process foo {
@@ -29,7 +29,7 @@ process foo {
 unzipped_ch
       .collectFile()
       .println{ it.text }
-```
+----
 
 == Run it
 
