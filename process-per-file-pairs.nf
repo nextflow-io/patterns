@@ -27,18 +27,15 @@
   */
 
 Channel
-  .from(1..23)
-  .map { chr -> tuple("sample$chr", file("/some/path/foo.${chr}.indels.vcf"), file("/other/path/foo.snvs.${chr}.vcf")) }
-  .set { pairs_ch }
-  
-  
+    .fromFilePairs("$baseDir/data/reads/*_{1,2}.fq.gz", checkIfExists:true)
+    .set { samples_ch }
+
 process foo {
-  tag "$sampleId"
-  
-  input: 
-  set sampleId, file(indels), file(snps) from pairs_ch
-  
+  input:
+  set sampleId, file(reads) from samples_ch
+
+  script:
   """
-  echo foo_command --this $indels --that $snps
+  echo your_command --sample $sampleId --reads $reads
   """
-} 
+}
