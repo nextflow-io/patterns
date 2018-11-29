@@ -595,24 +595,24 @@ Feel free to contribute opening a pull request in the GitHub repository at <a hr
 </div>
 </div>
 <div class="sect1">
-<h2 id="_basic_patterns">1. Basic patterns</h2>
+<h2 id="_basic_patterns"><a class="link" href="#_basic_patterns">1. Basic patterns</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_channel_duplication">1.1. Channel duplication</h3>
+<h3 id="_channel_duplication"><a class="link" href="#_channel_duplication">1.1. Channel duplication</a></h3>
 <div class="sect3">
-<h4 id="_problem">1.1.1. Problem</h4>
+<h4 id="_problem"><a class="link" href="#_problem">1.1.1. Problem</a></h4>
 <div class="paragraph">
 <p>You need to you use the same channel as input in two or more processes.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution">1.1.2. Solution</h4>
+<h4 id="_solution"><a class="link" href="#_solution">1.1.2. Solution</a></h4>
 <div class="paragraph">
 <p>Use the <a href="https://www.nextflow.io/docs/latest/operator.html#into">into</a> operator to create two (or more) copies of the source channel. Then, use the new channels as input for the processes.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code">1.1.3. Code</h4>
+<h4 id="_code"><a class="link" href="#_code">1.1.3. Code</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
@@ -660,7 +660,7 @@ process bar {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_run_it">1.1.4. Run it</h4>
+<h4 id="_run_it"><a class="link" href="#_run_it">1.1.4. Run it</a></h4>
 <div class="paragraph">
 <p>Use the the following command to execute the example:</p>
 </div>
@@ -674,24 +674,24 @@ process bar {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_scatter_executions">2. Scatter executions</h2>
+<h2 id="_scatter_executions"><a class="link" href="#_scatter_executions">2. Scatter executions</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_process_per_file_path">2.1. Process per file path</h3>
+<h3 id="_process_per_file_path"><a class="link" href="#_process_per_file_path">2.1. Process per file path</a></h3>
 <div class="sect3">
-<h4 id="_problem_2">2.1.1. Problem</h4>
+<h4 id="_problem_2"><a class="link" href="#_problem_2">2.1.1. Problem</a></h4>
 <div class="paragraph">
 <p>You need to execute a task for each file that matches a glob pattern.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_2">2.1.2. Solution</h4>
+<h4 id="_solution_2"><a class="link" href="#_solution_2">2.1.2. Solution</a></h4>
 <div class="paragraph">
 <p>Use the <a href="https://www.nextflow.io/docs/latest/channel.html#frompath">Channel.fromPath</a> method to create a channel emitting all files matching the glob pattern. Then, use the channel as input of the process implementing your task.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_2">2.1.3. Code</h4>
+<h4 id="_code_2"><a class="link" href="#_code_2">2.1.3. Code</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
@@ -723,7 +723,7 @@ process foo {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_run_it_2">2.1.4. Run it</h4>
+<h4 id="_run_it_2"><a class="link" href="#_run_it_2">2.1.4. Run it</a></h4>
 <div class="paragraph">
 <p>Use the the following command to execute the example:</p>
 </div>
@@ -735,15 +735,15 @@ process foo {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_process_per_file_chunk">2.2. Process per file chunk</h3>
+<h3 id="_process_per_file_chunk"><a class="link" href="#_process_per_file_chunk">2.2. Process per file chunk</a></h3>
 <div class="sect3">
-<h4 id="_problem_3">2.2.1. Problem</h4>
+<h4 id="_problem_3"><a class="link" href="#_problem_3">2.2.1. Problem</a></h4>
 <div class="paragraph">
 <p>You need to split one or more input files into chunks and execute a task for each of them.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_3">2.2.2. Solution</h4>
+<h4 id="_solution_3"><a class="link" href="#_solution_3">2.2.2. Solution</a></h4>
 <div class="paragraph">
 <p>Use the the <a href="https://www.nextflow.io/docs/latest/operator.html#splittext">splitText</a> operator to split a file in chunks of a given size. Then use the resulting channel as input for the process implementing your task.</p>
 </div>
@@ -755,7 +755,7 @@ process foo {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_3">2.2.3. Code</h4>
+<h4 id="_code_3"><a class="link" href="#_code_3">2.2.3. Code</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
@@ -795,7 +795,7 @@ process foo {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_run_it_3">2.2.4. Run it</h4>
+<h4 id="_run_it_3"><a class="link" href="#_run_it_3">2.2.4. Run it</a></h4>
 <div class="paragraph">
 <p>Use the the following command to execute the example:</p>
 </div>
@@ -807,15 +807,15 @@ process foo {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_process_per_file_pairs">2.3. Process per file pairs</h3>
+<h3 id="_process_per_file_pairs"><a class="link" href="#_process_per_file_pairs">2.3. Process per file pairs</a></h3>
 <div class="sect3">
-<h4 id="_problem_4">2.3.1. Problem</h4>
+<h4 id="_problem_4"><a class="link" href="#_problem_4">2.3.1. Problem</a></h4>
 <div class="paragraph">
 <p>You need to process the files into a directory grouping them by pairs.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_4">2.3.2. Solution</h4>
+<h4 id="_solution_4"><a class="link" href="#_solution_4">2.3.2. Solution</a></h4>
 <div class="paragraph">
 <p>Use the <a href="https://www.nextflow.io/docs/latest/channel.html#fromfilepairs">Channel.fromFilePairs</a> method to create a channel emitting the file pairs matching a glob pattern. The pattern must match a common prefix in the paired file names.</p>
 </div>
@@ -824,7 +824,7 @@ process foo {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_4">2.3.3. Code</h4>
+<h4 id="_code_4"><a class="link" href="#_code_4">2.3.3. Code</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
@@ -860,7 +860,7 @@ process foo {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_run_it_4">2.3.4. Run it</h4>
+<h4 id="_run_it_4"><a class="link" href="#_run_it_4">2.3.4. Run it</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>nextflow run patterns/process-per-file-pairs.nf</code></pre>
@@ -868,7 +868,7 @@ process foo {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_custom_grouping_strategy">2.3.5. Custom grouping strategy</h4>
+<h4 id="_custom_grouping_strategy"><a class="link" href="#_custom_grouping_strategy">2.3.5. Custom grouping strategy</a></h4>
 <div class="paragraph">
 <p>When needed it is possible to define a custom grouping strategy. A common use case is for alignment BAM files (<code>sample1.bam</code>) that come along with their index file. The difficulty is that the index is sometimes called <code>sample1.bai</code> and sometimes <code>sample1.bam.bai</code> depending on the software used. The following example can accommodate both cases.</p>
 </div>
@@ -907,7 +907,7 @@ process foo {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_run_it_5">2.3.6. Run it</h4>
+<h4 id="_run_it_5"><a class="link" href="#_run_it_5">2.3.6. Run it</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>nextflow run patterns/process-per-file-pairs-custom.nf</code></pre>
@@ -916,15 +916,15 @@ process foo {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_process_per_file_range">2.4. Process per file range</h3>
+<h3 id="_process_per_file_range"><a class="link" href="#_process_per_file_range">2.4. Process per file range</a></h3>
 <div class="sect3">
-<h4 id="_problem_5">2.4.1. Problem</h4>
+<h4 id="_problem_5"><a class="link" href="#_problem_5">2.4.1. Problem</a></h4>
 <div class="paragraph">
 <p>You need to execute a task over two or more series of files having a common index range.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_5">2.4.2. Solution</h4>
+<h4 id="_solution_5"><a class="link" href="#_solution_5">2.4.2. Solution</a></h4>
 <div class="paragraph">
 <p>Use a the <a href="https://www.nextflow.io/docs/latest/channel.html#from">from</a> method
 define the range over which repeat the task execution,
@@ -933,7 +933,7 @@ to associate the each index the corresponding input files. Finally use the resul
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_5">2.4.3. Code</h4>
+<h4 id="_code_5"><a class="link" href="#_code_5">2.4.3. Code</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
@@ -975,7 +975,7 @@ process foo {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_run_it_6">2.4.4. Run it</h4>
+<h4 id="_run_it_6"><a class="link" href="#_run_it_6">2.4.4. Run it</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>nextflow run patterns/process-per-file-range.nf</code></pre>
@@ -984,22 +984,22 @@ process foo {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_process_per_csv_record">2.5. Process per CSV record</h3>
+<h3 id="_process_per_csv_record"><a class="link" href="#_process_per_csv_record">2.5. Process per CSV record</a></h3>
 <div class="sect3">
-<h4 id="_problem_6">2.5.1. Problem</h4>
+<h4 id="_problem_6"><a class="link" href="#_problem_6">2.5.1. Problem</a></h4>
 <div class="paragraph">
 <p>You need to execute a task for each record in one or more CSV files.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_6">2.5.2. Solution</h4>
+<h4 id="_solution_6"><a class="link" href="#_solution_6">2.5.2. Solution</a></h4>
 <div class="paragraph">
 <p>Read the CSV file line-by-line using the <a href="https://www.nextflow.io/docs/latest/operator.html#splitcsv">sliptCsv</a> operator, then use the <a href="https://www.nextflow.io/docs/latest/operator.html#map">map</a> to return a tuple with the required field for each line and convert any string path to a file path object using the <code>file</code> function.
 Finally use the resulting channel as input for the process.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_6">2.5.3. Code</h4>
+<h4 id="_code_6"><a class="link" href="#_code_6">2.5.3. Code</a></h4>
 <div class="paragraph">
 <p>Given the file <code>index.csv</code> with the following content:</p>
 </div>
@@ -1094,7 +1094,7 @@ In a real use case prefer absolute file paths.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_run_it_7">2.5.4. Run it</h4>
+<h4 id="_run_it_7"><a class="link" href="#_run_it_7">2.5.4. Run it</a></h4>
 <div class="paragraph">
 <p>Use the the following command to execute the example:</p>
 </div>
@@ -1106,16 +1106,16 @@ In a real use case prefer absolute file paths.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_process_per_file_output">2.6. Process per file output</h3>
+<h3 id="_process_per_file_output"><a class="link" href="#_process_per_file_output">2.6. Process per file output</a></h3>
 <div class="sect3">
-<h4 id="_problem_7">2.6.1. Problem</h4>
+<h4 id="_problem_7"><a class="link" href="#_problem_7">2.6.1. Problem</a></h4>
 <div class="paragraph">
 <p>A task in your workflow produces two or more files at time. A downstream task needs to process each
 of these files independently.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_7">2.6.2. Solution</h4>
+<h4 id="_solution_7"><a class="link" href="#_solution_7">2.6.2. Solution</a></h4>
 <div class="paragraph">
 <p>Use the <a href="https://www.nextflow.io/docs/latest/operator.html#flatten">flatten</a> operator to
 transform the outputs of the upstream process to a channel emitting each file separately.
@@ -1123,7 +1123,7 @@ Then use this channel as input for the downstream process.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_7">2.6.3. Code</h4>
+<h4 id="_code_7"><a class="link" href="#_code_7">2.6.3. Code</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
@@ -1171,7 +1171,7 @@ process foo {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_run_it_8">2.6.4. Run it</h4>
+<h4 id="_run_it_8"><a class="link" href="#_run_it_8">2.6.4. Run it</a></h4>
 <div class="paragraph">
 <p>Use the the following command to execute the example:</p>
 </div>
@@ -1185,18 +1185,18 @@ process foo {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_gather_results">3. Gather results</h2>
+<h2 id="_gather_results"><a class="link" href="#_gather_results">3. Gather results</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_process_all_outputs_altogether">3.1. Process all outputs altogether</h3>
+<h3 id="_process_all_outputs_altogether"><a class="link" href="#_process_all_outputs_altogether">3.1. Process all outputs altogether</a></h3>
 <div class="sect3">
-<h4 id="_problem_8">3.1.1. Problem</h4>
+<h4 id="_problem_8"><a class="link" href="#_problem_8">3.1.1. Problem</a></h4>
 <div class="paragraph">
 <p>You need to process all the outputs of an upstream task altogether.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_8">3.1.2. Solution</h4>
+<h4 id="_solution_8"><a class="link" href="#_solution_8">3.1.2. Solution</a></h4>
 <div class="paragraph">
 <p>Use the <a href="https://www.nextflow.io/docs/latest/operator.html#collect">collect</a> operator to gather
 all the outputs produced by the upstream task and emit them as a sole output.
@@ -1204,7 +1204,7 @@ Then use the resulting channel as input input for the process.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_8">3.1.3. Code</h4>
+<h4 id="_code_8"><a class="link" href="#_code_8">3.1.3. Code</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
@@ -1256,7 +1256,7 @@ process bar {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_run_it_9">3.1.4. Run it</h4>
+<h4 id="_run_it_9"><a class="link" href="#_run_it_9">3.1.4. Run it</a></h4>
 <div class="paragraph">
 <p>Use the the following command to execute the example:</p>
 </div>
@@ -1268,22 +1268,22 @@ process bar {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_process_outputs_into_groups">3.2. Process outputs into groups</h3>
+<h3 id="_process_outputs_into_groups"><a class="link" href="#_process_outputs_into_groups">3.2. Process outputs into groups</a></h3>
 <div class="sect3">
-<h4 id="_problem_9">3.2.1. Problem</h4>
+<h4 id="_problem_9"><a class="link" href="#_problem_9">3.2.1. Problem</a></h4>
 <div class="paragraph">
 <p>You need to process in the same batch all files that have a matching key in the file name.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_9">3.2.2. Solution</h4>
+<h4 id="_solution_9"><a class="link" href="#_solution_9">3.2.2. Solution</a></h4>
 <div class="paragraph">
 <p>Use the <a href="https://www.nextflow.io/docs/latest/operator.html#map">map</a> operator to associate with each file
 a key extracted from the file name. Then chain the resulting channel with the <a href="https://www.nextflow.io/docs/latest/operator.html#grouptuple">groupTuple</a> operator to group together all files that have a matching key. Finally use the resulting channel as input for the process.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_9">3.2.3. Code</h4>
+<h4 id="_code_9"><a class="link" href="#_code_9">3.2.3. Code</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
@@ -1331,7 +1331,7 @@ process foo {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_run_it_10">3.2.4. Run it</h4>
+<h4 id="_run_it_10"><a class="link" href="#_run_it_10">3.2.4. Run it</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>nextflow run patterns/process-into-groups.nf</code></pre>
@@ -1340,22 +1340,22 @@ process foo {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_collect_outputs_into_a_file">3.3. Collect outputs into a file</h3>
+<h3 id="_collect_outputs_into_a_file"><a class="link" href="#_collect_outputs_into_a_file">3.3. Collect outputs into a file</a></h3>
 <div class="sect3">
-<h4 id="_problem_10">3.3.1. Problem</h4>
+<h4 id="_problem_10"><a class="link" href="#_problem_10">3.3.1. Problem</a></h4>
 <div class="paragraph">
 <p>You need to concatenate into a single file all output files produced by an upstream process.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_10">3.3.2. Solution</h4>
+<h4 id="_solution_10"><a class="link" href="#_solution_10">3.3.2. Solution</a></h4>
 <div class="paragraph">
 <p>Use the <a href="https://www.nextflow.io/docs/latest/operator.html#collectfile">collectFile</a> operator to merge all
 the output files into a single file.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_10">3.3.3. Code</h4>
+<h4 id="_code_10"><a class="link" href="#_code_10">3.3.3. Code</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
@@ -1397,7 +1397,7 @@ unzipped_ch
 </div>
 </div>
 <div class="sect3">
-<h4 id="_run_it_11">3.3.4. Run it</h4>
+<h4 id="_run_it_11"><a class="link" href="#_run_it_11">3.3.4. Run it</a></h4>
 <div class="paragraph">
 <p>Use the the following command to execute the example:</p>
 </div>
@@ -1411,25 +1411,25 @@ unzipped_ch
 </div>
 </div>
 <div class="sect1">
-<h2 id="_organize_outputs">4. Organize outputs</h2>
+<h2 id="_organize_outputs"><a class="link" href="#_organize_outputs">4. Organize outputs</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_store_process_outputs">4.1. Store process outputs</h3>
+<h3 id="_store_process_outputs"><a class="link" href="#_store_process_outputs">4.1. Store process outputs</a></h3>
 <div class="sect3">
-<h4 id="_problem_11">4.1.1. Problem</h4>
+<h4 id="_problem_11"><a class="link" href="#_problem_11">4.1.1. Problem</a></h4>
 <div class="paragraph">
 <p>You need to store the outputs of one or more processes into a directory structure of your choice.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_11">4.1.2. Solution</h4>
+<h4 id="_solution_11"><a class="link" href="#_solution_11">4.1.2. Solution</a></h4>
 <div class="paragraph">
 <p>Use the <a href="https://www.nextflow.io/docs/latest/process.html#publishdir">publishDir</a> directive
 to set a custom directory where the process outputs need to be made available.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_11">4.1.3. Code</h4>
+<h4 id="_code_11"><a class="link" href="#_code_11">4.1.3. Code</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
@@ -1475,7 +1475,7 @@ process foo {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_run_it_12">4.1.4. Run it</h4>
+<h4 id="_run_it_12"><a class="link" href="#_run_it_12">4.1.4. Run it</a></h4>
 <div class="paragraph">
 <p>Run the script with the following command:</p>
 </div>
@@ -1487,16 +1487,16 @@ process foo {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_store_outputs_matching_a_glob_pattern">4.2. Store outputs matching a glob pattern</h3>
+<h3 id="_store_outputs_matching_a_glob_pattern"><a class="link" href="#_store_outputs_matching_a_glob_pattern">4.2. Store outputs matching a glob pattern</a></h3>
 <div class="sect3">
-<h4 id="_problem_12">4.2.1. Problem</h4>
+<h4 id="_problem_12"><a class="link" href="#_problem_12">4.2.1. Problem</a></h4>
 <div class="paragraph">
 <p>A task in your workflow creates many output files that are required by a downstream task.
 You want to store some of those files into separate directories depending the file name.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_12">4.2.2. Solution</h4>
+<h4 id="_solution_12"><a class="link" href="#_solution_12">4.2.2. Solution</a></h4>
 <div class="paragraph">
 <p>Use two or more <a href="https://www.nextflow.io/docs/latest/process.html#publishdir">publishDir</a> directives
 to store the output files into separate storing paths. For each directive specify a different glob string
@@ -1504,7 +1504,7 @@ using the option <code>pattern</code> to store into each directory only the file
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_12">4.2.3. Code</h4>
+<h4 id="_code_12"><a class="link" href="#_code_12">4.2.3. Code</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
@@ -1570,7 +1570,7 @@ process foo {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_run_it_13">4.2.4. Run it</h4>
+<h4 id="_run_it_13"><a class="link" href="#_run_it_13">4.2.4. Run it</a></h4>
 <div class="paragraph">
 <p>Run the script with the following command:</p>
 </div>
@@ -1582,16 +1582,16 @@ process foo {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_rename_process_outputs">4.3. Rename process outputs</h3>
+<h3 id="_rename_process_outputs"><a class="link" href="#_rename_process_outputs">4.3. Rename process outputs</a></h3>
 <div class="sect3">
-<h4 id="_problem_13">4.3.1. Problem</h4>
+<h4 id="_problem_13"><a class="link" href="#_problem_13">4.3.1. Problem</a></h4>
 <div class="paragraph">
 <p>You need to store the outputs of a process to a directory
 giving files a name of your choice.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_13">4.3.2. Solution</h4>
+<h4 id="_solution_13"><a class="link" href="#_solution_13">4.3.2. Solution</a></h4>
 <div class="paragraph">
 <p>The <a href="https://www.nextflow.io/docs/latest/process.html#publishdir">publishDir</a>
 allows you to store the process outputs in a directory of your choice.</p>
@@ -1602,7 +1602,7 @@ a custom rule as a <a href="https://www.nextflow.io/docs/latest/script.html#clos
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_13">4.3.3. Code</h4>
+<h4 id="_code_13"><a class="link" href="#_code_13">4.3.3. Code</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
@@ -1634,7 +1634,7 @@ a custom rule as a <a href="https://www.nextflow.io/docs/latest/script.html#clos
 </div>
 </div>
 <div class="sect3">
-<h4 id="_run_it_14">4.3.4. Run it</h4>
+<h4 id="_run_it_14"><a class="link" href="#_run_it_14">4.3.4. Run it</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>nextflow run patterns/publish-rename-outputs.nf</code></pre>
@@ -1642,7 +1642,7 @@ a custom rule as a <a href="https://www.nextflow.io/docs/latest/script.html#clos
 </div>
 </div>
 <div class="sect3">
-<h4 id="_save_outputs_in_a_sub_directory">4.3.5. Save outputs in a sub-directory</h4>
+<h4 id="_save_outputs_in_a_sub_directory"><a class="link" href="#_save_outputs_in_a_sub_directory">4.3.5. Save outputs in a sub-directory</a></h4>
 <div class="paragraph">
 <p>The same pattern can be used to store specific files in separate directories
 depending the actual name.</p>
@@ -1691,7 +1691,7 @@ to store files in a directory outside the <code>publishDir</code> store path.
 </div>
 </div>
 <div class="sect3">
-<h4 id="_run_it_15">4.3.6. Run it</h4>
+<h4 id="_run_it_15"><a class="link" href="#_run_it_15">4.3.6. Run it</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>nextflow run patterns/publish-rename-outputs-subdirs.nf</code></pre>
@@ -1702,18 +1702,18 @@ to store files in a directory outside the <code>publishDir</code> store path.
 </div>
 </div>
 <div class="sect1">
-<h2 id="_other">5. Other</h2>
+<h2 id="_other"><a class="link" href="#_other">5. Other</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_get_process_work_directory">5.1. Get process work directory</h3>
+<h3 id="_get_process_work_directory"><a class="link" href="#_get_process_work_directory">5.1. Get process work directory</a></h3>
 <div class="sect3">
-<h4 id="_problem_14">5.1.1. Problem</h4>
+<h4 id="_problem_14"><a class="link" href="#_problem_14">5.1.1. Problem</a></h4>
 <div class="paragraph">
 <p>A tool need the explicit path of the current task work directory.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_14">5.1.2. Solution</h4>
+<h4 id="_solution_14"><a class="link" href="#_solution_14">5.1.2. Solution</a></h4>
 <div class="paragraph">
 <p>Use the <code>$PWD</code> Bash variable or the <code>pwd</code> command to retrieve the task working directory path.</p>
 </div>
@@ -1723,7 +1723,7 @@ when the command script is enclosed in double quote characters.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_example">5.1.3. Example</h4>
+<h4 id="_example"><a class="link" href="#_example">5.1.3. Example</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
@@ -1763,7 +1763,7 @@ process bar {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_run_it_16">5.1.4. Run it</h4>
+<h4 id="_run_it_16"><a class="link" href="#_run_it_16">5.1.4. Run it</a></h4>
 <div class="paragraph">
 <p>The command run the script with an empty channel:</p>
 </div>
@@ -1784,21 +1784,21 @@ some input files, that prevents the process to be executed:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_ignore_failing_process">5.2. Ignore failing process</h3>
+<h3 id="_ignore_failing_process"><a class="link" href="#_ignore_failing_process">5.2. Ignore failing process</a></h3>
 <div class="sect3">
-<h4 id="_problem_15">5.2.1. Problem</h4>
+<h4 id="_problem_15"><a class="link" href="#_problem_15">5.2.1. Problem</a></h4>
 <div class="paragraph">
 <p>A task is expected to fail in a certain condition. You want to ignore the failure and continue the execution of the remaining tasks in the workflow.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_15">5.2.2. Solution</h4>
+<h4 id="_solution_15"><a class="link" href="#_solution_15">5.2.2. Solution</a></h4>
 <div class="paragraph">
 <p>Use the process <a href="https://www.nextflow.io/docs/latest/process.html#errorstrategy">directive</a> <code>errorStrategy 'ignore'</code> to ignore the error condition.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_14">5.2.3. Code</h4>
+<h4 id="_code_14"><a class="link" href="#_code_14">5.2.3. Code</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
@@ -1838,7 +1838,7 @@ process bar {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_run_it_17">5.2.4. Run it</h4>
+<h4 id="_run_it_17"><a class="link" href="#_run_it_17">5.2.4. Run it</a></h4>
 <div class="paragraph">
 <p>Run the script with the following command:</p>
 </div>
@@ -1850,9 +1850,9 @@ process bar {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_mock_dependency">5.3. Mock dependency</h3>
+<h3 id="_mock_dependency"><a class="link" href="#_mock_dependency">5.3. Mock dependency</a></h3>
 <div class="sect3">
-<h4 id="_problem_16">5.3.1. Problem</h4>
+<h4 id="_problem_16"><a class="link" href="#_problem_16">5.3.1. Problem</a></h4>
 <div class="paragraph">
 <p>You need to synchronize the execution of two processes
 for which there isn&#8217;t a direct input-output relationship,
@@ -1861,7 +1861,7 @@ completion of process <code>foo</code>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_16">5.3.2. Solution</h4>
+<h4 id="_solution_16"><a class="link" href="#_solution_16">5.3.2. Solution</a></h4>
 <div class="paragraph">
 <p>Add to the outputs of process <code>foo</code> a channel producing
 a <em>flag</em> value.</p>
@@ -1872,7 +1872,7 @@ its execution when the other process completes.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_15">5.3.3. Code</h4>
+<h4 id="_code_15"><a class="link" href="#_code_15">5.3.3. Code</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
@@ -1930,7 +1930,7 @@ process bar {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_run_it_18">5.3.4. Run it</h4>
+<h4 id="_run_it_18"><a class="link" href="#_run_it_18">5.3.4. Run it</a></h4>
 <div class="paragraph">
 <p>Run the example using this command:</p>
 </div>
@@ -1944,12 +1944,12 @@ process bar {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_advanced_patterns">6. Advanced patterns</h2>
+<h2 id="_advanced_patterns"><a class="link" href="#_advanced_patterns">6. Advanced patterns</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_conditional_resources_definition">6.1. Conditional resources definition</h3>
+<h3 id="_conditional_resources_definition"><a class="link" href="#_conditional_resources_definition">6.1. Conditional resources definition</a></h3>
 <div class="sect3">
-<h4 id="_problem_17">6.1.1. Problem</h4>
+<h4 id="_problem_17"><a class="link" href="#_problem_17">6.1.1. Problem</a></h4>
 <div class="paragraph">
 <p>A task in your workflow requires to use an amount of computing
 resources eg. memory that depends on the size or the name of one
@@ -1957,7 +1957,7 @@ or more input files.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_17">6.1.2. Solution</h4>
+<h4 id="_solution_17"><a class="link" href="#_solution_17">6.1.2. Solution</a></h4>
 <div class="paragraph">
 <p>Declare the resource requirements e.g. <code>memory</code>, <code>cpus</code>, etc.
 in a dynamic manner using a closure.</p>
@@ -1969,7 +1969,7 @@ definition.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_16">6.1.3. Code</h4>
+<h4 id="_code_16"><a class="link" href="#_code_16">6.1.3. Code</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
@@ -2007,7 +2007,7 @@ process foo {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_run_it_19">6.1.4. Run it</h4>
+<h4 id="_run_it_19"><a class="link" href="#_run_it_19">6.1.4. Run it</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>nextflow run patterns/conditional-resources.nf</code></pre>
@@ -2019,16 +2019,16 @@ process foo {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_conditional_process_executions">6.2. Conditional process executions</h3>
+<h3 id="_conditional_process_executions"><a class="link" href="#_conditional_process_executions">6.2. Conditional process executions</a></h3>
 <div class="sect3">
-<h4 id="_problem_18">6.2.1. Problem</h4>
+<h4 id="_problem_18"><a class="link" href="#_problem_18">6.2.1. Problem</a></h4>
 <div class="paragraph">
 <p>Two different tasks need to be executed in a mutually exclusive manner,
 then a third task should post-process the results of the previous execution.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_18">6.2.2. Solution</h4>
+<h4 id="_solution_18"><a class="link" href="#_solution_18">6.2.2. Solution</a></h4>
 <div class="paragraph">
 <p>Use a <a href="https://www.nextflow.io/docs/latest/process.html#when">when</a> statement to conditionally
 execute two different processes. Each process declares its own output channel.</p>
@@ -2040,7 +2040,7 @@ for the third process.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_17">6.2.3. Code</h4>
+<h4 id="_code_17"><a class="link" href="#_code_17">6.2.3. Code</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
@@ -2122,7 +2122,7 @@ process omega {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_run_it_20">6.2.4. Run it</h4>
+<h4 id="_run_it_20"><a class="link" href="#_run_it_20">6.2.4. Run it</a></h4>
 <div class="paragraph">
 <p>Use the the following command to execute the example:</p>
 </div>
@@ -2145,7 +2145,7 @@ with the <code>--flag</code> command line option.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_alternative_solution">6.2.5. Alternative solution</h4>
+<h4 id="_alternative_solution"><a class="link" href="#_alternative_solution">6.2.5. Alternative solution</a></h4>
 <div class="paragraph">
 <p>Conditionally create the input channels normally (with data) or as
 <a href="https://www.nextflow.io/docs/latest/channel.html#empty">empty</a> channels.
@@ -2159,7 +2159,7 @@ for the third process.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_18">6.2.6. Code</h4>
+<h4 id="_code_18"><a class="link" href="#_code_18">6.2.6. Code</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
@@ -2255,7 +2255,7 @@ process omega {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_run_it_21">6.2.7. Run it</h4>
+<h4 id="_run_it_21"><a class="link" href="#_run_it_21">6.2.7. Run it</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>nextflow run patterns/conditional-process2.nf</code></pre>
@@ -2264,16 +2264,16 @@ process omega {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_skip_process_execution">6.3. Skip process execution</h3>
+<h3 id="_skip_process_execution"><a class="link" href="#_skip_process_execution">6.3. Skip process execution</a></h3>
 <div class="sect3">
-<h4 id="_problem_19">6.3.1. Problem</h4>
+<h4 id="_problem_19"><a class="link" href="#_problem_19">6.3.1. Problem</a></h4>
 <div class="paragraph">
 <p>You have two sequential tasks in your workflow. When an optional flag is specified
 the first task should not be executed and its input(s) is processed by the second task.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_19">6.3.2. Solution</h4>
+<h4 id="_solution_19"><a class="link" href="#_solution_19">6.3.2. Solution</a></h4>
 <div class="paragraph">
 <p>Use an empty channel, created in a conditional expression, to skip the
 first process execution when an optional parameter is specified.</p>
@@ -2284,7 +2284,7 @@ of the first process output (when executed) and the input channel.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_19">6.3.3. Code</h4>
+<h4 id="_code_19"><a class="link" href="#_code_19">6.3.3. Code</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
@@ -2354,7 +2354,7 @@ process bar {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_run_it_22">6.3.4. Run it</h4>
+<h4 id="_run_it_22"><a class="link" href="#_run_it_22">6.3.4. Run it</a></h4>
 <div class="paragraph">
 <p>Use the the following command to execute the example:</p>
 </div>
@@ -2378,15 +2378,15 @@ with the <code>--skip</code> command line option.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_feedback_loop">6.4. Feedback loop</h3>
+<h3 id="_feedback_loop"><a class="link" href="#_feedback_loop">6.4. Feedback loop</a></h3>
 <div class="sect3">
-<h4 id="_problem_20">6.4.1. Problem</h4>
+<h4 id="_problem_20"><a class="link" href="#_problem_20">6.4.1. Problem</a></h4>
 <div class="paragraph">
 <p>You need to repeat the execution of one or more tasks, using the output as the input for a new iteration, until a certain condition is reached.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_20">6.4.2. Solution</h4>
+<h4 id="_solution_20"><a class="link" href="#_solution_20">6.4.2. Solution</a></h4>
 <div class="paragraph">
 <p>Use the output of the last process in the iteration loop as the input for the first process.</p>
 </div>
@@ -2399,7 +2399,7 @@ process output to which is applied the <a href="https://www.nextflow.io/docs/lat
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_20">6.4.3. Code</h4>
+<h4 id="_code_20"><a class="link" href="#_code_20">6.4.3. Code</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
@@ -2471,7 +2471,7 @@ result_ch.last().println { &quot;Result:\n${it.text.indent(' ')}&quot; }</pre></
 </div>
 </div>
 <div class="sect3">
-<h4 id="_run_it_23">6.4.4. Run it</h4>
+<h4 id="_run_it_23"><a class="link" href="#_run_it_23">6.4.4. Run it</a></h4>
 <div class="paragraph">
 <p>Use the the following command to execute the example:</p>
 </div>
@@ -2483,21 +2483,21 @@ result_ch.last().println { &quot;Result:\n${it.text.indent(' ')}&quot; }</pre></
 </div>
 </div>
 <div class="sect2">
-<h3 id="_optional_input">6.5. Optional input</h3>
+<h3 id="_optional_input"><a class="link" href="#_optional_input">6.5. Optional input</a></h3>
 <div class="sect3">
-<h4 id="_problem_21">6.5.1. Problem</h4>
+<h4 id="_problem_21"><a class="link" href="#_problem_21">6.5.1. Problem</a></h4>
 <div class="paragraph">
 <p>One or more processes have an optional input file.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_21">6.5.2. Solution</h4>
+<h4 id="_solution_21"><a class="link" href="#_solution_21">6.5.2. Solution</a></h4>
 <div class="paragraph">
 <p>Use a special file name to mark the absence of the file parameter.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_21">6.5.3. Code</h4>
+<h4 id="_code_21"><a class="link" href="#_code_21">6.5.3. Code</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
@@ -2541,7 +2541,7 @@ process foo {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_run_it_24">6.5.4. Run it</h4>
+<h4 id="_run_it_24"><a class="link" href="#_run_it_24">6.5.4. Run it</a></h4>
 <div class="paragraph">
 <p>Run the script with the following command:</p>
 </div>
@@ -2561,21 +2561,21 @@ process foo {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_optional_output">6.6. Optional output</h3>
+<h3 id="_optional_output"><a class="link" href="#_optional_output">6.6. Optional output</a></h3>
 <div class="sect3">
-<h4 id="_problem_22">6.6.1. Problem</h4>
+<h4 id="_problem_22"><a class="link" href="#_problem_22">6.6.1. Problem</a></h4>
 <div class="paragraph">
 <p>A task in your workflow is expected to not create an output file in some circumstances.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_22">6.6.2. Solution</h4>
+<h4 id="_solution_22"><a class="link" href="#_solution_22">6.6.2. Solution</a></h4>
 <div class="paragraph">
 <p>Declare such output as an <code>optional</code> file.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_22">6.6.3. Code</h4>
+<h4 id="_code_22"><a class="link" href="#_code_22">6.6.3. Code</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
@@ -2603,7 +2603,7 @@ process foo {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_run_it_25">6.6.4. Run it</h4>
+<h4 id="_run_it_25"><a class="link" href="#_run_it_25">6.6.4. Run it</a></h4>
 <div class="paragraph">
 <p>Use the the following command to execute the example:</p>
 </div>
@@ -2615,22 +2615,22 @@ process foo {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_execute_when_empty">6.7. Execute when empty</h3>
+<h3 id="_execute_when_empty"><a class="link" href="#_execute_when_empty">6.7. Execute when empty</a></h3>
 <div class="sect3">
-<h4 id="_problem_23">6.7.1. Problem</h4>
+<h4 id="_problem_23"><a class="link" href="#_problem_23">6.7.1. Problem</a></h4>
 <div class="paragraph">
 <p>You need to execute a process if a channel is empty.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_23">6.7.2. Solution</h4>
+<h4 id="_solution_23"><a class="link" href="#_solution_23">6.7.2. Solution</a></h4>
 <div class="paragraph">
 <p>Use the <a href="https://www.nextflow.io/docs/latest/operator.html#ifempty">ifEmpty</a> operator to emit
 a <em>marker</em> value to trigger the execution of the process.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_example_2">6.7.3. Example</h4>
+<h4 id="_example_2"><a class="link" href="#_example_2">6.7.3. Example</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="nextflow"><table class="CodeRay"><tr>
@@ -2662,7 +2662,7 @@ a <em>marker</em> value to trigger the execution of the process.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_run_it_26">6.7.4. Run it</h4>
+<h4 id="_run_it_26"><a class="link" href="#_run_it_26">6.7.4. Run it</a></h4>
 <div class="paragraph">
 <p>The command run the script with an empty channel:</p>
 </div>
