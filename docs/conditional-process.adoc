@@ -65,7 +65,7 @@ Use the the following command to execute the example:
 The processes `foo` and `omega` are executed. Run the same command 
 with the `--flag` command line option. 
 
-    nextflow run patterns/conditional-process.nf --foo 
+    nextflow run patterns/conditional-process.nf --flag 
 
 This time the processes `bar` and `omega` are executed.
 
