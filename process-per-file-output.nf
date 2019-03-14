@@ -38,7 +38,7 @@ process foo {
   ''' 
 }
 
-process foo {
+process bar {
   echo true
   input: 
   file x from foo_ch.flatten()
