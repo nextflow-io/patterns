@@ -1158,7 +1158,7 @@ Then use this channel as input for the downstream process.</p>
   '''
 }
 
-process foo {
+process bar {
   input:
   file x from foo_ch.flatten()
   script:
@@ -2137,7 +2137,7 @@ with the <code>--flag</code> command line option.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>nextflow run patterns/conditional-process.nf --foo</pre>
+<pre>nextflow run patterns/conditional-process.nf --flag</pre>
 </div>
 </div>
 <div class="paragraph">
