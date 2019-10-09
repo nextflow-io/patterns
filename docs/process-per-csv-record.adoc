@@ -6,7 +6,7 @@ You need to execute a task for each record in one or more CSV files.
 
 == Solution 
 
-Read the CSV file line-by-line using the https://www.nextflow.io/docs/latest/operator.html#splitcsv[splitCsv] operator, then use the https://www.nextflow.io/docs/latest/operator.html#map[map] to return a tuple with the required field for each line and convert any string path to a file path object using the `file` function. 
+Read the CSV file line-by-line using the https://www.nextflow.io/docs/latest/operator.html#splitcsv[splitCsv] operator, then use the https://www.nextflow.io/docs/latest/operator.html#map[map] operator to return a tuple with the required field for each line and convert any string path to a file path object using the `file` function.
 Finally use the resulting channel as input for the process. 
 
 == Code
