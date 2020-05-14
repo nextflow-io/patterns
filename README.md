@@ -42,3 +42,4 @@ A curated collections of Nextflow implementation patterns
 * [Optional input](docs/optional-input.adoc)
 * [Optional output](docs/optional-output.adoc)
 * [Process when empty](docs/process-when-empty.adoc)
+* [Process when another process fails](docs/process-when-another-process-fails.adoc)

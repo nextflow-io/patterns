@@ -1,0 +1,104 @@
+= Execute when another process fails 
+
+== Problem 
+
+You need to execute a process if another process fails. 
+
+== Solution 
+
+Use the https://www.nextflow.io/docs/latest/process.html#output-env[env] qualifier
+to capture the exit status of the process. `set +e` prevents the script from exiting
+immediately if the command exits with a non-zero status.
+
+== Example 
+
+[source,nextflow,linenums,options="nowrap"]
+----
+process foo {
+
+  output:
+  env PROCESS_FOO_FAILED into process_foo_failed
+  
+  script:
+  """
+  set +e
+  PROCESS_FOO_FAILED=0
+  trap 'PROCESS_FOO_FAILED=1' ERR
+  cat thisfiledoesnotexist.txt
+  """
+}  
+
+process bar {
+  input: 
+  val x from process_foo_failed
+  
+  when:
+  x=="1"
+
+  script:
+  """
+  echo $x
+  """
+}
+----
+
+== Run it 
+
+Use the the following command to execute the example:
+
+```
+nextflow run patterns/process-when-another-process-fails.nf
+```
+
+== Dynamic computing resources
+
+Use `set +e` only for the last task attempt if the process `foo` implements
+dynamic directives to control the computing resources requested in case of 
+a process failure.
+
+== Code 
+
+[source,nextflow,linenums,options="nowrap"]
+----
+process foo {
+
+  memory { 1.GB * task.attempt }
+  maxRetries 2
+  errorStrategy 'retry'
+
+  output:
+  env PROCESS_FOO_FAILED into process_foo_failed
+  
+  script:
+  """
+  if [ ${task.attempt} = ${task.maxRetries + 1 } ]; then
+    set +e
+  fi
+
+  PROCESS_FOO_FAILED=0
+  trap 'PROCESS_FOO_FAILED=1' ERR
+  cat thisfiledoesnotexist.txt
+  """
+}  
+
+process bar {
+  input: 
+  val x from process_foo_failed
+  
+  when:
+  x=="1"
+
+  script:
+  """
+  echo $x
+  """
+}
+----
+
+== Run it 
+
+Use the the following command to execute the example:
+
+```
+nextflow run patterns/process-when-another-process-fails2.nf
+```
