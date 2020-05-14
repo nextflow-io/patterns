@@ -60,5 +60,6 @@ include::feedback-loop.adoc[]
 include::optional-input.adoc[]
 include::optional-output.adoc[]
 include::process-when-empty.adoc[]
+include::process-when-another-process-fails.adoc[]
 :leveloffset: -2
 
