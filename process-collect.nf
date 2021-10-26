@@ -42,7 +42,7 @@ process foo {
 process bar {
   echo true   
   input:
-  file '*.fq' from unzipped_ch.collect()
+  file '?.fq' from unzipped_ch.collect()
   """
   cat *.fq | head -n 50
   """
