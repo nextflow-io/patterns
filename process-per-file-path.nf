@@ -28,15 +28,18 @@
 
 params.inputs = "$baseDir/data/reads/*_1.fq.gz"
 
-Channel.fromPath(params.inputs, checkIfExists: true).set{ samples_ch }
-
 process foo {
   echo true
   input:
-  file x from samples_ch
-  
+  path x
+
   script:
   """
   echo your_command --input $x
   """
+}
+
+workflow {
+  Channel.fromPath(params.inputs, checkIfExists: true) \
+    | foo
 }

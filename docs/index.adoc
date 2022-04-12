@@ -48,7 +48,7 @@ include::publish-rename-outputs.adoc[]
 :leveloffset: +2
 include::process-get-workdir.adoc[]
 include::ignore-failing-process.adoc[]
-include::mock-dependency.adoc[]
+include::state-dependency.adoc[]
 :leveloffset: -2
 
 == Advanced patterns

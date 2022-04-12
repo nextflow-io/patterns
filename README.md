@@ -1,6 +1,6 @@
 # Nextflow Patterns
 
-A curated collections of Nextflow implementation patterns  
+A curated collection of Nextflow implementation patterns  
 
 [![Build Status](https://travis-ci.org/nextflow-io/patterns.svg?branch=master)](https://travis-ci.org/nextflow-io/patterns)
 
@@ -30,11 +30,13 @@ A curated collections of Nextflow implementation patterns
 * [Store outputs renaming files](docs/publish-rename-outputs.adoc)
 
 ## Other
+
 * [Get process work directory](docs/process-get-workdir.adoc)
 * [Ignore failing process](docs/ignore-failing-process.adoc)
-* [Mock dependency](docs/mock-dependency.adoc)
+* [State dependency](docs/state-dependency.adoc)
 
 ## Advanced patterns
+
 * [Conditional process resources](docs/conditional-resources.adoc)
 * [Conditional process executions](docs/conditional-process.adoc)
 * [Skip process execution](docs/skip-process-execution.adoc)

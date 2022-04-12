@@ -26,18 +26,19 @@
   * author Paolo Di Tommaso <paolo.ditommaso@gmail.com> 
   */
   
-Channel
-    .fromPath("$baseDir/data/reads/*_1.fq.gz", checkIfExists:true)
-    .set { reads_ch }
-
 
 process foo {
     memory { reads.size() < 70.KB ? 1.GB : 5.GB }
 
     input:
-    file reads from reads_ch 
+    path reads
 
     """
-    echo your_command_here --in $reads --mem=$task.memory.giga
+    echo your_command_here --in ${reads} --mem=${task.memory.giga}
     """
+}
+
+workflow {
+    Channel.fromPath("$baseDir/data/reads/*_1.fq.gz", checkIfExists:true) \
+        | foo
 }

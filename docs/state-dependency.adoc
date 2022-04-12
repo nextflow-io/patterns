@@ -1,4 +1,4 @@
-= Mock dependency
+= State dependency
 
 == Problem 
 
@@ -50,5 +50,5 @@ process bar {
 Run the example using this command:
 
 ```
-nextflow run patterns/mock-dependency.nf
+nextflow run patterns/state-dependency.nf
 ```

@@ -26,18 +26,20 @@
   * author Matthieu Foll <follm@iarc.fr> 
   */
 
-Channel
-    .fromFilePairs("$baseDir/data/alignment/*.{bam,bai}", checkIfExists:true) { file -> file.name.replaceAll(/.bam|.bai$/,'') }
-    .set { samples_ch }
-
 process foo {
+  echo true
   tag "$sampleId"
   
   input:
-  set sampleId, file(bam) from samples_ch
+  tuple val(sampleId), file(bam)
 
   script:
   """
-  echo your_command --sample $sampleId --bam ${sampleId}.bam
+  echo your_command --sample ${sampleId} --bam ${sampleId}.bam
   """
+}
+
+workflow {
+  Channel.fromFilePairs("$baseDir/data/alignment/*.{bam,bai}", checkIfExists:true) { file -> file.name.replaceAll(/.bam|.bai$/,'') } \
+    | foo
 }

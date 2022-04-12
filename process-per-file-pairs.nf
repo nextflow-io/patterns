@@ -26,16 +26,19 @@
   * author Paolo Di Tommaso <paolo.ditommaso@gmail.com> 
   */
 
-Channel
-    .fromFilePairs("$baseDir/data/reads/*_{1,2}.fq.gz", checkIfExists:true)
-    .set { samples_ch }
-
 process foo {
+  echo true
+
   input:
-  set sampleId, file(reads) from samples_ch
+  tuple val(sampleId), file(reads)
 
   script:
   """
   echo your_command --sample $sampleId --reads $reads
   """
+}
+
+workflow {
+  Channel.fromFilePairs("$baseDir/data/reads/*_{1,2}.fq.gz", checkIfExists:true) \
+    | foo
 }

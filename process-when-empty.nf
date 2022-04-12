@@ -28,12 +28,10 @@
 
 params.inputs = ''
 
-reads_ch = params.inputs ? Channel.fromPath(params.inputs,checkIfExists:true) : Channel.empty()
-
 process foo {
   echo true  
   input:
-  val x from reads_ch.ifEmpty { 'EMPTY' } 
+  val x
   when:
   x == 'EMPTY'
 
@@ -41,4 +39,14 @@ process foo {
   '''
   echo hello
   ''' 
+}
+
+workflow {
+  reads_ch = params.inputs
+    ? Channel.fromPath(params.inputs, checkIfExists:true)
+    : Channel.empty()
+
+  reads_ch \
+    | ifEmpty { 'EMPTY' } \
+    | foo
 }

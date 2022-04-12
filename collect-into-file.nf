@@ -26,19 +26,20 @@
   * author Paolo Di Tommaso <paolo.ditommaso@gmail.com> 
   */
 
-Channel.fromPath("$baseDir/data/reads/*_1.fq.gz", checkIfExists: true).set { samples_ch }
-
 process foo {
   input:
-  file x from samples_ch
+  path x
   output:
-  file 'file.fq' into unzipped_ch
+  path 'file.fq'
   script:
   """
   < $x zcat > file.fq
   """
 }
 
-unzipped_ch
-      .collectFile()
-      .println()
+workflow {
+  Channel.fromPath("$baseDir/data/reads/*_1.fq.gz", checkIfExists: true) \
+    | foo \
+    | collectFile \
+    | view
+}

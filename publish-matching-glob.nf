@@ -29,22 +29,17 @@
 params.reads = "$baseDir/data/reads/*_{1,2}.fq.gz"
 params.outdir = 'my-results'
 
-Channel
-    .fromFilePairs(params.reads, checkIfExists: true, flat: true)
-    .set{ samples_ch }
-
-
 process foo {
   publishDir "$params.outdir/$sampleId/counts", pattern: "*_counts.txt"
   publishDir "$params.outdir/$sampleId/outlooks", pattern: '*_outlook.txt'
   publishDir "$params.outdir/$sampleId/", pattern: '*.fq'
 
   input: 
-    set sampleId, file('sample1.fq.gz'), file('sample2.fq.gz') from samples_ch 
+    tuple val(sampleId), file('sample1.fq.gz'), file('sample2.fq.gz')
   output: 
-    file "*"
+    path "*"
   script:
-  """
+    """
     < sample1.fq.gz zcat > sample1.fq
     < sample2.fq.gz zcat > sample2.fq
 
@@ -53,6 +48,10 @@ process foo {
 
     head -n 50 sample1.fq > sample1_outlook.txt
     head -n 50 sample2.fq > sample2_outlook.txt
-  """
+    """
 }
 
+workflow {
+  Channel.fromFilePairs(params.reads, checkIfExists: true, flat: true) \
+    | foo
+}

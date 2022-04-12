@@ -26,25 +26,30 @@
   * author Paolo Di Tommaso <paolo.ditommaso@gmail.com> 
   */
 
-params.reads = "$baseDir/data/reads/*"
-
 process foo {
-  echo true
-  input:
-  tuple val(key), file(samples)
+    output: 
+    val true
+    script:
+    """
+    echo your_command_here
+    """
+}
 
-  script:
-  """
-  echo your_command --batch $key --input $samples 
-  """
-} 
+process bar {
+    input: 
+    val flag
+    path fq
+    script:
+    """
+    echo other_commad_here --reads $fq
+    """
+}
 
 workflow {
-  Channel.fromPath(params.reads, checkIfExists:true) \
-    | map { file -> 
-      def key = file.name.toString().tokenize('_').get(0)
-      return tuple(key, file)
-    } \
-    | groupTuple() \
-    | foo
+    Channel
+        .fromPath("$baseDir/data/reads/11010*.fq.gz", checkIfExists:true)
+        .set{ reads_ch }
+
+    foo()
+    bar(foo.out, reads_ch)
 }

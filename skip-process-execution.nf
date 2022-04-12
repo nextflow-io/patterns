@@ -29,18 +29,12 @@
 params.skip = false
 params.input = "$baseDir/data/reads/sample.fq.gz" 
 
-Channel.fromPath(params.input).set{ input_ch }
-
-(foo_ch, bar_ch) = ( params.skip 
-                 ? [Channel.empty(), input_ch] 
-                 : [input_ch, Channel.empty()] ) 
-
 process foo {
   input:
-  file x from foo_ch
+  path x
 
   output:
-  file('*.fastq') into optional_ch
+  file('*.fastq')
 
   script:
   """
@@ -51,8 +45,20 @@ process foo {
 process bar {
   echo true
   input: 
-  file x from bar_ch.mix(optional_ch)
+  path x
   """
   echo your_command --input $x
   """
+}
+
+workflow {
+  Channel
+    .fromPath(params.input)
+    .set { input_ch }
+
+  (foo_ch, bar_ch) = params.skip
+    ? [Channel.empty(), input_ch] 
+    : [input_ch, Channel.empty()]
+
+  foo_ch | foo | mix(bar_ch) | bar
 }

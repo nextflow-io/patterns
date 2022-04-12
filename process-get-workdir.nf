@@ -41,3 +41,7 @@ process bar {
   echo bar task path: $PWD
   ''' 
 }
+
+workflow {
+  foo & bar
+}

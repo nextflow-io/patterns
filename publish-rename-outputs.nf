@@ -27,13 +27,17 @@
  */
 
 process foo {
- publishDir 'results', saveAs:{ filename -> "foo_$filename" }
+  publishDir 'results', saveAs:{ filename -> "foo_$filename" }
 
- output: 
- file '*.txt'
+  output: 
+  path '*.txt'
 
- '''
- touch this.txt
- touch that.txt
- '''
+  '''
+  touch this.txt
+  touch that.txt
+  '''
+}
+
+workflow {
+  foo
 }

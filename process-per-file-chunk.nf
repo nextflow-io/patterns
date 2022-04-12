@@ -29,18 +29,19 @@
 params.infile = "$baseDir/data/poem.txt"
 params.size = 5
 
-Channel
-    .fromPath(params.infile)
-    .splitText(by: params.size)
-    .set{ chunks_ch }
-
 process foo {
   echo true
   input: 
-  file x from chunks_ch
+  file x
 
   script:
   """
   rev $x | rev
   """
-} 
+}
+
+workflow {
+  Channel.fromPath(params.infile) \
+    | splitText(by: params.size) \
+    | foo
+}

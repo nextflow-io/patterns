@@ -28,7 +28,7 @@
 
 process foo {
   output:
-  file '*.txt' into foo_ch 
+  path '*.txt'
 
   script:
   '''
@@ -41,7 +41,7 @@ process foo {
 process bar {
   echo true
   input: 
-  file x from foo_ch.flatten()
+  path x
 
   script:
   """
@@ -49,3 +49,6 @@ process bar {
   """
 }
 
+workflow {
+  foo | flatten | bar
+}

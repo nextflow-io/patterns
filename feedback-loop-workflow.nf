@@ -23,28 +23,51 @@
  */
 
  /*
-  * author Paolo Di Tommaso <paolo.ditommaso@gmail.com> 
+  * author Ben Sherman <bentshermann@gmail.com>
   */
 
-Channel
-    .fromPath("$baseDir/data/reads/11010*.fq.gz", checkIfExists:true)
-    .set{ reads_ch }
+nextflow.preview.recursion=true
 
-process foo {
-    output: 
-    val true into done_ch
-    script:
+params.input = "$baseDir/data/hello.txt"
+
+process tick {
+  input:
+    path 'input.txt'
+  output:
+    path 'result.txt'
+  script:
     """
-    echo your_command_here
+    cat input.txt > result.txt
+    echo "Task ${task.index} : tick" >> result.txt
     """
 }
 
-process bar {
-    input: 
-    val flag from done_ch
-    file fq from reads_ch
-    script:
+process tock {
+  input:
+    path 'input.txt'
+  output:
+    path 'result.txt'
+  script:
     """
-    echo other_commad_here --reads $fq
+    cat input.txt > result.txt
+    echo "Task ${task.index} : tock" >> result.txt
     """
+}
+
+workflow clock {
+  take: infile
+  main:
+    infile | tick | tock
+  emit:
+    tock.out
+}
+
+workflow {
+  clock
+    .recurse(file(params.input))
+    .until { it -> it.size() > 100 }
+
+  clock
+    .out
+    .view(it -> it.text)
 }

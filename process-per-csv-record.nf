@@ -28,18 +28,20 @@
   
 params.index = "$baseDir/data/index.csv"
 
-Channel
-    .fromPath(params.index)
-    .splitCsv(header:true)
-    .map{ row-> tuple(row.sampleId, file(row.read1), file(row.read2)) }
-    .set { samples_ch }
-
 process foo {
+    echo true
     input:
-    set sampleId, file(read1), file(read2) from samples_ch
+    tuple val(sampleId), file(read1), file(read2)
 
     script:
     """
     echo your_command --sample $sampleId --reads $read1 $read2
     """
+}
+
+workflow {
+    Channel.fromPath(params.index) \
+        | splitCsv(header:true) \
+        | map { row-> tuple(row.sampleId, file(row.read1), file(row.read2)) } \
+        | foo
 }
