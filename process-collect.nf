@@ -41,6 +41,7 @@ process bar {
   echo true   
   input:
   path '*.fq'
+  script:
   """
   cat *.fq | head -n 50
   """

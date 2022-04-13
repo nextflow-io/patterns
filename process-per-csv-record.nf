@@ -25,7 +25,7 @@
  /*
   * author Paolo Di Tommaso <paolo.ditommaso@gmail.com> 
   */
-  
+
 params.index = "$baseDir/data/index.csv"
 
 process foo {

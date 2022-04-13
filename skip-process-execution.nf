@@ -44,17 +44,18 @@ process foo {
 
 process bar {
   echo true
+
   input: 
   path x
+
+  script:
   """
   echo your_command --input $x
   """
 }
 
 workflow {
-  Channel
-    .fromPath(params.input)
-    .set { input_ch }
+  input_ch = Channel.fromPath(params.input)
 
   (foo_ch, bar_ch) = params.skip
     ? [Channel.empty(), input_ch] 

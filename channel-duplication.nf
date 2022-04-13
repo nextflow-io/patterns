@@ -30,7 +30,7 @@ process foo {
   input: file x
   script: 
   """
-    echo your_command --input $x
+  echo your_command --input $x
   """
 }    
 
@@ -38,11 +38,13 @@ process bar {
   input: file x
   script: 
   """
-    echo your_command --input $x
+  echo your_command --input $x
   """
 }    
 
 workflow {
-  Channel.fromPath("$baseDir/data/prots/*_?.fa") \
-    | (foo & bar)
+  input_ch = Channel.fromPath("$baseDir/data/prots/*_?.fa")
+
+  foo(input_ch)
+  bar(input_ch)
 }

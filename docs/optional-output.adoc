@@ -14,11 +14,11 @@ Declare such output as an `optional` file.
 ----
 process foo {
   output: 
-  file 'foo.txt' optional true into foo_ch 
+  path 'foo.txt', optional: true
 
   script:
   '''
-  your_command 
+  your_command
   '''
 }
 ----
@@ -27,6 +27,6 @@ process foo {
 
 Use the the following command to execute the example:
 
-    nextflow run patterns/optional-output.nf
-    
-
+```
+nextflow run patterns/optional-output.nf
+```

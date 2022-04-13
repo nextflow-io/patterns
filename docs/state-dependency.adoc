@@ -2,46 +2,40 @@
 
 == Problem 
 
-You need to synchronize the execution of two processes 
-for which there isn't a direct input-output relationship, 
-so that process `bar` is executed only after the 
-completion of process `foo`.  
+You need to synchronize the execution of two processes for which there isn't a data dependency, so that process `bar` is executed after the completion of process `foo`.  
 
 == Solution
 
-Add to the outputs of process `foo` a channel producing 
-a _flag_ value. 
-
-Then use this channel as input for process `bar` to trigger 
-its execution when the other process completes.
+Add an output channel to process `foo` that produces a _ready_ signal. Then pass this channel as input to process `bar` in order to trigger its execution when `foo` completes.
 
 == Code 
 
 [source,nextflow,linenums,options="nowrap"]
 ----
-Channel
-    .fromPath('.data/reads/*.fq.gz')
-    .set{ reads_ch }
-
 process foo {
     output: 
-    val true into done_ch
-
+    val true
     script:
     """
-    your_command_here
+    echo your_command_here
     """
 }
 
 process bar {
     input: 
-    val flag from done_ch
-    file fq from reads_ch
-
+    val ready
+    path fq
     script:
     """
-    other_commad_here --reads $fq
+    echo other_commad_here --reads $fq
     """
+}
+
+workflow {
+    reads_ch = Channel.fromPath("$baseDir/data/reads/11010*.fq.gz", checkIfExists:true)
+
+    foo()
+    bar(foo.out, reads_ch)
 }
 ----
 

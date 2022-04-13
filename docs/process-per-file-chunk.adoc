@@ -6,38 +6,41 @@ You need to split one or more input files into chunks and execute a task for eac
 
 == Solution
 
-Use the the https://www.nextflow.io/docs/latest/operator.html#splittext[splitText] operator to split a file in chunks of a given size. Then use the resulting channel as input for the process implementing your task. 
+Use the https://www.nextflow.io/docs/latest/operator.html#splittext[splitText] operator to split a file into chunks of a given size. Then use the resulting channel as input for the process implementing your task. 
 
-Caveat: By default chunks are kept in memory. When splitting big files specify the parameter `file: true` to save the chunks into files. See the https://www.nextflow.io/docs/latest/operator.html#splittext[documentation] for details.
+WARNING: Chunks are kept in memory by default. When splitting big files, specify the parameter `file: true` to save the chunks into files. See the https://www.nextflow.io/docs/latest/operator.html#splittext[documentation] for details.
 
-Splitter for specific file formats are available, eg https://www.nextflow.io/docs/latest/operator.html#splitfasta[splitFasta] and https://www.nextflow.io/docs/latest/operator.html#splitfastq[splitFastq].
+Splitter for specific file formats are available, e.g. https://www.nextflow.io/docs/latest/operator.html#splitfasta[splitFasta] and https://www.nextflow.io/docs/latest/operator.html#splitfastq[splitFastq].
  
-
 == Code 
 
 [source,nextflow,linenums,options="nowrap"]
 ----
-Channel
-    .fromPath('poem.txt')
-    .splitText(by: 5)
-    .set{ chunks_ch }
+params.infile = "$baseDir/data/poem.txt"
+params.size = 5
 
 process foo {
   echo true
   input: 
-  file x from chunks_ch
+  file x
 
   script:
   """
   rev $x | rev
   """
-} 
+}
+
+workflow {
+  Channel.fromPath(params.infile) \
+    | splitText(by: params.size) \
+    | foo
+}
 ----
 
 == Run it 
 
 Use the the following command to execute the example:
 
-    nextflow run patterns/process-per-file-chunk.nf
-
-
+```
+nextflow run patterns/process-per-file-chunk.nf
+```

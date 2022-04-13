@@ -27,7 +27,7 @@
  */
 
 process foo {
-  publishDir 'results', saveAs:{ filename -> filename.endsWith(".zip") ? "zips/$filename" : filename }
+  publishDir 'results', saveAs: { filename -> filename.endsWith(".zip") ? "zips/$filename" : filename }
 
   output: 
   path '*'

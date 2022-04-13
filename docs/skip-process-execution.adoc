@@ -2,8 +2,8 @@
 
 == Problem 
 
-You have two sequential tasks in your workflow. When an optional flag is specified 
-the first task should not be executed and its input(s) is processed by the second task.
+You have two sequential tasks in your workflow. When an optional flag is specified,
+the first task should be skipped and its input(s) should be processed by the second task.
 
 == Solution
 
@@ -18,20 +18,14 @@ of the first process output (when executed) and the input channel.
 [source,nextflow,linenums,options="nowrap"]
 ----
 params.skip = false
-params.input = "$baseDir/sample.fq.gz" 
-
-Channel.fromPath(params.input).set{ input_ch }
-
-(foo_ch, bar_ch) = ( params.skip 
-                 ? [Channel.empty(), input_ch] 
-                 : [input_ch, Channel.empty()] ) 
+params.input = "$baseDir/data/reads/sample.fq.gz" 
 
 process foo {
   input:
-  file x from foo_ch
+  path x
 
   output:
-  file('*.fastq') into optional_ch
+  file('*.fastq')
 
   script:
   """
@@ -41,11 +35,24 @@ process foo {
 
 process bar {
   echo true
+
   input: 
-  file x from bar_ch.mix(optional_ch)
+  path x
+
+  script:
   """
   echo your_command --input $x
   """
+}
+
+workflow {
+  input_ch = Channel.fromPath(params.input)
+
+  (foo_ch, bar_ch) = params.skip
+    ? [Channel.empty(), input_ch] 
+    : [input_ch, Channel.empty()]
+
+  foo_ch | foo | mix(bar_ch) | bar
 }
 ----
 
@@ -53,12 +60,15 @@ process bar {
 
 Use the the following command to execute the example:
 
-    nextflow run patterns/skip-process-execution.nf
+```
+nextflow run patterns/skip-process-execution.nf
+```
 
 The processes `foo` and `bar` are executed. Run the same command 
-with the `--skip` command line option. 
+with the `--skip` command line option:
 
-    nextflow run patterns/skip-process-execution.nf --skip
+```
+nextflow run patterns/skip-process-execution.nf --skip
+```
 
-This time only processes `bar` is executed.
-
+This time only the `bar` process is executed.

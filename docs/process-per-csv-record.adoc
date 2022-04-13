@@ -23,31 +23,33 @@ FC81DB5ABXX,reads/110122_I329_FC81DB5ABXX_L6_HUMrutRGVDIAAPE_1.fq.gz,reads/11012
 FC819P0ABXX,reads/110128_I481_FC819P0ABXX_L5_HUMrutRGWDIAAPE_1.fq.gz,reads/110128_I481_FC819P0ABXX_L5_HUMrutRGWDIAAPE_2.fq.gz
 |===
 
-This snippet parses the file and executes a process for each line:
+This workflow parses the file and executes a process for each line:
 
 [source,nextflow,linenums,options="nowrap"]
 ----
-params.index = 'index.csv'
-
-Channel
-    .fromPath(params.index)
-    .splitCsv(header:true)
-    .map{ row-> tuple(row.sampleId, file(row.read1), file(row.read2)) }
-    .set { samples_ch }
+params.index = "$baseDir/data/index.csv"
 
 process foo {
+    echo true
     input:
-    set sampleId, file(read1), file(read2) from samples_ch
+    tuple val(sampleId), file(read1), file(read2)
 
     script:
     """
     echo your_command --sample $sampleId --reads $read1 $read2
     """
 }
+
+workflow {
+    Channel.fromPath(params.index) \
+        | splitCsv(header:true) \
+        | map { row-> tuple(row.sampleId, file(row.read1), file(row.read2)) } \
+        | foo
+}
 ----
 
-Note: relative paths are resolved by the `file` function against the execution directory. 
-In a real use case prefer absolute file paths.
+NOTE: Relative paths are resolved by the `file` function against the execution directory. 
+In practice, it is preferable to use absolute file paths.
 
 == Run it
 
@@ -56,5 +58,3 @@ Use the the following command to execute the example:
 ```
 nextflow run patterns/process-per-csv-record.nf
 ```
-
-

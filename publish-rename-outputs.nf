@@ -27,7 +27,7 @@
  */
 
 process foo {
-  publishDir 'results', saveAs:{ filename -> "foo_$filename" }
+  publishDir 'results', saveAs: { filename -> "foo_$filename" }
 
   output: 
   path '*.txt'

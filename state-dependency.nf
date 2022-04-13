@@ -37,7 +37,7 @@ process foo {
 
 process bar {
     input: 
-    val flag
+    val ready
     path fq
     script:
     """
@@ -46,9 +46,7 @@ process bar {
 }
 
 workflow {
-    Channel
-        .fromPath("$baseDir/data/reads/11010*.fq.gz", checkIfExists:true)
-        .set{ reads_ch }
+    reads_ch = Channel.fromPath("$baseDir/data/reads/11010*.fq.gz", checkIfExists:true)
 
     foo()
     bar(foo.out, reads_ch)

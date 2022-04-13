@@ -7,29 +7,32 @@ You need to store the outputs of one or more processes into a directory structur
 == Solution 
 
 Use the https://www.nextflow.io/docs/latest/process.html#publishdir[publishDir] directive
-to set a custom directory where the process outputs need to be made available.
+to define a custom directory where the process outputs should be saved.
 
 == Code 
 
 [source,nextflow,linenums,options="nowrap"]
 ----
-params.reads = 'reads/*{1,2}.fq.gz'
+params.reads = "$baseDir/data/reads/*{1,2}.fq.gz"
 params.outdir = 'my-results'
-
-Channel.fromFilePairs(params.reads).set{ samples_ch }  
 
 process foo {
   publishDir "$params.outdir/$sampleId"
   input:
-  set sampleId, file(samples) from samples_ch
+  tuple val(sampleId), file(samples)
   output:
-  file '*.fq'
+  path '*.fq'
 
   script:
   """
   < ${samples[0]} zcat > sample_1.fq 
   < ${samples[1]} zcat > sample_2.fq 
   """
+} 
+
+workflow {
+  Channel.fromFilePairs(params.reads, checkIfExists: true) \
+    | foo
 }
 ----
 
@@ -40,4 +43,3 @@ Run the script with the following command:
 ```
 nextflow run patterns/publish-process-outputs.nf 
 ```
-

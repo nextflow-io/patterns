@@ -7,20 +7,18 @@ You need to process all the outputs of an upstream task altogether.
 == Solution
 
 Use the https://www.nextflow.io/docs/latest/operator.html#collect[collect] operator to gather 
-all the outputs produced by the upstream task and emit them as a sole output. 
-Then use the resulting channel as input input for the process.
+all the outputs produced by the upstream task and emit them as a single output. 
+Then use the resulting channel as input for the downstream task.
 
 == Code 
 
 [source,nextflow,linenums,options="nowrap"]
 ----
-Channel.fromPath('reads/*_1.fq.gz').set { samples_ch }
-
 process foo {
   input:
-  file x from samples_ch
+  path x
   output:
-  file 'file.fq' into unzipped_ch
+  path 'file.fq'
   script:
   """
   < $x zcat > file.fq
@@ -30,10 +28,18 @@ process foo {
 process bar {
   echo true   
   input:
-  file '*.fq' from unzipped_ch.collect()
+  path '*.fq'
+  script:
   """
-  cat *.fq
+  cat *.fq | head -n 50
   """
+}
+
+workflow {
+  Channel.fromPath("$baseDir/data/reads/*_1.fq.gz", checkIfExists: true) \
+    | foo \
+    | collect \
+    | bar
 }
 ----
 
@@ -44,4 +50,3 @@ Use the the following command to execute the example:
 ```
 nextflow run patterns/process-collect.nf
 ```
-
