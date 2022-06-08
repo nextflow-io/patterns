@@ -39,5 +39,5 @@ process foo {
 }
 
 workflow {
-  foo
+  foo()
 }

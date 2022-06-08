@@ -43,5 +43,6 @@ process bar {
 }
 
 workflow {
-  foo & bar
+  foo()
+  bar()
 }
