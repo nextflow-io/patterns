@@ -32,7 +32,7 @@ params.outdir = 'my-results'
 process foo {
   publishDir "$params.outdir/$sampleId"
   input:
-  tuple val(sampleId), file(samples)
+  tuple val(sampleId), path(samples)
   output:
   path '*.fq'
 

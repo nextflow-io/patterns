@@ -30,7 +30,7 @@ process foo {
   echo true
 
   input:
-  tuple val(sampleId), file(reads)
+  tuple val(sampleId), path(reads)
 
   script:
   """

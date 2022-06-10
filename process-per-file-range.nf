@@ -31,7 +31,7 @@ process foo {
   tag "$sampleId"
   
   input: 
-  tuple val(sampleId), file(indels), file(snps)
+  tuple val(sampleId), path(indels), path(snps)
   
   """
   echo foo_command --this $indels --that $snps

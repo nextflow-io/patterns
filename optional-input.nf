@@ -32,8 +32,8 @@ params.filter = 'NO_FILE'
 process foo {
   echo true   
   input:
-  file seq
-  file opt
+  path seq
+  path opt
 
   script:
   def filter = opt.name != 'NO_FILE' ? "--filter $opt" : ''

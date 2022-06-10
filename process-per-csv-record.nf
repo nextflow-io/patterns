@@ -31,7 +31,7 @@ params.index = "$baseDir/data/index.csv"
 process foo {
     echo true
     input:
-    tuple val(sampleId), file(read1), file(read2)
+    tuple val(sampleId), path(read1), path(read2)
 
     script:
     """

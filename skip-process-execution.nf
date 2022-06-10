@@ -34,7 +34,7 @@ process foo {
   path x
 
   output:
-  file('*.fastq')
+  path '*.fastq'
 
   script:
   """

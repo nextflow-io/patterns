@@ -27,7 +27,7 @@
   */
 
 process foo {
-  input: file x
+  input: path x
   script: 
   """
   echo your_command --input $x
@@ -35,7 +35,7 @@ process foo {
 }    
 
 process bar {
-  input: file x
+  input: path x
   script: 
   """
   echo your_command --input $x

@@ -35,7 +35,7 @@ process foo {
   publishDir "$params.outdir/$sampleId/", pattern: '*.fq'
 
   input: 
-    tuple val(sampleId), file('sample1.fq.gz'), file('sample2.fq.gz')
+    tuple val(sampleId), path('sample1.fq.gz'), path('sample2.fq.gz')
   output: 
     path "*"
   script:

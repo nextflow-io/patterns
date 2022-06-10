@@ -31,7 +31,7 @@ process foo {
   tag "$sampleId"
   
   input:
-  tuple val(sampleId), file(bam)
+  tuple val(sampleId), path(bam)
 
   script:
   """

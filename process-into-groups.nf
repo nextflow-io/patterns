@@ -31,7 +31,7 @@ params.reads = "$baseDir/data/reads/*"
 process foo {
   echo true
   input:
-  tuple val(key), file(samples)
+  tuple val(key), path(samples)
 
   script:
   """
