@@ -26,13 +26,11 @@
   * author Paolo Di Tommaso <paolo.ditommaso@gmail.com> 
   */
 
-Channel.fromPath("$baseDir/data/reads/*_1.fq.gz", checkIfExists: true).set { samples_ch }
-
 process foo {
   input:
-  file x from samples_ch
+  path x
   output:
-  file 'file.fq' into unzipped_ch
+  path 'file.fq'
   script:
   """
   < $x zcat > file.fq
@@ -40,10 +38,18 @@ process foo {
 }
 
 process bar {
-  echo true   
+  debug true   
   input:
-  file '*.fq' from unzipped_ch.collect()
+  path '*.fq'
+  script:
   """
   cat *.fq | head -n 50
   """
+}
+
+workflow {
+  Channel.fromPath("$baseDir/data/reads/*_1.fq.gz", checkIfExists: true) \
+    | foo \
+    | collect \
+    | bar
 }

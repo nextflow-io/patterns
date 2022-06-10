@@ -12,8 +12,8 @@
 :sectnums:
 :sectlinks:
 
-This page collects some recurrent implementation patterns used in Nextflow applications. 
-Feel free to contribute opening a pull request in the GitHub repository at https://github.com/nextflow-io/patterns[this link].
+This page collects some recurring implementation patterns used in Nextflow applications.
+Feel free to contribute by opening a pull request in the GitHub repository at https://github.com/nextflow-io/patterns[this link].
 
 == Basic patterns
 :leveloffset: +2
@@ -48,7 +48,7 @@ include::publish-rename-outputs.adoc[]
 :leveloffset: +2
 include::process-get-workdir.adoc[]
 include::ignore-failing-process.adoc[]
-include::mock-dependency.adoc[]
+include::state-dependency.adoc[]
 :leveloffset: -2
 
 == Advanced patterns

@@ -26,20 +26,20 @@
   * author Paolo Di Tommaso <paolo.ditommaso@gmail.com> 
   */
 
-
-Channel
-  .from(1..23)
-  .map { chr -> ["sample$chr", file("/some/path/foo.${chr}.indels.vcf"), file("/other/path/foo.snvs.${chr}.vcf")] }
-  .set { pairs_ch }
-  
-  
 process foo {
+  debug true
   tag "$sampleId"
   
   input: 
-  set sampleId, file(indels), file(snps) from pairs_ch
+  tuple val(sampleId), path(indels), path(snps)
   
   """
   echo foo_command --this $indels --that $snps
   """
-} 
+}
+
+workflow {
+  Channel.from(1..23) \
+    | map { chr -> ["sample${chr}", file("/some/path/foo.${chr}.indels.vcf"), file("/other/path/foo.snvs.${chr}.vcf")] } \
+    | foo
+}

@@ -28,20 +28,20 @@
 
 process foo {
   output:
-  file '*.txt' into foo_ch 
+  path '*.txt'
 
   script:
   '''
   echo Hello there! > file1.txt
   echo What a beautiful day > file2.txt
-  echo I wish you are having fun1 > file3.txt 
+  echo I hope you are having fun! > file3.txt 
   ''' 
 }
 
 process bar {
-  echo true
+  debug true
   input: 
-  file x from foo_ch.flatten()
+  path x
 
   script:
   """
@@ -49,3 +49,6 @@ process bar {
   """
 }
 
+workflow {
+  foo | flatten | bar
+}

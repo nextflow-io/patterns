@@ -30,9 +30,7 @@ params.flag = false
 
 process foo {
   output: 
-  file 'x.txt' into foo_ch
-  when:
-  !params.flag
+  path 'x.txt'
 
   script:
   '''
@@ -42,9 +40,7 @@ process foo {
 
 process bar {
   output: 
-  file 'x.txt' into bar_ch
-  when:
-  params.flag
+  path 'x.txt'
 
   script:
   '''
@@ -53,12 +49,16 @@ process bar {
 }
 
 process omega {
-  echo true
+  debug true
   input:
-  file x from foo_ch.mix(bar_ch)
+  path x
   
   script:
   """
   cat $x 
   """
+}
+
+workflow {
+  (params.flag ? bar : foo) | omega
 }

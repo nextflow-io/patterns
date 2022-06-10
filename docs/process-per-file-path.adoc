@@ -8,29 +8,30 @@ You need to execute a task for each file that matches a glob pattern.
 
 Use the https://www.nextflow.io/docs/latest/channel.html#frompath[Channel.fromPath] method to create a channel emitting all files matching the glob pattern. Then, use the channel as input of the process implementing your task. 
 
-
 == Code 
 
 [source,nextflow,linenums,options="nowrap"]
 ----
-Channel.fromPath('reads/*_1.fq.gz').set{ samples_ch }
-
 process foo {
+  debug true
   input:
-  file x from samples_ch
-  
+  path x
+
   script:
   """
-  your_command --input $x
+  echo your_command --input $x
   """
 }
-----
 
+workflow {
+  foo("$baseDir/data/reads/*_1.fq.gz")
+}
+----
 
 == Run it 
 
 Use the the following command to execute the example:
 
-    nextflow run patterns/process-per-file-path.nf
-
-
+```
+nextflow run patterns/process-per-file-path.nf
+```

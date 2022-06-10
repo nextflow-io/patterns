@@ -25,15 +25,19 @@
 /* 
  * author Paolo Di Tommaso <paolo.ditommaso@gmail.com>
  */
- 
+
 process foo {
- publishDir 'results', saveAs:{ filename -> filename.endsWith(".zip") ? "zips/$filename" : filename }
+  publishDir 'results', saveAs: { filename -> filename.endsWith(".zip") ? "zips/$filename" : filename }
 
- output: 
- file '*'
+  output: 
+  path '*'
 
- '''
- touch this.txt
- touch that.zip
- '''
+  '''
+  touch this.txt
+  touch that.zip
+  '''
+}
+
+workflow {
+  foo()
 }

@@ -26,22 +26,25 @@
   * author Paolo Di Tommaso <paolo.ditommaso@gmail.com> 
   */
 
-Channel
-    .fromPath("$baseDir/data/prots/*_?.fa")
-    .into { prot1_ch; prot2_ch }
-
 process foo {
-  input: file x from prot1_ch
+  input: path x
   script: 
   """
-    echo your_command --input $x
+  echo your_command --input $x
   """
 }    
 
 process bar {
-  input: file x from prot2_ch
+  input: path x
   script: 
   """
-    echo your_command --input $x
+  echo your_command --input $x
   """
 }    
+
+workflow {
+  input_ch = Channel.fromPath("$baseDir/data/prots/*_?.fa")
+
+  foo(input_ch)
+  bar(input_ch)
+}

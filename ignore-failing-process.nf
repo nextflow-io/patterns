@@ -30,8 +30,8 @@ process foo {
   errorStrategy 'ignore'
   script:
   '''
-    echo This is going to fail!
-    exit 1
+  echo This is going to fail!
+  exit 1
   '''
 }  
 
@@ -40,4 +40,9 @@ process bar {
   '''
   echo OK
   '''
+}
+
+workflow {
+  foo()
+  bar()
 }

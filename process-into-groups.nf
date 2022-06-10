@@ -28,23 +28,23 @@
 
 params.reads = "$baseDir/data/reads/*"
 
-Channel
-    .fromPath(params.reads, checkIfExists:true)  
-    .map { file -> 
-        def key = file.name.toString().tokenize('_').get(0)
-        return tuple(key, file)
-     }
-    .groupTuple()
-    .set{ groups_ch }
-
-
 process foo {
-  echo true
+  debug true
   input:
-  set key, file(samples) from groups_ch
+  tuple val(key), path(samples)
 
   script:
   """
   echo your_command --batch $key --input $samples 
   """
 } 
+
+workflow {
+  Channel.fromPath(params.reads, checkIfExists:true) \
+    | map { file -> 
+      def key = file.name.toString().tokenize('_').get(0)
+      return tuple(key, file)
+    } \
+    | groupTuple() \
+    | foo
+}

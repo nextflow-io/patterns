@@ -29,14 +29,12 @@
 params.reads = "$baseDir/data/reads/*{1,2}.fq.gz"
 params.outdir = 'my-results'
 
-Channel.fromFilePairs(params.reads, checkIfExists: true).set{ samples_ch }  
-
 process foo {
   publishDir "$params.outdir/$sampleId"
   input:
-  set sampleId, file(samples) from samples_ch
+  tuple val(sampleId), path(samples)
   output:
-  file '*.fq'
+  path '*.fq'
 
   script:
   """
@@ -45,3 +43,7 @@ process foo {
   """
 } 
 
+workflow {
+  Channel.fromFilePairs(params.reads, checkIfExists: true) \
+    | foo
+}

@@ -28,7 +28,7 @@
 
 process foo {
   output: 
-  file 'foo.txt' optional true into foo_ch 
+  path 'foo.txt', optional: true
 
   script:
   '''
@@ -40,9 +40,13 @@ process foo {
 
 process bar {
   input: 
-  file '*' from foo_ch
+  path '*'
   script:
   '''
   cat foo.txt
   '''
+}
+
+workflow {
+  foo | bar
 }

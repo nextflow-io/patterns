@@ -25,22 +25,26 @@
  /*
   * author Paolo Di Tommaso <paolo.ditommaso@gmail.com> 
   */
-  
+
 params.inputs = "$baseDir/data/prots/*{1,2,3}.fa"
 params.filter = 'NO_FILE'
 
-prots_ch = Channel.fromPath(params.inputs, checkIfExists:true)
-opt_file = file(params.filter)
-
 process foo {
-  echo true   
+  debug true   
   input:
-  file seq from prots_ch
-  file opt from opt_file 
+  path seq
+  path opt
 
   script:
   def filter = opt.name != 'NO_FILE' ? "--filter $opt" : ''
   """
   echo your_commad --input $seq $filter
   """
+}
+
+workflow {
+  prots_ch = Channel.fromPath(params.inputs, checkIfExists:true)
+  opt_file = file(params.filter)
+
+  foo(prots_ch, opt_file)
 }

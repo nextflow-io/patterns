@@ -2,22 +2,20 @@
 
 == Problem 
 
-A tool need the explicit path of the current task work directory.
+A tool needs the explicit path of the current task work directory.
 
 == Solution 
 
 Use the `$PWD` Bash variable or the `pwd` command to retrieve the task working directory path. 
 
-Note: Make sure use to escape the `$` variable placeholder 
-when the command script is enclosed in double quote characters.
-
+NOTE: Make sure to escape the `$` variable placeholder when the command script is enclosed in double quote characters.
 
 == Example 
 
 [source,nextflow,linenums,options="nowrap"]
 ----
 process foo {
-  echo true
+  debug true
   script:
   """
   echo foo task path: \$PWD
@@ -25,11 +23,16 @@ process foo {
 }
 
 process bar {
-  echo true
+  debug true
   script:
   '''
   echo bar task path: $PWD
   ''' 
+}
+
+workflow {
+  foo()
+  bar()
 }
 ----
 
@@ -37,10 +40,13 @@ process bar {
 
 The command run the script with an empty channel: 
 
-    nextflow run patterns/process-get-workdir.nf
+```
+nextflow run patterns/process-get-workdir.nf
+```
 
 Use the following command to provide the same script
-some input files, that prevents the process to be executed: 
+some input files, that prevents the process from being executed: 
 
-    nextflow run patterns/process-get-workdir.nf --inputs ../data/prots/\*
-
+```
+nextflow run patterns/process-get-workdir.nf --inputs ../data/prots/\*
+```

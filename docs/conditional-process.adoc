@@ -2,17 +2,16 @@
 
 == Problem 
 
-Two different tasks need to be executed in a mutually exclusive manner, 
-then a third task should post-process the results of the previous execution.
+One of two different tasks should be executed based on some condition, 
+and a third task should process the results of the selected task.
 
 == Solution
 
-Use a https://www.nextflow.io/docs/latest/process.html#when[when] statement to conditionally 
-execute two different processes. Each process declares its own output channel.
+Simply execute either process using `if/else` statements on the condition.
+Define a channel, e.g. `omega_ch`, which emits the output of the selected process 
+in each case. Then, execute the third process with this output channel.
 
-Then use the https://www.nextflow.io/docs/latest/operator.html#mix[mix] operator to create 
-a new channel that will emit the outputs produced by the two processes and use it as the input
-for the third process.
+Or, use a ternary expression and a pipe to keep things short and sweet.
 
 == Code 
 
@@ -22,9 +21,7 @@ params.flag = false
 
 process foo {
   output: 
-  file 'x.txt' into foo_ch
-  when:
-  !params.flag
+  path 'x.txt'
 
   script:
   '''
@@ -34,9 +31,7 @@ process foo {
 
 process bar {
   output: 
-  file 'x.txt' into bar_ch
-  when:
-  params.flag
+  path 'x.txt'
 
   script:
   '''
@@ -45,14 +40,31 @@ process bar {
 }
 
 process omega {
-  echo true
+  debug true
   input:
-  file x from foo_ch.mix(bar_ch)
+  path x
   
   script:
   """
   cat $x 
   """
+}
+
+workflow {
+  // the long way
+  if ( params.flag ) {
+    bar()
+    omega_ch = bar.out
+  }
+  else {
+    foo()
+    omega_ch = foo.out
+  }
+
+  omega(omega_ch)
+
+  // the short way
+  (params.flag ? bar : foo) | omega
 }
 ----
 
@@ -60,25 +72,27 @@ process omega {
 
 Use the the following command to execute the example:
 
-    nextflow run patterns/conditional-process.nf
+```
+nextflow run patterns/conditional-process.nf
+```
 
 The processes `foo` and `omega` are executed. Run the same command 
 with the `--flag` command line option. 
 
-    nextflow run patterns/conditional-process.nf --flag 
+```
+nextflow run patterns/conditional-process.nf --flag 
+```
 
 This time the processes `bar` and `omega` are executed.
 
-
 == Alternative solution
 
-Conditionally create the input channels normally (with data) or as 
-https://www.nextflow.io/docs/latest/channel.html#empty[empty] channels. 
-The process consuming the individual input channels will only execute if 
-the channel is populated. Each process still declares its own output channel.
+Create an input channel for each process that is either populated with data or an
+https://www.nextflow.io/docs/latest/channel.html#empty[empty] channel.
+Each process will execute only if its input channel has data.
 
 Then use the https://www.nextflow.io/docs/latest/operator.html#mix[mix] operator to create 
-a new channel that will emit the outputs produced by the two processes and use it as the input
+a new channel that emits the outputs produced by the two processes, and use it as the input
 for the third process.
 
 == Code 
@@ -87,30 +101,25 @@ for the third process.
 ----
 params.flag = false
 
-(foo_inch, bar_inch) = ( params.flag
-                     ? [ Channel.empty(), Channel.from(1,2,3) ]
-                     : [ Channel.from(4,5,6), Channel.empty() ] )   
-
 process foo {
-
   input:
-  val(f) from foo_inch
+  val x
 
   output:
-  file 'x.txt' into foo_ch
+  path 'x.txt'
 
   script:
   """
-  echo $f > x.txt
+  echo $x > x.txt
   """
 }
 
 process bar {
   input:
-  val(b) from bar_inch
+  val(b)
 
   output:
-  file 'x.txt' into bar_ch
+  path 'x.txt'
 
   script:
   """
@@ -119,14 +128,25 @@ process bar {
 }
 
 process omega {
-  echo true
+  debug true
   input:
-  file x from foo_ch.mix(bar_ch)
+  path x
 
   script:
   """
   cat $x
   """
+}
+
+workflow {
+  (foo_ch, bar_ch) = params.flag
+    ? [ Channel.empty(), Channel.from(1,2,3) ]
+    : [ Channel.from(4,5,6), Channel.empty() ]
+
+  foo(foo_ch)
+  bar(bar_ch)
+
+  foo.out | mix(bar.out) | omega
 }
 ----
 
@@ -135,4 +155,3 @@ process omega {
 ```
 nextflow run patterns/conditional-process2.nf
 ```
-

@@ -13,27 +13,43 @@ a _marker_ value to trigger the execution of the process.
 
 [source,nextflow,linenums,options="nowrap"]
 ----
+params.inputs = ''
+
 process foo {
+  debug true  
   input:
-  val x from ch.ifEmpty { 'EMPTY' } 
+  val x
   when:
   x == 'EMPTY'
 
   script:
   '''
-  your_command
+  echo hello
   ''' 
+}
+
+workflow {
+  reads_ch = params.inputs
+    ? Channel.fromPath(params.inputs, checkIfExists:true)
+    : Channel.empty()
+
+  reads_ch \
+    | ifEmpty { 'EMPTY' } \
+    | foo
 }
 ----
 
 == Run it 
 
-The command run the script with an empty channel: 
+Use the following command to run the script with an empty channel: 
 
-    nextflow run patterns/process-when-empty.nf
+```
+nextflow run patterns/process-when-empty.nf
+```
 
 Use the following command to provide the same script
-some input files, that prevents the process to be executed: 
+some input files, which prevents the process from being executed: 
 
-    nextflow run patterns/process-when-empty.nf --inputs ../data/prots/\*
-
+```
+nextflow run patterns/process-when-empty.nf --inputs ../data/prots/\*
+```

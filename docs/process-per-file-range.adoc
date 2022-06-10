@@ -6,31 +6,29 @@ You need to execute a task over two or more series of files having a common inde
 
 == Solution 
 
-Use a the https://www.nextflow.io/docs/latest/channel.html#from[from] method 
-define the range over which repeat the task execution, 
-then chain it with a https://www.nextflow.io/docs/latest/operator.html#map[map] operator 
-to associate the each index the corresponding input files. Finally use the resulting channel as input for the process.
+Use the https://www.nextflow.io/docs/latest/channel.html#from[from] method to define the range over which to repeat the task execution, then chain it with the https://www.nextflow.io/docs/latest/operator.html#map[map] operator to associate each index with the corresponding input files. Finally, use the resulting channel as input for the process.
 
 == Code 
 
 [source,nextflow,linenums,options="nowrap"]
 ----
-Channel
-  .from(1..23)
-  .map { chr -> tuple("sample$chr", file("/some/path/foo.${chr}.indels.vcf"), file("/other/path/foo.snvs.${chr}.vcf")) }
-  .set { pairs_ch }
-  
-  
 process foo {
+  debug true
   tag "$sampleId"
   
   input: 
-  set sampleId, file(indels), file(snps) from pairs_ch
+  tuple val(sampleId), file(indels), file(snps)
   
   """
   echo foo_command --this $indels --that $snps
   """
-} 
+}
+
+workflow {
+  Channel.from(1..23) \
+    | map { chr -> ["sample${chr}", file("/some/path/foo.${chr}.indels.vcf"), file("/other/path/foo.snvs.${chr}.vcf")] } \
+    | foo
+}
 ----
 
 == Run it 
@@ -38,4 +36,3 @@ process foo {
 ```
 nextflow run patterns/process-per-file-range.nf
 ```
-

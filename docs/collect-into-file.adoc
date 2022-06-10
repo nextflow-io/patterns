@@ -13,22 +13,23 @@ the output files into a single file.
 
 [source,nextflow,linenums,options="nowrap"]
 ----
-Channel.fromPath('reads/*_1.fq.gz').set { samples_ch }
-
 process foo {
   input:
-  file x from samples_ch
+  path x
   output:
-  file 'file.fq' into unzipped_ch
+  path 'file.fq'
   script:
   """
   < $x zcat > file.fq
   """
 }
 
-unzipped_ch
-      .collectFile()
-      .println{ it.text }
+workflow {
+  Channel.fromPath("$baseDir/data/reads/*_1.fq.gz", checkIfExists: true) \
+    | foo \
+    | collectFile \
+    | view
+}
 ----
 
 == Run it

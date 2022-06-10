@@ -23,23 +23,51 @@
  */
 
  /*
-  * author Matthieu Foll <follm@iarc.fr> 
+  * author Ben Sherman <bentshermann@gmail.com>
   */
 
-process foo {
-  debug true
-  tag "$sampleId"
-  
-  input:
-  tuple val(sampleId), path(bam)
+nextflow.preview.recursion=true
 
+params.input = "$baseDir/data/hello.txt"
+
+process tick {
+  input:
+    path 'input.txt'
+  output:
+    path 'result.txt'
   script:
-  """
-  echo your_command --sample ${sampleId} --bam ${sampleId}.bam
-  """
+    """
+    cat input.txt > result.txt
+    echo "Task ${task.index} : tick" >> result.txt
+    """
+}
+
+process tock {
+  input:
+    path 'input.txt'
+  output:
+    path 'result.txt'
+  script:
+    """
+    cat input.txt > result.txt
+    echo "Task ${task.index} : tock" >> result.txt
+    """
+}
+
+workflow clock {
+  take: infile
+  main:
+    infile | tick | tock
+  emit:
+    tock.out
 }
 
 workflow {
-  Channel.fromFilePairs("$baseDir/data/alignment/*.{bam,bai}", checkIfExists:true) { file -> file.name.replaceAll(/.bam|.bai$/,'') } \
-    | foo
+  clock
+    .recurse(file(params.input))
+    .until { it -> it.size() > 100 }
+
+  clock
+    .out
+    .view(it -> it.text)
 }

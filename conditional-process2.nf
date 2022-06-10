@@ -29,17 +29,12 @@
 
 params.flag = false
 
-(foo_ch, bar_ch) = ( params.flag
-                    ? [ Channel.empty(), Channel.from(1,2,3) ]
-                    : [ Channel.from(4,5,6), Channel.empty() ] )   
-
 process foo {
-
   input:
-  val x from foo_ch
+  val x
 
   output:
-  file 'x.txt' into out1_ch
+  path 'x.txt'
 
   script:
   """
@@ -49,10 +44,10 @@ process foo {
 
 process bar {
   input:
-  val(b) from bar_ch
+  val(b)
 
   output:
-  file 'x.txt' into out2_ch
+  path 'x.txt'
 
   script:
   """
@@ -61,12 +56,23 @@ process bar {
 }
 
 process omega {
-  echo true
+  debug true
   input:
-  file x from out1_ch.mix(out2_ch)
+  path x
 
   script:
   """
   cat $x
   """
+}
+
+workflow {
+  (foo_ch, bar_ch) = params.flag
+    ? [ Channel.empty(), Channel.from(1,2,3) ]
+    : [ Channel.from(4,5,6), Channel.empty() ]
+
+  foo(foo_ch)
+  bar(bar_ch)
+
+  foo.out | mix(bar.out) | omega
 }

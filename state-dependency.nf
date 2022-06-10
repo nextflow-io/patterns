@@ -26,13 +26,9 @@
   * author Paolo Di Tommaso <paolo.ditommaso@gmail.com> 
   */
 
-Channel
-    .fromPath("$baseDir/data/reads/11010*.fq.gz", checkIfExists:true)
-    .set{ reads_ch }
-
 process foo {
     output: 
-    val true into done_ch
+    val true
     script:
     """
     echo your_command_here
@@ -41,10 +37,17 @@ process foo {
 
 process bar {
     input: 
-    val flag from done_ch
-    file fq from reads_ch
+    val ready
+    path fq
     script:
     """
     echo other_commad_here --reads $fq
     """
+}
+
+workflow {
+    reads_ch = Channel.fromPath("$baseDir/data/reads/11010*.fq.gz", checkIfExists:true)
+
+    foo()
+    bar(foo.out, reads_ch)
 }

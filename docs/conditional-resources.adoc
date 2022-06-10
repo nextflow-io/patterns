@@ -2,36 +2,37 @@
 
 == Problem 
 
-A task in your workflow requires to use an amount of computing 
-resources eg. memory that depends on the size or the name of one 
+A task in your workflow needs to use some amount of computing 
+resources (e.g. memory) that depends on the size or the name of one 
 or more input files. 
 
 == Solution 
 
-Declare the resource requirements e.g. `memory`, `cpus`, etc.
+Declare the resource requirements (`memory`, `cpus`, etc.)
 in a dynamic manner using a closure. 
 
 The closure computes the required amount of resources using the file 
-attributes, such as `size`, etc., of the inputs declared in the process
+attributes (e.g. `size`) of the inputs declared in the process
 definition.
 
 == Code 
 
 [source,nextflow,linenums,options="nowrap"]
 ----
-Channel
-    .fromPath('reads/*_1.fq.gz')
-    .set { reads_ch }
-
 process foo {
     memory { reads.size() < 70.KB ? 1.GB : 5.GB }
 
     input:
-    file reads from reads_ch 
+    path reads
 
     """
-    your_command_here --in $reads
+    echo your_command_here --in ${reads} --mem=${task.memory.giga}
     """
+}
+
+workflow {
+    Channel.fromPath("$baseDir/data/reads/*_1.fq.gz", checkIfExists:true) \
+        | foo
 }
 ----
 
@@ -40,6 +41,3 @@ process foo {
 ```
 nextflow run patterns/conditional-resources.nf
 ```
-
-Note: requires version 0.32.0 or later.
-
