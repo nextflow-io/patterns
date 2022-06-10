@@ -29,7 +29,7 @@
 params.inputs = "$baseDir/data/reads/*_1.fq.gz"
 
 process foo {
-  echo true
+  debug true
   input:
   path x
 

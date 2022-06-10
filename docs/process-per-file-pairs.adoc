@@ -15,7 +15,7 @@ The matching files are emitted as tuples in which the first element is the group
 [source,nextflow,linenums,options="nowrap"]
 ----
 process foo {
-  echo true
+  debug true
 
   input:
   tuple val(sampleId), file(reads)
@@ -45,7 +45,7 @@ When necessary, it is possible to define a custom grouping strategy. A common us
 [source,nextflow,linenums,options="nowrap"]
 ----
 process foo {
-  echo true
+  debug true
   tag "$sampleId"
   
   input:

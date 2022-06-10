@@ -13,9 +13,9 @@ Use the https://www.nextflow.io/docs/latest/channel.html#frompath[Channel.fromPa
 [source,nextflow,linenums,options="nowrap"]
 ----
 process foo {
-  echo true
+  debug true
   input:
-  file x
+  path x
 
   script:
   """

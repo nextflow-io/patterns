@@ -30,7 +30,7 @@ params.infile = "$baseDir/data/poem.txt"
 params.size = 5
 
 process foo {
-  echo true
+  debug true
   input: 
   file x
 

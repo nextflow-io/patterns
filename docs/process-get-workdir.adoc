@@ -15,7 +15,7 @@ NOTE: Make sure to escape the `$` variable placeholder when the command script i
 [source,nextflow,linenums,options="nowrap"]
 ----
 process foo {
-  echo true
+  debug true
   script:
   """
   echo foo task path: \$PWD
@@ -23,7 +23,7 @@ process foo {
 }
 
 process bar {
-  echo true
+  debug true
   script:
   '''
   echo bar task path: $PWD

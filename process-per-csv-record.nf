@@ -29,7 +29,7 @@
 params.index = "$baseDir/data/index.csv"
 
 process foo {
-    echo true
+    debug true
     input:
     tuple val(sampleId), path(read1), path(read2)
 

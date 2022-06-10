@@ -13,7 +13,7 @@ In DSL2, you can just do it! The https://www.nextflow.io/docs/latest/operator.ht
 [source,nextflow,linenums,options="nowrap"]
 ----
 process foo {
-  input: file x
+  input: path x
   script: 
   """
   echo your_command --input $x
@@ -21,7 +21,7 @@ process foo {
 }    
 
 process bar {
-  input: file x
+  input: path x
   script: 
   """
   echo your_command --input $x

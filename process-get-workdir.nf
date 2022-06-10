@@ -27,7 +27,7 @@
   */
 
 process foo {
-  echo true
+  debug true
   script:
   """
   echo foo task path: \$PWD
@@ -35,7 +35,7 @@ process foo {
 }
 
 process bar {
-  echo true
+  debug true
   script:
   '''
   echo bar task path: $PWD

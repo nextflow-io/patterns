@@ -13,7 +13,7 @@ Use the https://www.nextflow.io/docs/latest/channel.html#from[from] method to de
 [source,nextflow,linenums,options="nowrap"]
 ----
 process foo {
-  echo true
+  debug true
   tag "$sampleId"
   
   input: 

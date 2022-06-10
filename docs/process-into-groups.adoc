@@ -15,7 +15,7 @@ Use the https://www.nextflow.io/docs/latest/operator.html#map[map] operator to a
 params.reads = "$baseDir/data/reads/*"
 
 process foo {
-  echo true
+  debug true
   input:
   tuple val(key), file(samples)
 

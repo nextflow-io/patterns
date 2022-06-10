@@ -30,7 +30,7 @@ params.inputs = "$baseDir/data/prots/*{1,2,3}.fa"
 params.filter = 'NO_FILE'
 
 process foo {
-  echo true   
+  debug true   
   input:
   path seq
   path opt

@@ -29,7 +29,7 @@
 params.inputs = ''
 
 process foo {
-  echo true  
+  debug true  
   input:
   val x
   when:

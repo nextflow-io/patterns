@@ -56,7 +56,7 @@ process bar {
 }
 
 process omega {
-  echo true
+  debug true
   input:
   path x
 

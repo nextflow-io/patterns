@@ -29,7 +29,7 @@
 params.reads = "$baseDir/data/reads/*"
 
 process foo {
-  echo true
+  debug true
   input:
   tuple val(key), path(samples)
 

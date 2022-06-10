@@ -27,7 +27,7 @@
   */
 
 process foo {
-  echo true
+  debug true
   tag "$sampleId"
   
   input: 

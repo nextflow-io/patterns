@@ -43,7 +43,7 @@ process foo {
 }
 
 process bar {
-  echo true
+  debug true
 
   input: 
   path x

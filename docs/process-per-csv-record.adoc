@@ -30,7 +30,7 @@ This workflow parses the file and executes a process for each line:
 params.index = "$baseDir/data/index.csv"
 
 process foo {
-    echo true
+    debug true
     input:
     tuple val(sampleId), file(read1), file(read2)
 

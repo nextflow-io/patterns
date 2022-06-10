@@ -16,7 +16,7 @@ a _marker_ value to trigger the execution of the process.
 params.inputs = ''
 
 process foo {
-  echo true  
+  debug true  
   input:
   val x
   when:
