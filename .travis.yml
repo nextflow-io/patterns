@@ -8,4 +8,4 @@ install:
 - curl -fsSL get.nextflow.io | bash
 - mkdir -p ~/bin; cp nextflow ~/bin
 script: 
-- bash test.sh
+- bash scripts/test.sh

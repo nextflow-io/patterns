@@ -6,41 +6,41 @@ A curated collection of Nextflow implementation patterns
 
 ## Basic patterns
 
-* [Channel duplication](docs/channel-duplication.adoc)
+* [Channel duplication](docs/channel-duplication.md)
 
 ### Scatter executions
 
-* [Process per file path](docs/process-per-file-path.adoc)
-* [Process per file chunk](docs/process-per-file-chunk.adoc)
-* [Process per file pairs](docs/process-per-file-pairs.adoc)
-* [Process per file range](docs/process-per-file-range.adoc)
-* [Process per CSV record](docs/process-per-csv-record.adoc)
-* [Process per file output](docs/process-per-file-output.adoc)
+* [Process per file path](docs/process-per-file-path.md)
+* [Process per file chunk](docs/process-per-file-chunk.md)
+* [Process per file pairs](docs/process-per-file-pairs.md)
+* [Process per file range](docs/process-per-file-range.md)
+* [Process per CSV record](docs/process-per-csv-record.md)
+* [Process per file output](docs/process-per-file-output.md)
 
 ### Gather results
 
-* [Process all outputs altogether](docs/process-collect.adoc)
-* [Process outputs into groups](docs/process-into-groups.adoc)
-* [Collect outputs into a file](docs/collect-into-file.adoc)
+* [Process all outputs altogether](docs/process-collect.md)
+* [Process outputs into groups](docs/process-into-groups.md)
+* [Collect outputs into a file](docs/collect-into-file.md)
 
 ### Organize outputs
 
-* [Store process outputs](docs/publish-process-outputs.adoc)
-* [Store outputs matching a glob pattern](docs/publish-matching-glob.adoc)
-* [Store outputs renaming files](docs/publish-rename-outputs.adoc)
+* [Store process outputs](docs/publish-process-outputs.md)
+* [Store outputs matching a glob pattern](docs/publish-matching-glob.md)
+* [Store outputs renaming files](docs/publish-rename-outputs.md)
 
 ## Other
 
-* [Get process work directory](docs/process-get-workdir.adoc)
-* [Ignore failing process](docs/ignore-failing-process.adoc)
-* [State dependency](docs/state-dependency.adoc)
+* [Get process work directory](docs/process-get-workdir.md)
+* [Ignore failing process](docs/ignore-failing-process.md)
+* [State dependency](docs/state-dependency.md)
 
 ## Advanced patterns
 
-* [Conditional process resources](docs/conditional-resources.adoc)
-* [Conditional process executions](docs/conditional-process.adoc)
-* [Skip process execution](docs/skip-process-execution.adoc)
-* [Feedback loop](docs/feedback-loop.adoc)
-* [Optional input](docs/optional-input.adoc)
-* [Optional output](docs/optional-output.adoc)
-* [Process when empty](docs/process-when-empty.adoc)
+* [Conditional process resources](docs/conditional-resources.md)
+* [Conditional process executions](docs/conditional-process.md)
+* [Skip process execution](docs/skip-process-execution.md)
+* [Feedback loop](docs/feedback-loop.md)
+* [Optional input](docs/optional-input.md)
+* [Optional output](docs/optional-output.md)
+* [Process when empty](docs/process-when-empty.md)
