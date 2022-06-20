@@ -6,11 +6,13 @@ site_dir: public
 
 theme:
   name: material
+  favicon: https://www.nextflow.io/img/favicon.png
   features:
     - navigation.sections
+  logo: https://www.nextflow.io/img/favicon.png
   palette:
     scheme: default
-    primary: white
+    primary: black
 
 markdown_extensions:
   - admonition
