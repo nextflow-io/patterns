@@ -2,13 +2,13 @@
 
 A curated collection of Nextflow implementation patterns  
 
-[![Build Status](https://travis-ci.org/nextflow-io/patterns.svg?branch=master)](https://travis-ci.org/nextflow-io/patterns)
+![Build Status](https://github.com/nextflow-io/patterns/actions/workflows/test.yml/badge.svg)
 
 ## Basic patterns
 
 * [Channel duplication](docs/channel-duplication.md)
 
-### Scatter executions
+## Scatter executions
 
 * [Process per file path](docs/process-per-file-path.md)
 * [Process per file chunk](docs/process-per-file-chunk.md)
@@ -17,13 +17,13 @@ A curated collection of Nextflow implementation patterns
 * [Process per CSV record](docs/process-per-csv-record.md)
 * [Process per file output](docs/process-per-file-output.md)
 
-### Gather results
+## Gather results
 
 * [Process all outputs altogether](docs/process-collect.md)
 * [Process outputs into groups](docs/process-into-groups.md)
 * [Collect outputs into a file](docs/collect-into-file.md)
 
-### Organize outputs
+## Organize outputs
 
 * [Store process outputs](docs/publish-process-outputs.md)
 * [Store outputs matching a glob pattern](docs/publish-matching-glob.md)

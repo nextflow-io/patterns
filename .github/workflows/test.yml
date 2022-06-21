@@ -1,0 +1,17 @@
+name: test
+on: push
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq -y install graphviz realpath
+          curl -fsSL get.nextflow.io | bash
+          mkdir -p ~/bin; mv nextflow ~/bin
+      - run: bash scripts/test.sh
