@@ -11,5 +11,5 @@ jobs:
           java-version: '17'
       - run: |
           curl -fsSL get.nextflow.io | bash
-          mkdir -p ~/bin; mv nextflow ~/bin
+          sudo mv nextflow /usr/local/bin
       - run: bash scripts/test.sh
