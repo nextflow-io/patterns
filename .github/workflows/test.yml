@@ -9,7 +9,5 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
-      - run: |
-          curl -fsSL get.nextflow.io | bash
-          sudo mv nextflow /usr/local/bin
+      - uses: MillironX/setup-nextflow@v1
       - run: bash scripts/test.sh

@@ -2,8 +2,6 @@ site_name: Nextflow Patterns
 repo_name: nextflow-io/patterns
 repo_url: https://github.com/nextflow-io/patterns
 
-site_dir: public
-
 theme:
   name: material
   favicon: https://www.nextflow.io/img/favicon.png
