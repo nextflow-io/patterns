@@ -9,5 +9,5 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
-      - uses: MillironX/setup-nextflow@v1
+      - uses: nf-core/setup-nextflow@v1
       - run: bash scripts/test.sh
