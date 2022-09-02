@@ -44,3 +44,4 @@ A curated collection of Nextflow implementation patterns
 * [Optional input](docs/optional-input.adoc)
 * [Optional output](docs/optional-output.adoc)
 * [Process when empty](docs/process-when-empty.adoc)
+* [Task batching](docs/task-batching.adoc)
