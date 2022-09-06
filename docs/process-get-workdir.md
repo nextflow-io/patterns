@@ -11,7 +11,7 @@ Use the `$PWD` Bash variable or the `pwd` command to retrieve the task working d
 
 ## Example 
 
-```nextflow
+```groovy
 process foo {
   debug true
   script:

@@ -8,7 +8,7 @@ Use the [publishDir](https://www.nextflow.io/docs/latest/process.html#publishdir
 
 ## Code 
 
-```nextflow
+```groovy
 params.reads = "$baseDir/data/reads/*{1,2}.fq.gz"
 params.outdir = 'my-results'
 

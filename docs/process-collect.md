@@ -10,7 +10,7 @@ Then use the resulting channel as input for the downstream task.
 
 ## Code 
 
-```nextflow
+```groovy
 process foo {
   input:
   path x

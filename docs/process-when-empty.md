@@ -8,7 +8,7 @@ Use the [ifEmpty](https://www.nextflow.io/docs/latest/operator.html#ifempty) ope
 
 ## Example 
 
-```nextflow
+```groovy
 params.inputs = ''
 
 process foo {

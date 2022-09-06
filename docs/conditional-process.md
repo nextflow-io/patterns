@@ -13,7 +13,7 @@ Or, use a ternary expression and a pipe to keep things short and sweet.
 
 ## Code 
 
-```nextflow
+```groovy
 params.flag = false 
 
 process foo {
@@ -94,7 +94,7 @@ for the third process.
 
 ## Code 
 
-```nextflow
+```groovy
 params.flag = false
 
 process foo {

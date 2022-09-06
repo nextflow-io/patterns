@@ -10,7 +10,7 @@ Use the `saveAs` option to give each file a name of your choice, providing a cus
 
 ## Code 
 
-```nextflow
+```groovy
 process foo {
   publishDir 'results', saveAs: { filename -> "foo_$filename" }
 
@@ -38,7 +38,7 @@ nextflow run patterns/publish-rename-outputs.nf
 
 The same pattern can be used to store specific files in separate directories depending on the actual name. 
 
-```nextflow
+```groovy
 process foo {
   publishDir 'results', saveAs: { filename -> filename.endsWith(".zip") ? "zips/$filename" : filename }
 

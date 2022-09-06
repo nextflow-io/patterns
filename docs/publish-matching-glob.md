@@ -8,7 +8,7 @@ Use two or more [publishDir](https://www.nextflow.io/docs/latest/process.html#pu
 
 ## Code
 
-```nextflow
+```groovy
 params.reads = "$baseDir/data/reads/*_{1,2}.fq.gz"
 params.outdir = 'my-results'
 

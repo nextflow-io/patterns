@@ -20,7 +20,7 @@ Given the file `index.csv` with the following content:
 
 This workflow parses the file and executes a process for each line:
 
-```nextflow
+```groovy
 params.index = "$baseDir/data/index.csv"
 
 process foo {

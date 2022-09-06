@@ -8,7 +8,7 @@ In DSL2, you can just do it! The [into](https://www.nextflow.io/docs/latest/oper
 
 ## Code 
 
-```nextflow
+```groovy
 process foo {
   input: path x
   script: 

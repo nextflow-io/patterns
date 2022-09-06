@@ -11,7 +11,7 @@ Then use this channel as input for the downstream process.
 
 ## Code 
 
-```nextflow
+```groovy
 process foo {
   output:
   path '*.txt'

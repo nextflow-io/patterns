@@ -21,7 +21,7 @@ some condition is satisfied.
 
 For an iterative process:
 
-```nextflow
+```groovy
 nextflow.preview.recursion=true
 
 params.data = "$baseDir/data/hello.txt"
@@ -57,7 +57,7 @@ workflow {
 
 For an iterative workflow:
 
-```nextflow
+```groovy
 nextflow.preview.recursion=true
 
 params.input = "$baseDir/data/hello.txt"

@@ -9,7 +9,7 @@ the output files into a single file.
 
 ## Code
 
-```nextflow
+```groovy
 process foo {
   input:
   path x

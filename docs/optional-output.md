@@ -8,7 +8,7 @@ Declare such output as an `optional` file.
 
 ## Code 
 
-```nextflow
+```groovy
 process foo {
   output: 
   path 'foo.txt', optional: true

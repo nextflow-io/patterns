@@ -8,7 +8,7 @@ Use the [from](https://www.nextflow.io/docs/latest/channel.html#from) method to 
 
 ## Code 
 
-```nextflow
+```groovy
 process foo {
   debug true
   tag "$sampleId"

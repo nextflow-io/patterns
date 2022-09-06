@@ -8,7 +8,7 @@ Use the process [directive](https://www.nextflow.io/docs/latest/process.html#err
 
 ## Code 
 
-```nextflow
+```groovy
 process foo {
   errorStrategy 'ignore'
   script:

@@ -8,7 +8,7 @@ Add an output channel to process `foo` that produces a _ready_ signal. Then pass
 
 ## Code 
 
-```nextflow
+```groovy
 process foo {
     output: 
     val true

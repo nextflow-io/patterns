@@ -44,3 +44,4 @@ A curated collection of Nextflow implementation patterns
 * [Optional input](docs/optional-input.md)
 * [Optional output](docs/optional-output.md)
 * [Process when empty](docs/process-when-empty.md)
+* [Task batching](docs/task-batching.md)

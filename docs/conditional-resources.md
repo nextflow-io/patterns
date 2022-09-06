@@ -15,7 +15,7 @@ definition.
 
 ## Code 
 
-```nextflow
+```groovy
 process foo {
     memory { reads.size() < 70.KB ? 1.GB : 5.GB }
 

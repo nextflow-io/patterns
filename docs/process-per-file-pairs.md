@@ -10,7 +10,7 @@ The matching files are emitted as tuples in which the first element is the group
 
 ## Code
 
-```nextflow
+```groovy
 process foo {
   debug true
 
@@ -39,7 +39,7 @@ nextflow run patterns/process-per-file-pairs.nf
 
 When necessary, it is possible to define a custom grouping strategy. A common use case is for alignment BAM files (`sample1.bam`) that come along with their index file. The difficulty is that the index is sometimes called `sample1.bai` and sometimes `sample1.bam.bai` depending on the software used. The following example can accommodate both cases. 
 
-```nextflow
+```groovy
 process foo {
   debug true
   tag "$sampleId"

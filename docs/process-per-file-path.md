@@ -8,7 +8,7 @@ Use the [Channel.fromPath](https://www.nextflow.io/docs/latest/channel.html#from
 
 ## Code 
 
-```nextflow
+```groovy
 process foo {
   debug true
   input:

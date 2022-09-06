@@ -8,7 +8,7 @@ Use the [map](https://www.nextflow.io/docs/latest/operator.html#map) operator to
 
 ## Code
 
-```nextflow
+```groovy
 params.reads = "$baseDir/data/reads/*"
 
 process foo {

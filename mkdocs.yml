@@ -48,3 +48,4 @@ nav:
     - 'Optional input': 'optional-input.md'
     - 'Optional output': 'optional-output.md'
     - 'Process when empty': 'process-when-empty.md'
+    - 'Task batching': 'task-batching.md'

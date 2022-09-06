@@ -13,7 +13,7 @@ Splitter for specific file formats are available, e.g. [splitFasta](https://www.
  
 ## Code 
 
-```nextflow
+```groovy
 params.infile = "$baseDir/data/poem.txt"
 params.size = 5
 

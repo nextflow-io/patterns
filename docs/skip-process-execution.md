@@ -8,7 +8,7 @@ Use an empty channel, created in a conditional expression, to skip the first pro
 
 ## Code 
 
-```nextflow
+```groovy
 params.skip = false
 params.input = "$baseDir/data/reads/sample.fq.gz" 
 

@@ -8,7 +8,7 @@ Use a special file name to mark the absence of the file parameter.
 
 ## Code 
 
-```nextflow
+```groovy
 params.inputs = "$baseDir/data/prots/*{1,2,3}.fa"
 params.filter = 'NO_FILE'
 
