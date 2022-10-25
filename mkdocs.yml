@@ -49,3 +49,8 @@ nav:
     - 'Optional output': 'optional-output.md'
     - 'Process when empty': 'process-when-empty.md'
     - 'Task batching': 'task-batching.md'
+
+extra:
+  analytics:
+    provider: google
+    property: G-244N3GEN75
