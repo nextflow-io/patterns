@@ -1,18 +1,14 @@
-= Store process outputs 
-
-== Problem 
+## Problem 
 
 You need to store the outputs of one or more processes into a directory structure of your choice.
 
-== Solution 
+## Solution 
 
-Use the https://www.nextflow.io/docs/latest/process.html#publishdir[publishDir] directive
-to define a custom directory where the process outputs should be saved.
+Use the [publishDir](https://www.nextflow.io/docs/latest/process.html#publishdir) directive to define a custom directory where the process outputs should be saved.
 
-== Code 
+## Code 
 
-[source,nextflow,linenums,options="nowrap"]
-----
+```groovy
 params.reads = "$baseDir/data/reads/*{1,2}.fq.gz"
 params.outdir = 'my-results'
 
@@ -34,12 +30,12 @@ workflow {
   Channel.fromFilePairs(params.reads, checkIfExists: true) \
     | foo
 }
-----
+```
 
-== Run it 
+## Run it 
 
 Run the script with the following command: 
 
-```
+```bash
 nextflow run patterns/publish-process-outputs.nf 
 ```

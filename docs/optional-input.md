@@ -1,17 +1,14 @@
-= Optional input 
-
-== Problem 
+## Problem 
 
 One or more processes have an optional input file. 
 
-== Solution 
+## Solution 
 
 Use a special file name to mark the absence of the file parameter. 
 
-== Code 
+## Code 
 
-[source,nextflow,linenums,options="nowrap"]
-----
+```groovy
 params.inputs = "$baseDir/data/prots/*{1,2,3}.fa"
 params.filter = 'NO_FILE'
 
@@ -34,18 +31,18 @@ workflow {
 
   foo(prots_ch, opt_file)
 }
-----
+```
 
-== Run it 
+## Run it 
 
 Run the script with the following command: 
 
-```
+```bash
 nextflow run patterns/optional-input.nf 
 ```
 
 Run the same script providing an optional file input:
 
-```
+```bash
 nextflow run patterns/optional-input.nf --filter foo.txt
 ```

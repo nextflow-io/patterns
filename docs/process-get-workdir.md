@@ -1,19 +1,17 @@
-= Get process work directory
-
-== Problem 
+## Problem 
 
 A tool needs the explicit path of the current task work directory.
 
-== Solution 
+## Solution 
 
-Use the `$PWD` Bash variable or the `pwd` command to retrieve the task working directory path. 
+Use the `$PWD` Bash variable or the `pwd` command to retrieve the task working directory path.
 
-NOTE: Make sure to escape the `$` variable placeholder when the command script is enclosed in double quote characters.
+!!! note
+    Make sure to escape the `$` variable placeholder when the command script is enclosed in double quote characters.
 
-== Example 
+## Example 
 
-[source,nextflow,linenums,options="nowrap"]
-----
+```groovy
 process foo {
   debug true
   script:
@@ -34,19 +32,19 @@ workflow {
   foo()
   bar()
 }
-----
+```
 
-== Run it 
+## Run it 
 
 The command run the script with an empty channel: 
 
-```
+```bash
 nextflow run patterns/process-get-workdir.nf
 ```
 
 Use the following command to provide the same script
 some input files, that prevents the process from being executed: 
 
-```
+```bash
 nextflow run patterns/process-get-workdir.nf --inputs ../data/prots/\*
 ```

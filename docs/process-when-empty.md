@@ -1,18 +1,14 @@
-= Execute when empty 
-
-== Problem 
+## Problem 
 
 You need to execute a process if a channel is empty. 
 
-== Solution 
+## Solution 
 
-Use the https://www.nextflow.io/docs/latest/operator.html#ifempty[ifEmpty] operator to emit 
-a _marker_ value to trigger the execution of the process. 
+Use the [ifEmpty](https://www.nextflow.io/docs/latest/operator.html#ifempty) operator to emit a _marker_ value to trigger the execution of the process. 
 
-== Example 
+## Example 
 
-[source,nextflow,linenums,options="nowrap"]
-----
+```groovy
 params.inputs = ''
 
 process foo {
@@ -20,7 +16,7 @@ process foo {
   input:
   val x
   when:
-  x == 'EMPTY'
+  x ## 'EMPTY'
 
   script:
   '''
@@ -37,19 +33,18 @@ workflow {
     | ifEmpty { 'EMPTY' } \
     | foo
 }
-----
+```
 
-== Run it 
+## Run it 
 
 Use the following command to run the script with an empty channel: 
 
-```
+```bash
 nextflow run patterns/process-when-empty.nf
 ```
 
-Use the following command to provide the same script
-some input files, which prevents the process from being executed: 
+Use the following command to provide the same script some input files, which prevents the process from being executed: 
 
-```
+```bash
 nextflow run patterns/process-when-empty.nf --inputs ../data/prots/\*
 ```

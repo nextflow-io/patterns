@@ -1,17 +1,14 @@
-= Ignore failing process 
-
-== Problem 
+## Problem 
 
 A task is expected to fail in some cases. You want to ignore the failure and continue the execution of the remaining tasks in the workflow. 
 
-== Solution
+## Solution
 
-Use the process https://www.nextflow.io/docs/latest/process.html#errorstrategy[directive] `errorStrategy 'ignore'` to ignore the error condition. 
+Use the process [directive](https://www.nextflow.io/docs/latest/process.html#errorstrategy) `errorStrategy 'ignore'` to ignore the error condition. 
 
-== Code 
+## Code 
 
-[source,nextflow,linenums,options="nowrap"]
-----
+```groovy
 process foo {
   errorStrategy 'ignore'
   script:
@@ -32,12 +29,12 @@ workflow {
   foo()
   bar()
 }
-----
+```
 
-== Run it 
+## Run it 
 
 Run the script with the following command: 
 
-```
+```bash
 nextflow run patterns/ignore-failing-process.nf 
 ```

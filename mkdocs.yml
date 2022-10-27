@@ -1,0 +1,56 @@
+site_name: Nextflow Patterns
+repo_name: nextflow-io/patterns
+repo_url: https://github.com/nextflow-io/patterns
+
+theme:
+  name: material
+  favicon: https://www.nextflow.io/img/favicon.png
+  features:
+    - navigation.sections
+  logo: https://www.nextflow.io/img/favicon.png
+  palette:
+    scheme: default
+    primary: black
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
+nav:
+  - 'Home': 'index.md'
+  - 'Basic patterns':
+    - 'Channel duplication': 'channel-duplication.md'
+  - 'Scatter executions':
+    - 'Process per file path': 'process-per-file-path.md'
+    - 'Process per file chunk': 'process-per-file-chunk.md'
+    - 'Process per file pairs': 'process-per-file-pairs.md'
+    - 'Process per file range': 'process-per-file-range.md'
+    - 'Process per CSV record': 'process-per-csv-record.md'
+    - 'Process per file output': 'process-per-file-output.md'
+  - 'Gather results':
+    - 'Process all outputs altogether': 'process-collect.md'
+    - 'Process outputs into groups': 'process-into-groups.md'
+    - 'Collect outputs into a file': 'collect-into-file.md'
+  - 'Organize outputs':
+    - 'Store process outputs': 'publish-process-outputs.md'
+    - 'Store outputs matching a glob pattern': 'publish-matching-glob.md'
+    - 'Store outputs renaming files': 'publish-rename-outputs.md'
+  - 'Other':
+    - 'Get process work directory': 'process-get-workdir.md'
+    - 'Ignore failing process': 'ignore-failing-process.md'
+    - 'State dependency': 'state-dependency.md'
+  - 'Advanced patterns':
+    - 'Conditional process resources': 'conditional-resources.md'
+    - 'Conditional process executions': 'conditional-process.md'
+    - 'Skip process execution': 'skip-process-execution.md'
+    - 'Feedback loop': 'feedback-loop.md'
+    - 'Optional input': 'optional-input.md'
+    - 'Optional output': 'optional-output.md'
+    - 'Process when empty': 'process-when-empty.md'
+    - 'Task batching': 'task-batching.md'
+
+extra:
+  analytics:
+    provider: google
+    property: G-244N3GEN75

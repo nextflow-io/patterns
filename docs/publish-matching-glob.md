@@ -1,20 +1,14 @@
-= Store outputs matching a glob pattern
+## Problem
 
-== Problem
+A task in your workflow creates many output files that are required by a downstream task.  You want to store some of those files into separate directories depending on the file name.
 
-A task in your workflow creates many output files that are required by a downstream task. 
-You want to store some of those files into separate directories depending on the file name.
+## Solution
 
-== Solution
+Use two or more [publishDir](https://www.nextflow.io/docs/latest/process.html#publishdir) directives to publish the output files into separate paths. For each directive specify a different glob pattern using the `pattern` option to store into each directory only the files that match the provided pattern.
 
-Use two or more https://www.nextflow.io/docs/latest/process.html#publishdir[publishDir] directives
-to publish the output files into separate paths. For each directive specify a different glob pattern 
-using the option `pattern` to store into each directory only the files that match the provided pattern.
+## Code
 
-== Code
-
-[source,nextflow,linenums,options="nowrap"]
-----
+```groovy
 params.reads = "$baseDir/data/reads/*_{1,2}.fq.gz"
 params.outdir = 'my-results'
 
@@ -44,12 +38,12 @@ workflow {
   Channel.fromFilePairs(params.reads, checkIfExists: true, flat: true) \
     | foo
 }
-----
+```
 
-== Run it
+## Run it
 
 Run the script with the following command:
 
-```
+```bash
 nextflow run patterns/publish-matching-glob.nf
 ```

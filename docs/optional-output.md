@@ -1,17 +1,14 @@
-= Optional output  
-
-== Problem 
+## Problem 
 
 A task in your workflow is expected to not create an output file in some circumstances. 
 
-== Solution
+## Solution
 
 Declare such output as an `optional` file. 
 
-== Code 
+## Code 
 
-[source,nextflow,linenums,options="nowrap"]
-----
+```groovy
 process foo {
   output: 
   path 'foo.txt', optional: true
@@ -21,12 +18,12 @@ process foo {
   your_command
   '''
 }
-----
+```
 
-== Run it
+## Run it
 
 Use the the following command to execute the example:
 
-```
+```bash
 nextflow run patterns/optional-output.nf
 ```

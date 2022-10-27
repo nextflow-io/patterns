@@ -1,6 +1,7 @@
-.git/
-.nextflow*
+.git
 .idea*
-work/
-results
+.nextflow*
 my-results
+public
+results
+work

@@ -1,13 +1,12 @@
-= Feedback loop  
-
-== Problem 
+## Problem 
 
 You need to repeat a process or workflow multiple times, using the output
 from the previous iteration as the input to the next iteration.
 
-== Solution
+## Solution
 
-WARNING: This feature is experimental and may change in the future.
+!!! warning
+    This feature is experimental and may change in the future.
 
 Use the `recurse` method on a process or workflow to execute it iteratively.
 In order to use this feature, the process or workflow must have identical input
@@ -15,15 +14,14 @@ and output definitions, and any initial values must be Groovy values or
 value channels -- queue channels are not supported (yet).
 
 You can use the `times` operator to perform a fixed number of iterations, or the
-https://www.nextflow.io/docs/latest/operator.html#until[until] operator to iterate until
+[until](https://www.nextflow.io/docs/latest/operator.html#until) operator to iterate until
 some condition is satisfied.
 
-== Code 
+## Code 
 
 For an iterative process:
 
-[source,nextflow,linenums,options="nowrap"]
-----
+```groovy
 nextflow.preview.recursion=true
 
 params.data = "$baseDir/data/hello.txt"
@@ -55,12 +53,11 @@ workflow {
     .out
     .view(it -> it.text)
 }
-----
+```
 
 For an iterative workflow:
 
-[source,nextflow,linenums,options="nowrap"]
-----
+```groovy
 nextflow.preview.recursion=true
 
 params.input = "$baseDir/data/hello.txt"
@@ -106,9 +103,9 @@ workflow {
     .out
     .view(it -> it.text)
 }
-----
+```
 
-== Run it
+## Run it
 
 Use the the following command to execute the example:
 

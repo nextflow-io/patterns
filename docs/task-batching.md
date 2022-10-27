@@ -1,17 +1,14 @@
-= Task Batching
-
-== Problem 
+## Problem 
 
 You have many small tasks that you would like to process in batches to reduce job submission overhead.
 
-== Solution
+## Solution
 
-Use the https://www.nextflow.io/docs/latest/operator.html#buffer[buffer] operator to collect your input channel into batches, then refactor the process to accept a list of inputs instead of one input. One job will be created for each batch instead of each task.
+Use the [buffer](https://www.nextflow.io/docs/latest/operator.html#buffer) operator to collect your input channel into batches, then refactor the process to accept a list of inputs instead of one input. One job will be created for each batch instead of each task.
 
-== Code 
+## Code 
 
-[source,nextflow,linenums,options="nowrap"]
-----
+```groovy
 process foo {
     input:
     val indices
@@ -29,12 +26,12 @@ workflow {
         | buffer(size: 10, remainder: true)
         | foo
 }
-----
+```
 
-== Run it
+## Run it
 
 Run the example using this command:
 
-```
+```bash
 nextflow run patterns/task-batching.nf
 ```

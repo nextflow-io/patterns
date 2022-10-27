@@ -1,19 +1,16 @@
-= Process all outputs altogether  
-
-== Problem 
+## Problem 
 
 You need to process all the outputs of an upstream task altogether. 
 
-== Solution
+## Solution
 
-Use the https://www.nextflow.io/docs/latest/operator.html#collect[collect] operator to gather 
+Use the [collect](https://www.nextflow.io/docs/latest/operator.html#collect) operator to gather 
 all the outputs produced by the upstream task and emit them as a single output. 
 Then use the resulting channel as input for the downstream task.
 
-== Code 
+## Code 
 
-[source,nextflow,linenums,options="nowrap"]
-----
+```groovy
 process foo {
   input:
   path x
@@ -41,12 +38,12 @@ workflow {
     | collect \
     | bar
 }
-----
+```
 
-== Run it
+## Run it
 
 Use the the following command to execute the example:
 
-```
+```bash
 nextflow run patterns/process-collect.nf
 ```

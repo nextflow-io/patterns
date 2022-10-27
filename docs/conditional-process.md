@@ -1,11 +1,9 @@
-= Conditional process executions 
-
-== Problem 
+## Problem 
 
 One of two different tasks should be executed based on some condition, 
 and a third task should process the results of the selected task.
 
-== Solution
+## Solution
 
 Simply execute either process using `if/else` statements on the condition.
 Define a channel, e.g. `omega_ch`, which emits the output of the selected process 
@@ -13,10 +11,9 @@ in each case. Then, execute the third process with this output channel.
 
 Or, use a ternary expression and a pipe to keep things short and sweet.
 
-== Code 
+## Code 
 
-[source,nextflow,linenums,options="nowrap"]
-----
+```groovy
 params.flag = false 
 
 process foo {
@@ -66,39 +63,38 @@ workflow {
   // the short way
   (params.flag ? bar : foo) | omega
 }
-----
+```
 
-== Run it
+## Run it
 
 Use the the following command to execute the example:
 
-```
+```bash
 nextflow run patterns/conditional-process.nf
 ```
 
 The processes `foo` and `omega` are executed. Run the same command 
 with the `--flag` command line option. 
 
-```
+```bash
 nextflow run patterns/conditional-process.nf --flag 
 ```
 
 This time the processes `bar` and `omega` are executed.
 
-== Alternative solution
+## Alternative solution
 
 Create an input channel for each process that is either populated with data or an
-https://www.nextflow.io/docs/latest/channel.html#empty[empty] channel.
+[empty](https://www.nextflow.io/docs/latest/channel.html#empty) channel.
 Each process will execute only if its input channel has data.
 
-Then use the https://www.nextflow.io/docs/latest/operator.html#mix[mix] operator to create 
+Then use the [mix](https://www.nextflow.io/docs/latest/operator.html#mix) operator to create 
 a new channel that emits the outputs produced by the two processes, and use it as the input
 for the third process.
 
-== Code 
+## Code 
 
-[source,nextflow,linenums,options="nowrap"]
-----
+```groovy
 params.flag = false
 
 process foo {
@@ -148,10 +144,10 @@ workflow {
 
   foo.out | mix(bar.out) | omega
 }
-----
-
-== Run it 
-
 ```
+
+## Run it 
+
+```bash
 nextflow run patterns/conditional-process2.nf
 ```

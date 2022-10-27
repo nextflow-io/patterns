@@ -1,18 +1,15 @@
-= Collect outputs into a file
-
-== Problem 
+## Problem 
 
 You need to concatenate into a single file all output files produced by an upstream process. 
 
-== Solution 
+## Solution 
 
-Use the https://www.nextflow.io/docs/latest/operator.html#collectfile[collectFile] operator to merge all
+Use the [collectFile](https://www.nextflow.io/docs/latest/operator.html#collectfile) operator to merge all
 the output files into a single file. 
 
-== Code
+## Code
 
-[source,nextflow,linenums,options="nowrap"]
-----
+```groovy
 process foo {
   input:
   path x
@@ -30,12 +27,12 @@ workflow {
     | collectFile \
     | view
 }
-----
+```
 
-== Run it
+## Run it
 
 Use the the following command to execute the example:
 
-```
+```bash
 nextflow run patterns/collect-into-file.nf
 ```
