@@ -33,5 +33,5 @@ workflow {
 Run the example using this command:
 
 ```bash
-nextflow run patterns/task-batching.nf
+nextflow run nextflow-io/patterns/task-batching.nf
 ```

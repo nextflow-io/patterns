@@ -36,5 +36,5 @@ workflow {
 Run the script with the following command: 
 
 ```bash
-nextflow run patterns/ignore-failing-process.nf 
+nextflow run nextflow-io/patterns/ignore-failing-process.nf 
 ```

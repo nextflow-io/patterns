@@ -32,7 +32,7 @@ workflow {
 ## Run it 
 
 ```bash
-nextflow run patterns/process-per-file-pairs.nf
+nextflow run nextflow-io/patterns/process-per-file-pairs.nf
 ```
 
 ## Custom grouping strategy
@@ -62,5 +62,5 @@ workflow {
 ## Run it 
 
 ```bash
-nextflow run patterns/process-per-file-pairs-custom.nf
+nextflow run nextflow-io/patterns/process-per-file-pairs-custom.nf
 ```

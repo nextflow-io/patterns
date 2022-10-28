@@ -36,5 +36,5 @@ workflow {
 ## Run it 
 
 ```bash
-nextflow run patterns/conditional-resources.nf
+nextflow run nextflow-io/patterns/conditional-resources.nf
 ```

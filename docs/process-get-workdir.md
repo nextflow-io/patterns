@@ -39,12 +39,12 @@ workflow {
 The command run the script with an empty channel: 
 
 ```bash
-nextflow run patterns/process-get-workdir.nf
+nextflow run nextflow-io/patterns/process-get-workdir.nf
 ```
 
 Use the following command to provide the same script
 some input files, that prevents the process from being executed: 
 
 ```bash
-nextflow run patterns/process-get-workdir.nf --inputs ../data/prots/\*
+nextflow run nextflow-io/patterns/process-get-workdir.nf --inputs ../data/prots/\*
 ```

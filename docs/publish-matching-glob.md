@@ -45,5 +45,5 @@ workflow {
 Run the script with the following command:
 
 ```bash
-nextflow run patterns/publish-matching-glob.nf
+nextflow run nextflow-io/patterns/publish-matching-glob.nf
 ```

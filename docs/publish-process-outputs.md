@@ -37,5 +37,5 @@ workflow {
 Run the script with the following command: 
 
 ```bash
-nextflow run patterns/publish-process-outputs.nf 
+nextflow run nextflow-io/patterns/publish-process-outputs.nf 
 ```

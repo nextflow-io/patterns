@@ -70,14 +70,14 @@ workflow {
 Use the the following command to execute the example:
 
 ```bash
-nextflow run patterns/conditional-process.nf
+nextflow run nextflow-io/patterns/conditional-process.nf
 ```
 
 The processes `foo` and `omega` are executed. Run the same command 
 with the `--flag` command line option. 
 
 ```bash
-nextflow run patterns/conditional-process.nf --flag 
+nextflow run nextflow-io/patterns/conditional-process.nf --flag 
 ```
 
 This time the processes `bar` and `omega` are executed.
@@ -149,5 +149,5 @@ workflow {
 ## Run it 
 
 ```bash
-nextflow run patterns/conditional-process2.nf
+nextflow run nextflow-io/patterns/conditional-process2.nf
 ```

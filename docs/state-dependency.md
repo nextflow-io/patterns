@@ -41,5 +41,5 @@ workflow {
 Run the example using this command:
 
 ```bash
-nextflow run patterns/state-dependency.nf
+nextflow run nextflow-io/patterns/state-dependency.nf
 ```

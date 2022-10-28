@@ -45,5 +45,5 @@ workflow {
 Use the the following command to execute the example:
 
 ```bash
-nextflow run patterns/process-collect.nf
+nextflow run nextflow-io/patterns/process-collect.nf
 ```

@@ -31,7 +31,7 @@ workflow {
 ## Run it 
 
 ```bash
-nextflow run patterns/publish-rename-outputs.nf
+nextflow run nextflow-io/patterns/publish-rename-outputs.nf
 ```
 
 ## Save outputs in a sub-directory
@@ -62,5 +62,5 @@ workflow {
 ## Run it 
 
 ```bash
-nextflow run patterns/publish-rename-outputs-subdirs.nf
+nextflow run nextflow-io/patterns/publish-rename-outputs-subdirs.nf
 ```

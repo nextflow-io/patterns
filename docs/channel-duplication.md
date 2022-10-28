@@ -38,5 +38,5 @@ workflow {
 Use the the following command to execute the example:
 
 ```bash
-nextflow run patterns/channel-duplication.nf
+nextflow run nextflow-io/patterns/channel-duplication.nf
 ```
