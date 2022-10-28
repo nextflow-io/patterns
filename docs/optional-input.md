@@ -38,11 +38,11 @@ workflow {
 Run the script with the following command: 
 
 ```bash
-nextflow run patterns/optional-input.nf 
+nextflow run nextflow-io/patterns/optional-input.nf 
 ```
 
 Run the same script providing an optional file input:
 
 ```bash
-nextflow run patterns/optional-input.nf --filter foo.txt
+nextflow run nextflow-io/patterns/optional-input.nf --filter foo.txt
 ```

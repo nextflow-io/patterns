@@ -36,5 +36,5 @@ workflow {
 ## Run it 
 
 ```bash
-nextflow run patterns/process-into-groups.nf
+nextflow run nextflow-io/patterns/process-into-groups.nf
 ```

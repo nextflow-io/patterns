@@ -40,11 +40,11 @@ workflow {
 Use the following command to run the script with an empty channel: 
 
 ```bash
-nextflow run patterns/process-when-empty.nf
+nextflow run nextflow-io/patterns/process-when-empty.nf
 ```
 
 Use the following command to provide the same script some input files, which prevents the process from being executed: 
 
 ```bash
-nextflow run patterns/process-when-empty.nf --inputs ../data/prots/\*
+nextflow run nextflow-io/patterns/process-when-empty.nf --inputs ../data/prots/\*
 ```

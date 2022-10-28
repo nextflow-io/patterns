@@ -111,8 +111,8 @@ Use the the following command to execute the example:
 
 ```
 # iterative process
-nextflow run patterns/feedback-loop-process.nf
+nextflow run nextflow-io/patterns/feedback-loop-process.nf
 
 # iterative workflow
-nextflow run patterns/feedback-loop-workflow.nf
+nextflow run nextflow-io/patterns/feedback-loop-workflow.nf
 ```

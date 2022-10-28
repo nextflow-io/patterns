@@ -29,5 +29,5 @@ workflow {
 Use the the following command to execute the example:
 
 ```bash
-nextflow run patterns/optional-output.nf
+nextflow run nextflow-io/patterns/optional-output.nf
 ```

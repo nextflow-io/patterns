@@ -31,5 +31,5 @@ workflow {
 ## Run it 
 
 ```bash
-nextflow run patterns/process-per-file-range.nf
+nextflow run nextflow-io/patterns/process-per-file-range.nf
 ```

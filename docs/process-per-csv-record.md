@@ -50,5 +50,5 @@ workflow {
 Use the the following command to execute the example:
 
 ```bash
-nextflow run patterns/process-per-csv-record.nf
+nextflow run nextflow-io/patterns/process-per-csv-record.nf
 ```

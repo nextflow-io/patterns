@@ -53,13 +53,13 @@ workflow {
 Use the the following command to execute the example:
 
 ```bash
-nextflow run patterns/skip-process-execution.nf
+nextflow run nextflow-io/patterns/skip-process-execution.nf
 ```
 
 The processes `foo` and `bar` are executed. Run the same command with the `--skip` command line option:
 
 ```bash
-nextflow run patterns/skip-process-execution.nf --skip
+nextflow run nextflow-io/patterns/skip-process-execution.nf --skip
 ```
 
 This time only the `bar` process is executed.
