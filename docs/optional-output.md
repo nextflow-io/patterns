@@ -15,8 +15,12 @@ process foo {
 
   script:
   '''
-  your_command
+  touch foo.txt
   '''
+}
+
+workflow {
+  foo()
 }
 ```
 
