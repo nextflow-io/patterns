@@ -7,6 +7,7 @@ A curated collection of Nextflow implementation patterns
 ## Basic patterns
 
 * [Channel duplication](docs/channel-duplication.md)
+* [Sort FilePairs by sample name](docs/sort-filepairs-by-samplename.md)
 
 ## Scatter executions
 

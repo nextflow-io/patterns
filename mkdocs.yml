@@ -21,6 +21,7 @@ nav:
   - 'Home': 'index.md'
   - 'Basic patterns':
     - 'Channel duplication': 'channel-duplication.md'
+    - 'Sort FilePairs by sample name': 'sort-filepairs-by-samplename.md'
   - 'Scatter executions':
     - 'Process per file path': 'process-per-file-path.md'
     - 'Process per file chunk': 'process-per-file-chunk.md'
