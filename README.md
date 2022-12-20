@@ -8,6 +8,7 @@ A curated collection of Nextflow implementation patterns
 
 * [Channel duplication](docs/channel-duplication.md)
 * [Sort FilePairs by sample name](docs/sort-filepairs-by-samplename.md)
+* [Create key to combine channels](docs/create-key-to-combine-channels.md)
 
 ## Scatter executions
 

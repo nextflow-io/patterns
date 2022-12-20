@@ -22,6 +22,7 @@ nav:
   - 'Basic patterns':
     - 'Channel duplication': 'channel-duplication.md'
     - 'Sort FilePairs by sample name': 'sort-filepairs-by-samplename.md'
+    - 'Create key to combine channels': 'create-key-to-combine-channels.md'
   - 'Scatter executions':
     - 'Process per file path': 'process-per-file-path.md'
     - 'Process per file chunk': 'process-per-file-chunk.md'
