@@ -41,5 +41,5 @@ Channel
 Run the example using this command:
 
 ```bash
-nextflow run nextflow-io/patterns/vim sort-filepairs-by-samplename.nf
+nextflow run nextflow-io/patterns/sort-filepairs-by-samplename.nf
 ```
