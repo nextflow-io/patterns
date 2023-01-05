@@ -16,7 +16,7 @@ process foo {
   input:
   val x
   when:
-  x ## 'EMPTY'
+  x == 'EMPTY'
 
   script:
   '''
