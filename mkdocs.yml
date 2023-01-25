@@ -51,6 +51,7 @@ nav:
     - 'Optional output': 'optional-output.md'
     - 'Process when empty': 'process-when-empty.md'
     - 'Task batching': 'task-batching.md'
+    - 'Workflow grouping': 'workflow-grouping.md'
 
 extra:
   analytics:
