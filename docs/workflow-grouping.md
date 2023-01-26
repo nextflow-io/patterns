@@ -1,4 +1,4 @@
-## Problem 
+## Problem
 
 You have a subworkflow, and you would like to limit the number of parallel subworkflow executions.
 
@@ -8,7 +8,7 @@ For a single process, you could use the [maxForks](https://nextflow.io/docs/late
 
 The following example is based on a "diamond-shaped" subworkflow, in order to show how to implement parallel steps in a Bash script. View the [complete example](https://github.com/nextflow-io/patterns/blob/master/workflow-grouping.nf) to see the original subworkflow.
 
-## Code 
+## Code
 
 ```groovy
 params.n_groups = 10
@@ -17,8 +17,11 @@ params.queue_size = 2
 process diamond_merged {
     maxForks params.queue_size
 
-    input: val(index)
-    output: tuple val(index), path('d.txt')
+    input:
+    val(index)
+
+    output:
+    tuple val(index), path('d.txt')
 
     script:
     """

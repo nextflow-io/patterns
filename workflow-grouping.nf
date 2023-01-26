@@ -9,10 +9,10 @@
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -30,8 +30,11 @@ params.n_groups = 10
 params.queue_size = 2
 
 process A {
-    input: val(index)
-    output: tuple val(index), path('output.txt')
+    input:
+    val(index)
+
+    output:
+    tuple val(index), path('output.txt')
 
     script:
     """
@@ -42,8 +45,11 @@ process A {
 }
 
 process B {
-    input: tuple val(index), path('input.txt')
-    output: tuple val(index), path('output.txt')
+    input:
+    tuple val(index), path('input.txt')
+
+    output:
+    tuple val(index), path('output.txt')
 
     script:
     """
@@ -55,8 +61,11 @@ process B {
 }
 
 process C {
-    input: tuple val(index), path('input.txt')
-    output: tuple val(index), path('output.txt')
+    input:
+    tuple val(index), path('input.txt')
+
+    output:
+    tuple val(index), path('output.txt')
 
     script:
     """
@@ -68,8 +77,11 @@ process C {
 }
 
 process D {
-    input: tuple val(index), path('input_b.txt'), path('input_c.txt')
-    output: tuple val(index), path('output.txt')
+    input:
+    tuple val(index), path('input_b.txt'), path('input_c.txt')
+
+    output:
+    tuple val(index), path('output.txt')
 
     script:
     """
@@ -92,8 +104,11 @@ workflow diamond {
 process diamond_merged {
     maxForks params.queue_size
 
-    input: val(index)
-    output: tuple val(index), path('d.txt')
+    input:
+    val(index)
+
+    output:
+    tuple val(index), path('d.txt')
 
     script:
     """
