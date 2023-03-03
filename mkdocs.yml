@@ -44,7 +44,8 @@ nav:
     - 'State dependency': 'state-dependency.md'
   - 'Advanced patterns':
     - 'Conditional process resources': 'conditional-resources.md'
-    - 'Conditional process executions': 'conditional-process.md'
+    - 'Conditional process execution (static)': 'conditional-process.md'
+    - 'Conditional process execution (dynamic)': 'conditional-process-dynamic.md'
     - 'Skip process execution': 'skip-process-execution.md'
     - 'Feedback loop': 'feedback-loop.md'
     - 'Optional input': 'optional-input.md'
