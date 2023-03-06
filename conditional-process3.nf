@@ -54,10 +54,10 @@ workflow {
     ch_if = Channel.of( 1..100 )
       | randomSample(1)
       | branch { n ->
-        TRUE: n > 50
-        FALSE: n <= 50
+        high: n > 50
+        low: n <= 50
       }
 
-    ch_if.TRUE | foo
-    ch_if.FALSE | bar
+    ch_if.high | foo
+    ch_if.low | bar
 }
