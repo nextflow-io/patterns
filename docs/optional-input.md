@@ -14,11 +14,11 @@ touch assets/NO_FILE
 ## Code 
 
 ```groovy
-params.inputs = "$baseDir/data/prots/*{1,2,3}.fa"
+params.inputs = "$projectDir/data/prots/*{1,2,3}.fa"
 params.filter = "$projectDir/assets/NO_FILE"
 
 process foo {
-  debug true   
+  debug true
   input:
   path seq
   path opt

@@ -26,8 +26,8 @@
   * author Paolo Di Tommaso <paolo.ditommaso@gmail.com> 
   */
 
-params.inputs = "$baseDir/data/prots/*{1,2,3}.fa"
-params.filter = 'NO_FILE'
+params.inputs = "$projectDir/data/prots/*{1,2,3}.fa"
+params.filter = "$projectDir/assets/NO_FILE"
 
 process foo {
   debug true   
@@ -44,7 +44,7 @@ process foo {
 
 workflow {
   prots_ch = Channel.fromPath(params.inputs, checkIfExists:true)
-  opt_file = file(params.filter)
+  opt_file = file(params.filter, checkIfExists:true)
 
   foo(prots_ch, opt_file)
 }
