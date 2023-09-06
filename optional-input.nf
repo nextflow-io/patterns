@@ -44,7 +44,7 @@ process foo {
 
 workflow {
   prots_ch = Channel.fromPath(params.inputs, checkIfExists:true)
-  opt_file = file(params.filter, checkIfExists:true)
+  opt_file = file(params.filter)
 
   foo(prots_ch, opt_file)
 }
