@@ -38,7 +38,7 @@ process foo {
   script:
   def filter = opt.name != 'NO_FILE' ? "--filter $opt" : ''
   """
-  echo your_commad --input $seq $filter
+  echo your_command --input $seq $filter
   """
 }
 

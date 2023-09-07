@@ -41,7 +41,7 @@ process bar {
     path fq
     script:
     """
-    echo other_commad_here --reads $fq
+    echo other_command_here --reads $fq
     """
 }
 
