@@ -27,7 +27,8 @@
   */
 
 params.inputs = "$projectDir/data/prots/*{1,2,3}.fa"
-params.filter = "$projectDir/assets/NO_FILE"
+// pass a empty array. this evaluates to false
+params.filter = []
 
 process foo {
   debug true   
@@ -36,7 +37,7 @@ process foo {
   path opt
 
   script:
-  def filter = opt.name != 'NO_FILE' ? "--filter $opt" : ''
+  def filter = opt ? "--filter ${opt}" : ""
   """
   echo your_command --input $seq $filter
   """

@@ -4,27 +4,23 @@ One or more processes have an optional input file.
 
 ## Solution 
 
-Use a special file name to mark the absence of the file parameter.
-
-Create an empty file in `assets`:
-```
-touch assets/NO_FILE
-```
+Pass an empty array to the optional input. The empty array will be evaluated to `false`.
 
 ## Code 
 
 ```groovy
 params.inputs = "$projectDir/data/prots/*{1,2,3}.fa"
-params.filter = "$projectDir/assets/NO_FILE"
+// pass a empty array. this evaluates to false
+params.filter = []
 
 process foo {
-  debug true
+  debug true   
   input:
   path seq
   path opt
 
   script:
-  def filter = opt.name != 'NO_FILE' ? "--filter $opt" : ''
+  def filter = opt ? "--filter ${opt}" : ""
   """
   echo your_command --input $seq $filter
   """
@@ -32,7 +28,7 @@ process foo {
 
 workflow {
   prots_ch = Channel.fromPath(params.inputs, checkIfExists:true)
-  opt_file = file(params.filter, checkIfExists:true)
+  opt_file = file(params.filter)
 
   foo(prots_ch, opt_file)
 }
