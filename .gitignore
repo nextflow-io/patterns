@@ -1,0 +1,7 @@
+.git
+.idea*
+.nextflow*
+my-results
+public
+results
+work
